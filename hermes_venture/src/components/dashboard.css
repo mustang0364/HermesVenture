@@ -1,5 +1,5 @@
 .dashboard-container {
-    background-image: url('../Media/background.jpg');
+    background-image: url('../Media/background1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 90.8vh;
@@ -8,12 +8,12 @@
     padding: 50px;
 }
 
-header {
+.dashboard-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.fab {
+.dash {
     border: 3px solid #717494;
     border-radius: 50%;
     margin: 0 5px;
@@ -23,7 +23,7 @@ header {
     transition: all .2s ease-in-out;
 }
 
-.fab:hover {
+.dash:hover {
     transform: scale(1.02);
 }
 

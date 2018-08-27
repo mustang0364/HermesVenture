@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
+import Navbar from './Shopping-Navbar';
 class Shopping extends Component {
     render() {
         return (
             <div>
-                <h1>Shopping Dashboard</h1>
+                <Navbar />
             </div>
         );
     }
