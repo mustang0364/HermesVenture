@@ -40,3 +40,9 @@ create table addresses (
     zip varchar(5),
     user_id int references users(id)
 )
+
+
+insert into products 
+(title, category, price, image, description)
+values
+('Rain Jacket', 'Tibet', 249.99, 'https://res.cloudinary.com/dvvwg1hp3/image/upload/v1535389077/download.png', 'Seek no shelter when the rain hits in this updated, lighter version. The breathable membrane with a soft-woven face and lightweight stretch-knit backer for three-layer protection is the core of this jacket.')
