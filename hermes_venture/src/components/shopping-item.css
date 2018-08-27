@@ -1,0 +1,39 @@
+.single-item-nav {
+    display: flex;
+}
+
+.single-item-info-container {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 0 100px;
+}
+
+.single-item-img img {
+    max-height: 500px;
+    background-color: orange;
+}
+
+.single-item-info {
+    display: block;
+    text-align: right;
+    background-color: red;
+}
+
+.single-item-description {
+    text-align: left;
+    margin-top: 50px;
+    max-width: 700px;
+    padding: 50px;
+}
+
+.related-img-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px; 
+}
+.related-img-container img {
+    max-width: 200px;
+}
+
+
