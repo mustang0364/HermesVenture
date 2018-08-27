@@ -120,8 +120,36 @@ table {
 	z-index: 1;
 	background-color: white;
 	margin-left: 15px;
-	margin-top: 15px;
+	margin-top: 13px;
 	border: solid transparent 0px;
-	height: 1px;
+	height: 2px;
 }
-
+.buttonsection {
+	display: flex;
+	flex-direction: column;
+	z-index: 1;
+	position: absolute;
+	bottom: 30px;
+}
+.buttonsection button {
+	margin: 20px 0px;
+	margin-left: 15px;
+}
+.buttonsection img {
+	height: 50px;
+	width: auto;
+	margin-left: 15px;
+}
+.bottomsection img {
+	height: 100px;
+	width: auto;
+}
+.bottomsection {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	margin-top: 30px;
+	min-height: 700px;
+}
