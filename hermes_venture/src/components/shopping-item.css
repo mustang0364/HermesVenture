@@ -20,6 +20,11 @@
     background-color:#327DA9;
 }
 
+.single-item-info input {
+    width: 30px;
+    font-size: 18px;
+}
+
 .single-item-description {
     text-align: left;
     margin-top: 50px;

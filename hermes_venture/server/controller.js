@@ -11,13 +11,12 @@ module.exports = {
         let stuff = [];
         console.log(req.params)
         req.app.get('db').single_product(+req.params.id).then(product => {
-            stuff.push(product[0])
-            res.status(200)
-        }).catch(err => console.log('error on getSingleProduct', err))
-        req.app.get('db').get_categories(req.params.category).then(products => {
-           stuff.push(products)
-           res.json(stuff)
-            res.status(200)
+            req.app.get('db').get_categories(req.params.category).then(products => {
+                stuff.push(products)
+                stuff.push(product[0])
+                console.log(stuff)
+                res.json(stuff)
+            }).catch(err => console.log('error on getSingleProduct', err))
         }).catch(err => console.log('error on getSingleProduct', err))
     },
     getRelated: (req, res) => {
