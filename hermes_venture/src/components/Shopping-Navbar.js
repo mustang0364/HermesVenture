@@ -1,7 +1,7 @@
 import React from 'react';
 import './shopping-navbar.css'
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <header className="navbar-header">
             <h3 className="navbar-social">
@@ -12,7 +12,7 @@ const Navbar = () => {
                 <i className="fab fa-pinterest"></i>
             </h3>
             <div className="navbar-account">
-                <h3>My Account <i className="fas fa-shopping-cart"></i></h3>
+                <h3>My Account <i className="fas fa-shopping-cart">{props.cart.length > 0 ? props.cart.length : null}</i></h3>
                 
             </div>
         </header>
