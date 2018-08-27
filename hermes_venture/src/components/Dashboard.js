@@ -9,12 +9,14 @@ export default class Dashboard extends Component {
         return (
             <div className="dashboard-container">
                 <header>
-                    <h3>Share your #SomeHashTagWeComeUpWith</h3>
+                    <h3>Share your #hermesVenture</h3>
                     <h1>LOGO GOES HERE</h1>
                     <h3>SHARE THIS STORY:
                         <i className="fab fa-facebook-square"></i>
                         <i className="fab fa-twitter"></i>
-                        <i className="fab fa-instagram"></i>
+                        <a href="https://www.instagram.com/hermes_venture/">
+                        <i className="fab fa-instagram" ></i>
+                        </a>
                     </h3>
                 </header>
                 <div className="item-container">
