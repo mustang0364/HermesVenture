@@ -7,7 +7,9 @@ const Navbar = () => {
             <h3 className="navbar-social">
                 <i className="fab fa-facebook-square"></i>
                 <i className="fab fa-twitter"></i>
-                <i className="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/hermes_venture/">
+                    <i className="fab fa-instagram" ></i>
+                </a>
                 <i className="fab fa-youtube"></i>
                 <i className="fab fa-pinterest"></i>
             </h3>

@@ -11,13 +11,13 @@
 
 .single-item-img img {
     max-height: 500px;
-    background-color: orange;
+    /* background-color:#E3FEB5 ; */
 }
 
 .single-item-info {
     display: block;
     text-align: right;
-    background-color: red;
+    background-color:#327DA9;
 }
 
 .single-item-description {
