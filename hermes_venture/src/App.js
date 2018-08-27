@@ -12,6 +12,7 @@ import BackdropOne from './Media/Images/backdropone.png';
 import Backdroptwo from './Media/Images/backdroptwo.png';
 import Backdropthree from './Media/Images/backdropthree.png';
 import Backdropfour from './Media/Images/backdropone.png';
+import axios from 'axios';
 
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
       videoOneShown: true,
       videoTwoShown: false,
       videoThreeShown: false,
+      currentScene: 'Tibet',
     }
   }
   changeSceneOne = () => {
@@ -47,7 +49,8 @@ class App extends Component {
   }
 
   render() {
-
+    const productImageOne = axios.get(`/featuredproducts/${this.state.currentScene}`).then(res => res.data[0])
+    console.log(productImageOne)
     return (
       <div className="App">
       <Scenes video={
@@ -63,6 +66,7 @@ class App extends Component {
               <h4>In This Scene</h4>
               <div className="bottomsection">
                 <div className="fpbg">
+                    <img src={productImageOne} alt='pdimg'/>
                     <img src={BackdropOne} alt="firstbackdrop"/>
                 </div>
                 <div className="fpbg">

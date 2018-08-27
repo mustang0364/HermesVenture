@@ -1,0 +1,1 @@
+select image from products where category = $1

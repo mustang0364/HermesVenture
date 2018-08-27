@@ -17,7 +17,7 @@ massive(process.env.CONNECTION_STRING).then(db => {
 
 app.get('/dashboard', controller.dashboard);
 app.get('/shopping/:category/:id', controller.getSingleProduct);
-
+app.get('/featuredproducts/:category', controller.getFeaturedProducts);
 
 
 
