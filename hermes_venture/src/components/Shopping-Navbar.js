@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './shopping-navbar.css'
 import {Link} from 'react-router-dom';
+import Auth0 from './Auth0'
+
+
+
 
 const Navbar = (props) => {
+    
     return (
         <header className="navbar-header">
             <h3 className="navbar-social">
@@ -17,8 +22,12 @@ const Navbar = (props) => {
                 
             </h3>
             <div className="navbar-account">
+        
+            <Auth0/>
+
+            <br/>
                 <h3>My Account</h3><h2><i className="fas fa-shopping-cart">{props.cart.length > 0 ? props.cart.length : null}</i></h2>
-                
+              
             </div>
         </header>
     );

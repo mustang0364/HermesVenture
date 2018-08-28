@@ -1,1 +1,1 @@
-select image from products where category = $1
+select image, category, id from products where category = $1
