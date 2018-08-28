@@ -15,6 +15,7 @@ import Dashboard from './Dashboard.js';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import DashboardArrow from '../Media/Images/dashboard-arrow.png';
+import './home.css';
 
 class Home extends Component {
     constructor(){
