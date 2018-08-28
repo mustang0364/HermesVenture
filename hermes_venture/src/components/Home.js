@@ -6,6 +6,8 @@ import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
+import Circle from '../Media/Images/Logo/circle.png';
+
 import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
@@ -14,7 +16,7 @@ import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
 import WhiteLogo from '../Media/Images/Logo/white_logo_transparent.png'
 import BlackLogo from '../Media/Images/Logo/dark_logo_transparent.png'
-import BlueLogo from '../Media/Images/Logo/color_logo_transparent.png'
+import BlueLogo from '../Media/Images/Logo/logo1.2.png'
 
 class Home extends Component {
     constructor(){
@@ -89,19 +91,19 @@ class Home extends Component {
                 <div className="bottomsection">
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/>
-                      <img src={circle} alt="firstbackdrop"/>
+                      <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.productTwoimage} alt=''/>
-                      <img src={circle} alt="secondbackdrop"/>
+                      <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.productThreeimage} alt=''/>
-                      <img src={circle} alt="thirdbackdrop"/>
+                      <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.productFourimage} alt=''/>
-                      <img src={circle} alt='fourthbackdrop'/>
+                      <img src={circle} alt="circleLogo"/>
                   </div>
                 </div>
             </div>
