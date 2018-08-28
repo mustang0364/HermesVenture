@@ -67,12 +67,15 @@ class Home extends Component {
     render() {
       return (
         <div className="Home">
-        <Scenes video={
-          this.state.videoOneShown ? BackgroundVideoOne 
-          : this.state.videoTwoShown ? BackgroundVideoTwo 
-          : this.state.videoThreeShown ? BackgroundVideoThree : null
-          }
-        ></Scenes>
+        <div className="sceneone">
+        <Scenes video={BackgroundVideoOne} />
+        </div>
+        <div className="scenetwo">
+        <Scenes video={BackgroundVideoTwo} />
+        </div>
+        <div className="scenethree">
+        <Scenes video={BackgroundVideoThree} />
+        </div>
         <img className='homelogo' src={
           this.state.videoOneShown 
           ? WhiteLogo
