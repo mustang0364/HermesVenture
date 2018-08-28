@@ -13,6 +13,8 @@ const Navbar = (props) => {
                 </a>
                 <i className="fab fa-youtube"></i>
                 <i className="fab fa-pinterest"></i>
+                <Link to="/shopping"><i class="fas fa-home"></i></Link>
+                
             </h3>
             <div className="navbar-account">
                 <h3>My Account</h3><h2><i className="fas fa-shopping-cart">{props.cart.length > 0 ? props.cart.length : null}</i></h2>

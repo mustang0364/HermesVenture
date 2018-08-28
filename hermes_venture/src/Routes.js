@@ -8,7 +8,7 @@ class Routes extends Component {
     render() {
         return (
             <Switch>
-                <Route path="/shopping" component={Shopping} />
+                <Route path="/shopping" exact component={Shopping} />
                 <Route path="/shopping/:category/:id" component={SingleItem} />
                 <Route path="/shopping/cart" component={Cart}/>
 

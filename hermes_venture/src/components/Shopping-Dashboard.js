@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {AppContext} from './ContextProvider';
+import {Link} from 'react-router-dom';
 import Navbar from './Shopping-Navbar';
 import axios from 'axios';
 import './shopping-dashboard.css';
@@ -44,11 +45,11 @@ class Shopping extends Component {
                                                     <div className="products">
                                                         {this.state.products.map((product) => {
                                                             return (
-                                                                <div className="product-info">
+                                                                <Link to={`/shopping/${product.category}/${product.id}`}><div className="product-info">
                                                                     <img src={product.image}/>
                                                                     <h4>{product.title}</h4>
                                                                     <p>{product.price}</p>
-                                                                </div>
+                                                                </div></Link>
                                                             )
                                                         })}
                                                     </div>
