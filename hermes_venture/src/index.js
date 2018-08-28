@@ -4,6 +4,13 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter} from 'react-router-dom';
+import ContextProvider from './components/ContextProvider';
 
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <ContextProvider>
+            <App />
+        </ContextProvider>
+    </BrowserRouter>, 
+    document.getElementById('root'));
 registerServiceWorker();
