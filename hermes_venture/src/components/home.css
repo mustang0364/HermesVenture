@@ -119,3 +119,10 @@ button:focus {outline: 0;}
 	position: absolute;
 	z-index: 5;
 }
+.homelogo {
+	height: 200px;
+	width: auto;
+	position: absolute;
+	top: 15px;
+	left: 15px;
+}
