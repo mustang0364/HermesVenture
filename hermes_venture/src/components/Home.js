@@ -11,7 +11,6 @@ import Backdroptwo from '../Media/Images/backdroptwo.png';
 import Backdropthree from '../Media/Images/backdropthree.png';
 import Backdropfour from '../Media/Images/backdropone.png';
 import axios from 'axios';
-import Dashboard from './Dashboard.js';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import DashboardArrow from '../Media/Images/dashboard-arrow.png';
@@ -113,7 +112,6 @@ class Home extends Component {
             <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
             <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
         </div>
-          <Dashboard />
         </div>
       );
     }
