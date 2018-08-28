@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Dashboard from './components/Dashboard';
 import {Switch, Route} from 'react-router-dom';
 import SingleItem from './components/Shopping-Item';
 import Cart from './components/Cart';

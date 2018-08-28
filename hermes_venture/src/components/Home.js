@@ -6,20 +6,15 @@ import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
-
-import Backdroptwo from '../Media/Images/backdroptwo.png';
-import Backdropthree from '../Media/Images/backdropthree.png';
-
 import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import DashboardArrow from '../Media/Images/dashboard-arrow.png';
 import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
-import {Link} from 'react-router-dom';
 import WhiteLogo from '../Media/Images/Logo/white_logo_transparent.png'
 import BlackLogo from '../Media/Images/Logo/dark_logo_transparent.png'
-import BlueLogo from '../Media/Images/Logo/logoTranps.png'
+import BlueLogo from '../Media/Images/Logo/color_logo_transparent.png'
 
 class Home extends Component {
     constructor(){
@@ -66,17 +61,18 @@ class Home extends Component {
     }
   
     render() {
+      
       return (
         <div className="Home">
         <div className="sceneone">
         <Scenes video={BackgroundVideoOne} />
         </div>
-        <div className="scenetwo">
+        {/* <div className="scenetwo">
         <Scenes video={BackgroundVideoTwo} />
         </div>
         <div className="scenethree">
         <Scenes video={BackgroundVideoThree} />
-        </div>
+        </div> */}
         <img className='homelogo' src={
           this.state.videoOneShown 
           ? WhiteLogo
@@ -92,37 +88,20 @@ class Home extends Component {
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
                   <div className="fpbg">
-<<<<<<< HEAD
-                      <img className='productimagesb' src={this.state.featuredProducts.imageOne} alt=''/>
+                      <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/>
                       <img src={circle} alt="firstbackdrop"/>
                   </div>
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.imageTwo} alt=''/>
+                      <img className='productimagesb' src={this.state.featuredProducts.productTwoimage} alt=''/>
                       <img src={circle} alt="secondbackdrop"/>
                   </div>
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.imageThree} alt=''/>
+                      <img className='productimagesb' src={this.state.featuredProducts.productThreeimage} alt=''/>
                       <img src={circle} alt="thirdbackdrop"/>
                   </div>
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.imageFour} alt=''/>
-                      <img src={circle} alt='fourthbackdrop'/>
-=======
-                      <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/>
-                      <img src={BackdropOne} alt="firstbackdrop"/>
-                  </div>
-                  <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.productTwoimage} alt=''/>
-                      <img src={Backdroptwo} alt="secondbackdrop"/>
-                  </div>
-                  <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.productThreeimage} alt=''/>
-                      <img src={Backdropthree} alt="thirdbackdrop"/>
-                  </div>
-                  <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.productFourimage} alt=''/>
-                      <img src={Backdropfour} alt='fourthbackdrop'/>
->>>>>>> a8cc196b5b16a86bf5c168156212b083a619f827
+                      <img src={circle} alt='fourthbackdrop'/>
                   </div>
                 </div>
             </div>
