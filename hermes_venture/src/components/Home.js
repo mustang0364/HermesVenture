@@ -6,14 +6,15 @@ import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
-import BackdropOne from '../Media/Images/backdropone.png';
+
 import Backdroptwo from '../Media/Images/backdroptwo.png';
 import Backdropthree from '../Media/Images/backdropthree.png';
-import Backdropfour from '../Media/Images/backdropone.png';
+
 import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import DashboardArrow from '../Media/Images/dashboard-arrow.png';
+import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
 
 class Home extends Component {
@@ -82,19 +83,19 @@ class Home extends Component {
                 <div className="bottomsection">
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.imageOne} alt=''/>
-                      <img src={BackdropOne} alt="firstbackdrop"/>
+                      <img src={circle} alt="firstbackdrop"/>
                   </div>
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.imageTwo} alt=''/>
-                      <img src={Backdroptwo} alt="secondbackdrop"/>
+                      <img src={circle} alt="secondbackdrop"/>
                   </div>
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.imageThree} alt=''/>
-                      <img src={Backdropthree} alt="thirdbackdrop"/>
+                      <img src={circle} alt="thirdbackdrop"/>
                   </div>
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.imageFour} alt=''/>
-                      <img src={Backdropfour} alt='fourthbackdrop'/>
+                      <img src={circle} alt='fourthbackdrop'/>
                   </div>
                 </div>
             </div>

@@ -2,18 +2,7 @@ import React from 'react';
 import Item from './Dashboard-item';
 import {Link} from 'react-router-dom';
 import './dashboard.css';
-<<<<<<< HEAD
 
-export default class Dashboard extends Component {
-    constructor() {
-        super();
-        this.state = {
-            products: [],
-        }
-    }
-=======
-import logoImage from '../Media/Images/Logo/logoTranps.png'
->>>>>>> 57c8c3969c902fcfe2b3dd5b6de698ecb676d63d
 
 export default function Dashboard(props){
     return (
