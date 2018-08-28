@@ -6,14 +6,15 @@ import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
-import BackdropOne from '../Media/Images/backdropone.png';
+
 import Backdroptwo from '../Media/Images/backdroptwo.png';
 import Backdropthree from '../Media/Images/backdropthree.png';
-import Backdropfour from '../Media/Images/backdropone.png';
+
 import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import DashboardArrow from '../Media/Images/dashboard-arrow.png';
+import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
 import {Link} from 'react-router-dom';
 import WhiteLogo from '../Media/Images/Logo/white_logo_transparent.png'
@@ -91,6 +92,22 @@ class Home extends Component {
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
                   <div className="fpbg">
+<<<<<<< HEAD
+                      <img className='productimagesb' src={this.state.featuredProducts.imageOne} alt=''/>
+                      <img src={circle} alt="firstbackdrop"/>
+                  </div>
+                  <div className="fpbg">
+                      <img className='productimagesb' src={this.state.featuredProducts.imageTwo} alt=''/>
+                      <img src={circle} alt="secondbackdrop"/>
+                  </div>
+                  <div className="fpbg">
+                      <img className='productimagesb' src={this.state.featuredProducts.imageThree} alt=''/>
+                      <img src={circle} alt="thirdbackdrop"/>
+                  </div>
+                  <div className="fpbg">
+                      <img className='productimagesb' src={this.state.featuredProducts.imageFour} alt=''/>
+                      <img src={circle} alt='fourthbackdrop'/>
+=======
                       <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/>
                       <img src={BackdropOne} alt="firstbackdrop"/>
                   </div>
@@ -105,6 +122,7 @@ class Home extends Component {
                   <div className="fpbg">
                       <img className='productimagesb' src={this.state.featuredProducts.productFourimage} alt=''/>
                       <img src={Backdropfour} alt='fourthbackdrop'/>
+>>>>>>> a8cc196b5b16a86bf5c168156212b083a619f827
                   </div>
                 </div>
             </div>
@@ -113,6 +131,7 @@ class Home extends Component {
         <div className="footer">        
               <a href="#dashboard"><img src={DashboardArrow} alt=""/></a>
         </div>
+        
         <div className="buttonsection">
             <img className='arrows' src={TopArrow} alt="arrowtop"/>
             <button onClick={() => this.changeSceneOne()}><img alt='' className={this.state.videoOneShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoOneShown === true ? Buttonactive : ButtonImage} />
