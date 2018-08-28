@@ -21,6 +21,7 @@ export default class Dashboard extends Component {
         console.log(this.state)
         return (
             <div className="dashboard-container">
+            <div id="dashboard"></div>
                 <header>
                     <h3>Share your "#hermesVenture"</h3>
                     <h1>LOGO GOES HERE</h1>
