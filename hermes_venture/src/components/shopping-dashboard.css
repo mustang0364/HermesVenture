@@ -1,0 +1,50 @@
+.shopping-container {
+    background-color: yellow;
+}
+
+.top-image {
+    background-image: url('https://www.eaglesnestoutfittersinc.com/shop/media/catalog/category/Suspension_6_2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-height: 90vh;
+}
+
+
+.content-container {
+    display: flex;
+    padding-top: 350px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.left-nav-pane {
+    background-color: orange;
+    min-width: 200px;
+    text-align: center;
+}
+
+.products-container {
+    display: flex;
+    background-color: purple;
+    padding: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    padding: 50px;
+    border: 1px solid black;
+}
+
+.product-info img {
+    max-height: 200px;
+}

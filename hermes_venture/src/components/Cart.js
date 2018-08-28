@@ -3,6 +3,7 @@ import {AppContext} from './ContextProvider';
 import './cart.css'
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
+import Navbar from './Shopping-Navbar';
 
 class Cart extends Component {
     componentDidMount() {
@@ -20,6 +21,8 @@ class Cart extends Component {
                         let price = context.cart.map((item) => (item.price) * item.quantity)
                         console.log(price)
                         return (
+                            <div>
+                                <Navbar cart={context.cart}/>
                             <div className="cart-container">
                                 <h1>Your Cart</h1>
                                 {context.cart.map((item) => {
@@ -38,6 +41,7 @@ class Cart extends Component {
                                     cart={context.cart}
                                     orderNumber={context.orderNumber}
                                 />
+                            </div>
                             </div>
                         )
                     }}
