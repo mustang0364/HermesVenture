@@ -18,7 +18,6 @@ export default class Dashboard extends Component {
         })
     }
     render() {
-        console.log(this.state)
         return (
             <div className="dashboard-container">
             <div id="dashboard"></div>
