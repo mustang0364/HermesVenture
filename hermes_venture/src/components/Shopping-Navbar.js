@@ -1,5 +1,6 @@
 import React from 'react';
 import './shopping-navbar.css'
+import {Link} from 'react-router-dom';
 
 const Navbar = (props) => {
     return (
@@ -14,7 +15,7 @@ const Navbar = (props) => {
                 <i className="fab fa-pinterest"></i>
             </h3>
             <div className="navbar-account">
-                <h3>My Account <i className="fas fa-shopping-cart">{props.cart.length > 0 ? props.cart.length : null}</i></h3>
+                <h3>My Account</h3><h2><i className="fas fa-shopping-cart">{props.cart.length > 0 ? props.cart.length : null}</i></h2>
                 
             </div>
         </header>

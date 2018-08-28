@@ -17,13 +17,17 @@ class Item extends Component {
         axios.get(`/shopping/${this.props.match.params.category}/${this.props.match.params.id}`).then(res => {
             this.setState({product: res.data[1], related: res.data[0]})
         })
+        
     }
+
+ 
     render() {
         const { product, related } = this.state
         return (
             <div>
                 <AppContext.Consumer>
                     {(context) => {
+                        console.log(context)
                         return (
                             <div>
                                 <Navbar cart={context.cart}/>
@@ -35,19 +39,19 @@ class Item extends Component {
                                             </div>
                                             <div className="single-item-info">
                                                 <h1>{product.title}</h1>
-                                                <h1>${product.price}</h1>
+                                                <h2>${product.price}</h2>
                                                 <h4>Free Shipping</h4>
-                                                <h3>Quantity <input type="number" onChange={(e) => context.methods.updateQuantity(product.id, e.target.value)}/></h3>
+                                                <h3>Quantity <input type="number" onChange={(e) => context.methods.handleQuantity(e.target.value)}/></h3>
                                                 <p><button onClick={() => context.methods.addToCart(product)}>Add To Cart</button></p>
-                                                <p><button>Future Stripe button</button></p>
+                                                <Link to="/shopping/cart"><p><button onClick={() => context.methods.createOrderNumber(1)}>Checkout</button></p></Link>
                                              </div>
                                         </div>
                                         <div className="single-item-description">
                                             <h1>{product.title}</h1>
-                                            {product.description}
+                                            <p>{product.description}</p>
                                         </div>
                                         <div>
-                                        <h2>Related Products</h2>
+                                        <h2 className="related-header">Related Products</h2>
                                             {related ?
                                                 <div  className="related-img-container">
                                                 
