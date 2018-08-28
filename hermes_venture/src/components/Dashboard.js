@@ -35,7 +35,7 @@ export default class Dashboard extends Component {
                 <div className="item-container">
                     {this.state.products.map((item) => {
                         return (
-                            <div>
+                            <div key={item.id}>
                                 <Link to={`/shopping/${item.category}/${item.id}`}><Item img={item.image} title={item.title}></Item></Link>
                             </div>
                         )
