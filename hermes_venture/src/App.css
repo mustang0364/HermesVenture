@@ -132,14 +132,31 @@ table {
 	position: absolute;
 	bottom: 30px;
 }
-.buttonsection button {
-	margin: 20px 0px;
+.buttonsection .arrows {
+	margin: 10px 0px;
 	margin-left: 15px;
 }
 .buttonsection img {
 	height: 50px;
 	width: auto;
 	margin-left: 15px;
+}
+.buttonsection button {
+	background-color: transparent;
+	border: transparent;
+}
+button:focus {outline: 0;}
+.buttonsection button .buttoninactive {
+	height: 10px;
+	padding: 10px 0;
+	width: auto;
+	cursor: pointer;
+}
+.buttonsection button .buttonactive {
+	height: 30px;
+	padding: 5px 0;
+	width: auto;
+	cursor: pointer;
 }
 .bottomsection img {
 	height: 100px;
@@ -160,7 +177,20 @@ table {
 	left: 45%;
 	right: 45%;
 	color: white;
-	border: white solid 1px;
 	border-radius: 5px;
+}
+.footer img {
+	height: 30px;
+	width: auto;
+}
+.fpbg {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.productimagesb {
+	position: absolute;
+	z-index: 5;
 }
 

@@ -14,6 +14,9 @@ import Backdropthree from './Media/Images/backdropthree.png';
 import Backdropfour from './Media/Images/backdropone.png';
 import axios from 'axios';
 import Dashboard from './components/Dashboard.js';
+import ButtonImage from './Media/Images/Scenebuttons-inactive.png';
+import Buttonactive from './Media/Images/Scenebuttons.png';
+import DashboardArrow from './Media/Images/dashboard-arrow.png';
 
 
 class App extends Component {
@@ -59,9 +62,13 @@ class App extends Component {
       videoThreeShown: true,
     })
   }
+  // getProductImageOne = () => {
+  //   this.state.featuredProducts.map((e) => {
+  //     console.log(e.image)
+  //   })
+  // }
+
   render() {
-    const productImageOne = this.state.featuredProducts[0]
-    console.log(productImageOne)
     return (
       <div className="App">
       <Scenes video={
@@ -77,16 +84,19 @@ class App extends Component {
               <h4>In This Scene</h4>
               <div className="bottomsection">
                 <div className="fpbg">
-                    <img src={productImageOne} alt='pdimg'/>
+                    <img className='productimagesb' src={this.state.featuredProducts.imageOne} alt=''/>
                     <img src={BackdropOne} alt="firstbackdrop"/>
                 </div>
                 <div className="fpbg">
+                    <img className='productimagesb' src={this.state.featuredProducts.imageTwo} alt=''/>
                     <img src={Backdroptwo} alt="secondbackdrop"/>
                 </div>
                 <div className="fpbg">
+                    <img className='productimagesb' src={this.state.featuredProducts.imageThree} alt=''/>
                     <img src={Backdropthree} alt="thirdbackdrop"/>
                 </div>
                 <div className="fpbg">
+                    <img className='productimagesb' src={this.state.featuredProducts.imageFour} alt=''/>
                     <img src={Backdropfour} alt='fourthbackdrop'/>
                 </div>
               </div>
@@ -94,14 +104,15 @@ class App extends Component {
           <img className='sidebarimg' src={SidebarImg} alt="sidebarsection"/>
       </div>
       <div className="footer">        
-            <a href="#dashboard">Dashboard</a>
+            <a href="#dashboard"><img src={DashboardArrow} alt=""/></a>
       </div>
       <div className="buttonsection">
-          <img src={TopArrow} alt="arrowtop"/>
-          <button onClick={() => this.changeSceneOne()}>One</button>
-          <button onClick={() => this.changeSceneTwo()}>Two</button>
-          <button onClick={() => this.changeSceneThree()}>Three</button>
-          <img src={BottomArrow} alt="arrowbottom"/>
+          <img className='arrows' src={TopArrow} alt="arrowtop"/>
+          <button onClick={() => this.changeSceneOne()}><img alt='' className={this.state.videoOneShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoOneShown === true ? Buttonactive : ButtonImage} />
+          </button>
+          <button onClick={() => this.changeSceneTwo()}><img alt='' className={this.state.videoTwoShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoTwoShown === true ? Buttonactive : ButtonImage} /></button>
+          <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
+          <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
       </div>
         <Routes />
             <Dashboard />
