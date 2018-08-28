@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {AppContext} from './ContextProvider';
+import './cart.css'
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 
@@ -16,16 +17,18 @@ class Cart extends Component {
                     {(context) => {
                         console.log(context.cart)
                         console.log(context.orderNumber)
+                        let price = context.cart.map((item) => (item.price) * item.quantity)
+                        console.log(price)
                         return (
-                            <div>
-                                <h1>This is the cart</h1>
+                            <div className="cart-container">
+                                <h1>Your Cart</h1>
                                 {context.cart.map((item) => {
                                     return (
-                                        <div key={item.id}>
-                                            <h1>{item.title}</h1>
+                                        <div key={item.id} className="cart-item-container">
+                                            <h1 id="item-title">{item.title}</h1>
                                             <img src={item.image}/>
-                                            <p>{item.price}</p>
-                                            <p>{item.quantity}</p>
+                                            <p id="item-price">${item.price}</p>
+                                            <p id="item-quantity">{item.quantity}</p>
                                         </div>
                                     )
                                 })}
@@ -78,7 +81,7 @@ const Checkout = props => {
         stripeKey={STRIPE_PUBLISHABLE}
     />
     return (
-        <div>
+        <div id="stripe-button">
             <Checkout
                 name="Hermes Venture"
                 amount={props.amount}
