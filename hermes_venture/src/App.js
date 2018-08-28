@@ -26,12 +26,11 @@ class App extends Component {
 }
 
   render() {
-    console.log(this.state.redirect)
     return (
       <div className='appmain'>
       {this.state.redirect 
       ? <Routes /> 
-      : <div><Home /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
+      : <div><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
       }
       </div>
     );

@@ -3,16 +3,13 @@ const stripe = require("stripe")(process.env.SECRET_KEY);
 
 module.exports = {
     dashboard: (req, res) => {
-        // console.log('hit dashboard')
         req.app.get('db').get_products().then(products => {
             res.json(products)
             res.status(200)
         }).catch(err => console.log('error on Dashboard', err))
     },
     getSingleProduct: (req, res) => {
-        // console.log('hit Single Product')
         let stuff = [];
-        // console.log(req.params)
         req.app.get('db').single_product(+req.params.id).then(product => {
             req.app.get('db').get_categories(req.params.category).then(products => {
                 stuff.push(products)
@@ -24,12 +21,24 @@ module.exports = {
     getFeaturedProducts: (req, res) => {
         const { category } = req.params;
         req.app.get('db').get_featuredproducts(category)
-        .then(image => {
+        .then(data => {
+            let indexOne = Math.floor(Math.random() * ((4 - 0) + 1) + 0);
+            let indexTwo = Math.floor(Math.random() * ((4 - 0) + 1) + 5);
+            let indexThree = Math.floor(Math.random() * ((3 - 0) + 1) + 10);
+            let indexFour = Math.floor(Math.random() * ((3 - 0) + 1) + 14)
             res.send({
-                imageOne: image[Math.floor(Math.random() * 18)].image,
-                imageTwo: image[Math.floor(Math.random() * 18)].image,
-                imageThree: image[Math.floor(Math.random() * 18)].image,
-                imageFour: image[Math.floor(Math.random() * 18)].image
+                productOneimage: data[indexOne].image,
+                productOneCategory: data[indexOne].category,
+                productOneid: data[indexOne].id,
+                productTwoimage: data[indexTwo].image,
+                productTwoCategory: data[indexTwo].category,
+                productTwoid: data[indexTwo].id,
+                productThreeimage: data[indexThree].image,
+                productThreeCategory: data[indexThree].category,
+                productThreeid: data[indexThree].id,
+                productFourimage: data[indexFour].image,
+                productFourCategory: data[indexFour].category,
+                productFourid: data[indexFour].id,         
             })
             res.status(200)
         }).catch(err => console.log('error with getfeaturedproducts', err))
