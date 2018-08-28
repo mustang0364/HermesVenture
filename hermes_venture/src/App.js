@@ -12,6 +12,7 @@ import BackdropOne from './Media/Images/backdropone.png';
 import Backdroptwo from './Media/Images/backdroptwo.png';
 import Backdropthree from './Media/Images/backdropthree.png';
 import Backdropfour from './Media/Images/backdropone.png';
+
 import axios from 'axios';
 
 
@@ -77,6 +78,7 @@ class App extends Component {
       
        <div className="sidebar">
           <div className="sidebarheader">
+             <img src={featured} alt="featured-image"/>
               <h2>FEAT</h2>
               <div className='featuredsidebar'><h2>URED</h2><hr/></div>
               <h4>In This Scene</h4>

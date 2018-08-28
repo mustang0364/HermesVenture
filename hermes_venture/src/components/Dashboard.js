@@ -3,7 +3,7 @@ import Item from './Dashboard-item';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './dashboard.css';
-import logoImage from '../Media/Images/Logo/logoTranps.png'
+
 export default class Dashboard extends Component {
     constructor() {
         super();
