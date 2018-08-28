@@ -3,7 +3,7 @@ import Item from './Dashboard-item';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import './dashboard.css';
-
+import logoImage from '../Media/Images/Logo/logoTranps.png'
 export default class Dashboard extends Component {
     constructor() {
         super();
@@ -23,7 +23,7 @@ export default class Dashboard extends Component {
             <div id="dashboard"></div>
                 <header>
                     <h3>Share your "#hermesVenture"</h3>
-                    <h1>LOGO GOES HERE</h1>
+                    {/* <img  className="logo" src={logoImage} alt="logo"/> */}
                     <h3>SHARE THIS STORY:
                         <i className="fab fa-facebook-square"></i>
                         <i className="fab fa-twitter"></i>

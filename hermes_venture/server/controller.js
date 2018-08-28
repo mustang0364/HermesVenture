@@ -14,13 +14,9 @@ module.exports = {
             req.app.get('db').get_categories(req.params.category).then(products => {
                 stuff.push(products)
                 stuff.push(product[0])
-                console.log(stuff)
                 res.json(stuff)
-            }).catch(err => console.log('error on getSingleProduct', err))
-        }).catch(err => console.log('error on getSingleProduct', err))
-    },
-    getRelated: (req, res) => {
-        console.log(req.params.category)
+            }).catch(err => console.log('error on getSingleProduct 1', err))
+        }).catch(err => console.log('error on getSingleProduct 2', err))
     },
     getFeaturedProducts: (req, res) => {
         const { category } = req.params;
