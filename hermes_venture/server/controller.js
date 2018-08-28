@@ -1,3 +1,6 @@
+require('dotenv').config();
+const stripe = require("stripe")(process.env.SECRET_KEY);
+
 module.exports = {
     dashboard: (req, res) => {
         console.log('hit dashboard')
@@ -25,5 +28,54 @@ module.exports = {
             res.send(image);
             res.status(200)
         }).catch(err => console.log('error with getfeaturedproducts', err))
+    },
+    createOrderNumber: (req, res) => {
+        console.log('hit createOrderNumber')
+        req.app.get('db').create_order_number(+req.params.id).then(id => {
+            res.json(id)
+        }).catch(err => console.log('error with createOrderNumber', err))
+    },
+    stripe: (req, res) => {
+        console.log('hit Stripe')
+        const { amount, currency, source } = req.body
+        stripe.charges.create({
+            amount: amount,
+            currency: currency,
+            source: source
+        }, function(err, charge) {
+            if(err) {
+                console.log('error on stripe', err)
+            } else if(charge) {
+                res.json(charge)
+                console.log("Successful Charge")
+            }
+        });
+    },
+    createOrder: (req, res) => {
+        console.log('Creating Order')
+        let orderNumber = req.body[0]
+        let incomingCart = req.body[1]
+        let productIds = [];
+        let quantity = [];
+        let cart = [];
+        for(let i = 0; i < incomingCart.length; i++) {
+            cart.push(incomingCart[i])
+        }
+        for(let i = 0; i <cart.length; i++) {
+            productIds.push(cart[i].id)
+            quantity.push(cart[i].quantity)
+        }
+        
+        console.log('product ids', productIds)
+        console.log('quantities', quantity)
+        for(let i = 0; i <productIds.length; i++) {
+            req.app.get('db').create_order({
+                product_id: productIds[i],
+                cart_id: +orderNumber,
+                quantity: quantity[i]
+            }).then(newOrder => {
+                res.json(newOrder[0]);
+            }).catch(err => console.log('error with create Order', err))
+        }
     }
 }

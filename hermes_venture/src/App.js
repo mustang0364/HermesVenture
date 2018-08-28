@@ -93,7 +93,7 @@ class App extends Component {
           <img className='sidebarimg' src={SidebarImg} alt="sidebarsection"/>
       </div>
       <div className="footer">        
-            <a href="#dashboard">Dashboard</a>
+            <a href="/dashboard">Dashboard</a>
       </div>
       <div className="buttonsection">
           <img src={TopArrow} alt="arrowtop"/>

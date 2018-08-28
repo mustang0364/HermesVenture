@@ -4,11 +4,17 @@
     align-items: center;
     background-color: #E3FEB5;
 }
+.navbar-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .navbar-social i, .navbar-account i {
     padding: 10px;
 }
 
 .navbar-account, .navbar-social {
-    padding: 15px;
+    padding: 20px;
+    font-size: 24px;
 }

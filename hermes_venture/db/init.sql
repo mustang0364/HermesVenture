@@ -15,7 +15,7 @@ create table products (
 
 create table cart  (
     id serial primary key,
-    user_id int references users(id)
+    user_id int
 )
 
 create table quantity (
@@ -29,7 +29,7 @@ create table orders  (
     id serial primary key,
     product_id int references products(id),
     cart_id int references cart(id),
-    quantity int references quantity(id)
+    quantity int
 )
 
 create table addresses (

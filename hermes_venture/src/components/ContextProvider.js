@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export const AppContext = React.createContext();
 
@@ -7,6 +8,8 @@ export default class ContextProvider extends Component {
         super();
         this.state = {
             cart: [],
+            quantity: 0,
+            orderNumber: null,
             methods: {
                 addToCart: (item) => {
                     let newObj = {
@@ -16,7 +19,7 @@ export default class ContextProvider extends Component {
                         price: item.price,
                         image: item.image,
                         description: item.description,
-                        quantity: 1
+                        quantity: this.state.quantity || 0
                     }
                     if(this.state.cart.length < 1) {
                         this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
@@ -29,6 +32,7 @@ export default class ContextProvider extends Component {
                     }
                 },
                 updateQuantity: (id, value) => {
+                    this.setState({quantity: Number(value)})
                     console.log(id, value)
                     if(this.state.cart.length > 0 ) {
                         let index;
@@ -39,10 +43,16 @@ export default class ContextProvider extends Component {
                             return null
                         })
                         let update = Object.assign({}, this.state.cart[index])
-                        this.setState((prevState) => ({cart: prevState.cart.slice(index,1)}))
-                        update.quantity = Number(value)
-                        this.setState((prevState) => ({cart: prevState.cart.concat(update)}))
+                        let copyCart = [...this.state.cart]
+                        copyCart[index].quantity = Number(value)
+                        this.setState({cart: copyCart})
                     }
+                },
+                createOrderNumber: (id) => {
+                    axios.post(`/orderNumber/${id}`).then(res => {
+                        console.log('order number', res.data[0].id)
+                        this.setState({orderNumber: res.data[0].id})
+                    })
                 }
             },
         }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dashboard from './components/Dashboard';
 import {Switch, Route} from 'react-router-dom';
 import SingleItem from './components/Shopping-Item';
+import Cart from './components/Cart';
 
 class Routes extends Component {
     render() {
@@ -9,6 +10,7 @@ class Routes extends Component {
             <Switch>
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/shopping/:category/:id" component={SingleItem} />
+                <Route path="/shopping/cart" component={Cart}/>
             </Switch>
         );
     }
