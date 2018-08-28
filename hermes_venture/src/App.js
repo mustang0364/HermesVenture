@@ -12,6 +12,8 @@ import BackdropOne from './Media/Images/backdropone.png';
 import Backdroptwo from './Media/Images/backdroptwo.png';
 import Backdropthree from './Media/Images/backdropthree.png';
 import Backdropfour from './Media/Images/backdropone.png';
+import axios from 'axios';
+import Dashboard from './components/Dashboard.js';
 
 
 class App extends Component {
@@ -22,7 +24,19 @@ class App extends Component {
       videoOneShown: true,
       videoTwoShown: false,
       videoThreeShown: false,
+      currentScene: 'Tibet',
+      featuredProducts: [],
     }
+  }
+  componentDidMount(){
+    this.updateFeaturedProductsToTibet();
+  }
+  updateFeaturedProductsToTibet = () => {
+    axios.get(`/featuredproducts/${this.state.currentScene}`).then(res => {
+      this.setState({
+        featuredProducts: res.data,
+      })
+    })
   }
   changeSceneOne = () => {
     this.setState({
@@ -45,9 +59,9 @@ class App extends Component {
       videoThreeShown: true,
     })
   }
-
   render() {
-
+    const productImageOne = this.state.featuredProducts[0]
+    console.log(productImageOne)
     return (
       <div className="App">
       <Scenes video={
@@ -63,6 +77,7 @@ class App extends Component {
               <h4>In This Scene</h4>
               <div className="bottomsection">
                 <div className="fpbg">
+                    <img src={productImageOne} alt='pdimg'/>
                     <img src={BackdropOne} alt="firstbackdrop"/>
                 </div>
                 <div className="fpbg">
@@ -78,6 +93,9 @@ class App extends Component {
           </div>
           <img className='sidebarimg' src={SidebarImg} alt="sidebarsection"/>
       </div>
+      <div className="footer">        
+            <a href="#dashboard">Dashboard</a>
+      </div>
       <div className="buttonsection">
           <img src={TopArrow} alt="arrowtop"/>
           <button onClick={() => this.changeSceneOne()}>One</button>
@@ -86,6 +104,7 @@ class App extends Component {
           <img src={BottomArrow} alt="arrowbottom"/>
       </div>
         <Routes />
+            <Dashboard />
       </div>
     );
   }

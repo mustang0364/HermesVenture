@@ -21,5 +21,13 @@ module.exports = {
     },
     getRelated: (req, res) => {
         console.log(req.params.category)
+    },
+    getFeaturedProducts: (req, res) => {
+        const { category } = req.params;
+        req.app.get('db').get_featuredproducts(category)
+        .then(image => {
+            res.send(image);
+            res.status(200)
+        }).catch(err => console.log('error with getfeaturedproducts', err))
     }
 }
