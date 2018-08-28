@@ -16,6 +16,7 @@ import axios from 'axios';
 import Dashboard from './components/Dashboard.js';
 
 
+
 class App extends Component {
   constructor(){
     super();
@@ -64,12 +65,17 @@ class App extends Component {
     console.log(productImageOne)
     return (
       <div className="App">
+      
       <Scenes video={
         this.state.videoOneShown ? BackgroundVideoOne 
         : this.state.videoTwoShown ? BackgroundVideoTwo 
         : this.state.videoThreeShown ? BackgroundVideoThree : null
         }
-      ></Scenes>
+        
+      > 
+     
+      </Scenes>
+      
        <div className="sidebar">
           <div className="sidebarheader">
               <h2>FEAT</h2>
@@ -80,6 +86,7 @@ class App extends Component {
                     <img src={productImageOne} alt='pdimg'/>
                     <img src={BackdropOne} alt="firstbackdrop"/>
                 </div>
+                
                 <div className="fpbg">
                     <img src={Backdroptwo} alt="secondbackdrop"/>
                 </div>
@@ -93,6 +100,8 @@ class App extends Component {
           </div>
           <img className='sidebarimg' src={SidebarImg} alt="sidebarsection"/>
       </div>
+     
+
       <div className="footer">        
             <a href="#dashboard">Dashboard</a>
       </div>
