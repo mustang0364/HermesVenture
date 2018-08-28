@@ -18,28 +18,33 @@ export default class ContextProvider extends Component {
                         description: item.description,
                         quantity: 1
                     }
-                    if(this.state.cart.indexOf(item.id) > 0) {
-                        // let index;
-                        // index = this.state.cart.findIndex((itemToFind) => {
-                        //         return item.id === itemToFind.id
-                        // })
-                        
-                        console.log('Already There')
+                    if(this.state.cart.length < 1) {
+                        this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
                     } else {
-                        // this.setState((prevState) => {
-                        //     return {
-                        //         cart: prevState.cart.concat(newObj)
-                        //     }
-                        // })
-                        console.log(item.id)
-                        console.log('Not There')
+                        for(let i = 0; i < this.state.cart.length; i++) {
+                            if(this.state.cart[i].id === newObj.id) {
+                                console.log('already exists')
+                            }
+                        }
                     }
                 },
-                updateQuantity: (value) => {
-                    this.setState((prevState) => ({quantity: prevState.quantity = Number(value)}))
+                updateQuantity: (id, value) => {
+                    console.log(id, value)
+                    if(this.state.cart.length > 0 ) {
+                        let index;
+                        this.state.cart.map((item, i) => {
+                            if(item.id === id) {
+                                index = i
+                            }
+                            return null
+                        })
+                        let update = Object.assign({}, this.state.cart[index])
+                        this.setState((prevState) => ({cart: prevState.cart.slice(index,1)}))
+                        update.quantity = Number(value)
+                        this.setState((prevState) => ({cart: prevState.cart.concat(update)}))
+                    }
                 }
             },
-            
         }
     }
     render() {

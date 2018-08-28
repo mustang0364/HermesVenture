@@ -13,7 +13,6 @@ import Backdroptwo from './Media/Images/backdroptwo.png';
 import Backdropthree from './Media/Images/backdropthree.png';
 import Backdropfour from './Media/Images/backdropone.png';
 import axios from 'axios';
-import Dashboard from './components/Dashboard.js';
 
 
 
@@ -113,7 +112,6 @@ class App extends Component {
           <img src={BottomArrow} alt="arrowbottom"/>
       </div>
         <Routes />
-            <Dashboard />
       </div>
     );
   }
