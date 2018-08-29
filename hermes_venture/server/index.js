@@ -117,6 +117,8 @@ app.get('/featuredproducts/:category', controller.getFeaturedProducts);
 app.post('/orderNumber/:id', controller.createOrderNumber);
 app.post('/charge', controller.stripe);
 app.post('/createOrder', controller.createOrder);
+app.get('/:country', controller.sortCountry);
+app.get('/:country/:gender', controller.sortProducts);
 
 
 

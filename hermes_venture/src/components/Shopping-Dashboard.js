@@ -9,6 +9,9 @@ class Shopping extends Component {
         super();
         this.state = {
             products: [],
+            peru: 'none',
+            tibet: 'none',
+            maldives: 'none',
         }
     }
 
@@ -17,7 +20,65 @@ class Shopping extends Component {
             this.setState({products: res.data})
         })
     }
+    getAllProducts() {
+        axios.get('/dashboard').then(res => {
+            this.setState({products: res.data})
+        })
+    }
+
+    showOrHide(country) {
+        switch(country) {
+            case "peru":
+                this.setState({peru: 'block'})
+                switch(this.state.peru) {
+                    case 'block':
+                        this.setState({peru: 'none'})
+                        break;
+                }
+                break;
+            case "tibet":
+            this.setState({tibet: 'block'})
+                switch(this.state.tibet) {
+                    case 'block':
+                        this.setState({tibet: 'none'})
+                        break;
+                }
+                break;
+            case "maldives":
+            this.setState({maldives: 'block'})
+                switch(this.state.maldives) {
+                    case 'block':
+                        this.setState({maldives: 'none'})
+                        break;
+                }
+                break;
+        }
+    }
+
+    sort(country, gender) {
+        axios.get(`/${country}/${gender}`).then(res => {
+            this.setState({products: res.data})
+        })
+    }
+    sortCountry(country) {
+        axios.get(`/${country}`).then(res => {
+            this.setState({products: res.data})
+        })
+    }
+
+
+    
     render() {
+        console.log(this.state)
+        const styleP = {
+            display: this.state.peru,
+        }
+        const styleT = {
+            display: this.state.tibet,
+        }
+        const styleM = {
+            display: this.state.maldives,
+        }
         return (
             <div>
                 <AppContext.Consumer>
@@ -30,14 +91,25 @@ class Shopping extends Component {
                                         <div className="content-container">
                                             <div className="left-nav-pane">
                                                 <ul>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
-                                                    <li>List Item</li>
+                                                    <li className="peru-header" onClick={() => this.showOrHide('peru')}>Peru</li>
+                                                        <div className="peru-list" style={styleP}>
+                                                            <li onClick={() => this.sort('Peru', 'mens')}>Mens</li>
+                                                            <li onClick={() => this.sort('Peru', 'womens')}>Womens</li>
+                                                            <li onClick={() => this.sortCountry('Peru')}>All</li>
+                                                        </div>
+                                                    <li className="maldives-header" onClick={() => this.showOrHide('maldives')}>Maldives</li>
+                                                    <div className="maldives-list" style={styleM}>
+                                                            <li onClick={() => this.sort('Maldives', 'mens')}>Mens</li>
+                                                            <li onClick={() => this.sort('Maldives', 'womens')}>Womens</li>
+                                                            <li onClick={() => this.sortCountry('Maldives')}>All</li>
+                                                        </div>
+                                                    <li className="tibet-header" onClick={() => this.showOrHide('tibet')}>Tibet</li>
+                                                    <div className="tibet-list" style={styleT}>
+                                                            <li onClick={() => this.sort('Tibet', 'mens')}>Mens</li>
+                                                            <li onClick={() => this.sort('Tibet', 'womens')}>Womens</li>
+                                                            <li onClick={() => this.sortCountry('Tibet')}>All</li>
+                                                        </div>
+                                                    <li className="get-all" onClick={() => this.getAllProducts()}>All</li>
                                                 </ul>
                                             </div>
                                             <div className="products-container">

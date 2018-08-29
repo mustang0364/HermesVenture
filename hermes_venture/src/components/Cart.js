@@ -6,11 +6,6 @@ import StripeCheckout from 'react-stripe-checkout';
 import Navbar from './Shopping-Navbar';
 
 class Cart extends Component {
-    componentDidMount() {
-        axios.get('/shopping/cart').then(res => {
-
-        })
-    }
     render() {
         return (
             <div>
