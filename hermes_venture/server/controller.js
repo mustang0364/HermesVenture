@@ -91,5 +91,18 @@ module.exports = {
                 res.json(newOrder[0]);
             }).catch(err => console.log('error with create Order', err))
         }
+    },
+    sortCountry: (req, res) => {
+        req.app.get('db').sort_country(req.params.country).then(products => {
+            res.json(products)
+        }).catch(err => console.log('error with sortCountry', err))
+    },
+    sortProducts: (req, res) => {
+        console.log('hit sort products')
+        const { country, gender } = req.params
+        req.app.get('db').sort_products(country,gender).then(products => {
+            res.json(products)
+        }).catch(err => console.log('error on sort products', err))
+        
     }
 }
