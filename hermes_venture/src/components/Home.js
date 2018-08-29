@@ -6,8 +6,6 @@ import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
-import Circle from '../Media/Images/Logo/circle.png';
-
 import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
@@ -16,7 +14,9 @@ import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
 import WhiteLogo from '../Media/Images/Logo/white_logo_transparent.png'
 import BlackLogo from '../Media/Images/Logo/dark_logo_transparent.png'
-import BlueLogo from '../Media/Images/Logo/logo1.2.png'
+import BlueLogo from '../Media/Images/Logo/color_logo_transparent.png'
+import { Link } from 'react-router-dom';
+
 
 class Home extends Component {
     constructor(){
@@ -66,22 +66,22 @@ class Home extends Component {
       
       return (
         <div className="Home">
-        <div className="sceneone">
+        <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
         <Scenes video={BackgroundVideoOne} />
         </div>
-        {/* <div className="scenetwo">
+        <div className={this.state.videoTwoShown ? 'videoshown' : 'videohidden'}>
         <Scenes video={BackgroundVideoTwo} />
         </div>
-        <div className="scenethree">
+        <div className={this.state.videoThreeShown ? 'videoshown' : 'videohidden'}>
         <Scenes video={BackgroundVideoThree} />
-        </div> */}
+        </div>
         <img className='homelogo' src={
           this.state.videoOneShown 
           ? WhiteLogo
           : this.state.videoTwoShown
-          ? BlackLogo
+          ? BlueLogo
           : this.state.videoThreeShown 
-          ? BlueLogo 
+          ? BlackLogo 
           : null} alt=""/>
          <div className="sidebar">
             <div className="sidebarheader">
@@ -90,19 +90,23 @@ class Home extends Component {
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productOneCategory}/${this.state.featuredProducts.productOneid}`}>
+                      <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.productTwoimage} alt=''/>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productTwoCategory}/${this.state.featuredProducts.productTwoid}`}>
+                      <img className='productimagesb' src={this.state.featuredProducts.productTwoimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.productThreeimage} alt=''/>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productThreeCategory}/${this.state.featuredProducts.productThreeid}`}>
+                      <img className='productimagesb' src={this.state.featuredProducts.productThreeimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <img className='productimagesb' src={this.state.featuredProducts.productFourimage} alt=''/>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productFourCategory}/${this.state.featuredProducts.productFourid}`}>
+                      <img className='productimagesb' src={this.state.featuredProducts.productFourimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                 </div>
