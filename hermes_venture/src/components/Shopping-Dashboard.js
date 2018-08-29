@@ -117,7 +117,7 @@ class Shopping extends Component {
                                                     <div className="products">
                                                         {this.state.products.map((product) => {
                                                             return (
-                                                                <Link to={`/shopping/${product.category}/${product.id}`}><div className="product-info">
+                                                                <Link to={`/shopping/${product.category}/${product.id}`} key={product.id}><div className="product-info" >
                                                                     <img src={product.image}/>
                                                                     <h4>{product.title}</h4>
                                                                     <p>{product.price}</p>

@@ -20,11 +20,18 @@ class Item extends Component {
         
     }
 
+    replace(category, id) {
+        axios.get(`/shopping/${category}/${id}`).then(res => {
+            this.setState({product: res.data[1], related: res.data[0]})
+        })
+        window.scroll(0,0)
+    }
+
  
     render() {
         const { product, related } = this.state
         return (
-            <div>
+            <div className="single-item-body">
                 <AppContext.Consumer>
                     {(context) => {
                         console.log(context)
@@ -57,8 +64,8 @@ class Item extends Component {
                                                 
                                                     {related.map((item) => {
                                                         return (
-                                                            <div key={item.id}>
-                                                                <Link to="#"><img src={item.image} alt="shopping-item"/></Link>
+                                                            <div key={item.id} className="img-container">
+                                                                <img src={item.image} alt="shopping-item" onClick={() => this.replace(item.category, item.id)}/>
                                                             </div>
                                                         )
                                                     })}
