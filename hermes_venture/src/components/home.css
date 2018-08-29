@@ -120,9 +120,25 @@ button:focus {outline: 0;}
 	z-index: 5;
 }
 .homelogo {
+	-webkit-animation: rotation 8s infinite linear;
 	height: 200px;
 	width: auto;
 	position: absolute;
 	top: 15px;
 	left: 15px;
 }
+@-webkit-keyframes rotation {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+	}
+  }
+
+
+
+ 
+	
+  
+  

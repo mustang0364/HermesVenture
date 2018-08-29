@@ -16,6 +16,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "react-stripe-checkout": "^2.6.3",
+    "really-smooth-scroll": "^2.1.1",
+    "scrollmagic": "^2.0.5",
     "stripe": "^6.8.0"
   },
   "scripts": {
