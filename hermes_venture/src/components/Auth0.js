@@ -19,12 +19,6 @@ class Auth0 extends Component {
        })
      })
    }
-    
-   login(){
-     const redirectUri = encodeURIComponent(window.location.origin + '/auth/callback')
-     window.location = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&scope=openid%20profile%20email&redirect_uri=${redirectUri}&response_type=code`
-   }
-  
    logout (){
      axios.post('/api/logout').then(()=> {
        this.setState({user:null})
@@ -49,13 +43,14 @@ class Auth0 extends Component {
     
   
     render() {
-      
+      console.log(this.state)
+      const auth0 = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&response_type=code&scope=openid%20profile%20email&redirect_uri=${encodeURIComponent(`${window.location.origin}/auth/callback`)}`
       
       return (
         
   
         <div>
-              <button onClick={this.login}>Log in</button>
+              <a href={auth0}><button>Log in</button></a>
              
               <button onClick={this.logout}>Log out</button>
        
