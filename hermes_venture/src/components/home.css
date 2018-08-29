@@ -88,6 +88,7 @@ button:focus {outline: 0;}
 .bottomsection img {
 	height: 100px;
 	width: auto;
+	margin-left: 40px;
 }
 .bottomsection {
 	display: flex;
@@ -118,7 +119,7 @@ button:focus {outline: 0;}
 }
 .productimagesb {
 	position: absolute;
-	right: 105px;
+	right: 87px;
 	z-index: 5;
 }
 .homelogo {
