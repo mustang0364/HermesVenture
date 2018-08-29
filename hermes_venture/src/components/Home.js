@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Scenes from './Scenes.js';
-import BackgroundVideoOne from '../Media/Videos/FrenchAlps.m4v'
-import BackgroundVideoTwo from '../Media/Videos/Maldives.mp4'
-import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
+import BackgroundVideoOne from '../Media/Videos/Snow.mp4'
+import BackgroundVideoTwo from '../Media/Videos/Beach.mp4'
+import BackgroundVideoThree from '../Media/Videos/Rainforest.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
@@ -77,11 +77,11 @@ class Home extends Component {
         </div>
         <img className='homelogo' src={
           this.state.videoOneShown 
-          ? WhiteLogo
+          ? BlackLogo
           : this.state.videoTwoShown
           ? BlueLogo
           : this.state.videoThreeShown 
-          ? BlackLogo 
+          ? WhiteLogo 
           : null} alt=""/>
          <div className="sidebar">
             <div className="sidebarheader">
