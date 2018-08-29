@@ -31,11 +31,13 @@
 	margin-left: 30px;
 	color: whitesmoke;
 	font-size: 20px;
+	font-family: 'Paytone One', sans-serif;
 	z-index: 1;
 }
 .sidebarheader h4 {
-	margin-left: 80px;
-	color: darkslategray;
+	margin-left: 95px;
+	color: darkgreen;
+	font-family: 'Lobster', cursive;
 	font-size: 35px;
 	z-index: 1;
 }
@@ -43,14 +45,14 @@
 	display: flex;
 }
 .featuredsidebar hr {
-	width: 150px;
+	width: 168px;
 	color: whitesmoke;
 	z-index: 1;
 	background-color: white;
 	margin-left: 15px;
 	margin-top: 13px;
 	border: solid transparent 0px;
-	height: 2px;
+	height: 3px;
 }
 .buttonsection {
 	display: flex;
@@ -86,8 +88,9 @@ button:focus {outline: 0;}
 	cursor: pointer;
 }
 .bottomsection img {
-	height: 100px;
+	height: 150px;
 	width: auto;
+	margin-left: 40px;
 }
 .bottomsection {
 	display: flex;
@@ -118,7 +121,7 @@ button:focus {outline: 0;}
 }
 .productimagesb {
 	position: absolute;
-	right: 105px;
+	right: 66px;
 	z-index: 5;
 }
 .homelogo {
