@@ -21,17 +21,12 @@ export default class ContextProvider extends Component {
                         description: item.description,
                         quantity: this.state.quantity || 1
                     }
-
-                    if(this.state.cart.length === 0) {
-                        this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
-                    } else if(this.state.cart.filter((item) => {
-                        console.log(item.id, newObj.id)
-                        item.id === newObj.id
-                    })) {
-                        console.log('Already Exists')
-                    } else {
-                        this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
+                    for(let i = 0; i < this.state.cart.length; i++) {
+                        if(this.state.cart[i].id == newObj.id) {
+                            return console.log('Already Exists')
+                        }
                     }
+                    this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
                 },
                 // updateQuantity: (id, value) => {
                 //     this.setState({quantity: Number(value)})
@@ -74,7 +69,6 @@ export default class ContextProvider extends Component {
         if(this.state.cart.length > 0) {
             if(prevState.cart !== this.state.cart) {
                 const cart = JSON.stringify(this.state.cart)
-                console.log('session storage hit')
                 sessionStorage.setItem('cart', cart)
             }
         }
