@@ -34,7 +34,6 @@ class Item extends Component {
             <div className="single-item-body">
                 <AppContext.Consumer>
                     {(context) => {
-                        console.log(context)
                         return (
                             <div>
                                 <Navbar cart={context.cart}/>

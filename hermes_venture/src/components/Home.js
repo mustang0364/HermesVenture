@@ -17,6 +17,7 @@ import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png'
 import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
 import NameBlack from '../Media/Images/Logo/bootsName.png'
 import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
+import Profile from './Profile';
 
 import { Link } from 'react-router-dom';
 
@@ -93,9 +94,6 @@ class Home extends Component {
     }
   
     render() {
-      console.log(this.state.fpMaldives)
-      console.log(this.state.fpTibet)
-      console.log(this.state.fpPeru)
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
@@ -124,12 +122,6 @@ class Home extends Component {
           : this.state.videoThreeShown 
           ? NameWhite
           : null} alt=""/>
-
-
-
-
-
-
 
          <div className="sidebar">
             <div className="sidebarheader">

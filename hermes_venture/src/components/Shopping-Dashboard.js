@@ -22,7 +22,7 @@ class Shopping extends Component {
     }
 
     componentDidMount() {
-        axios.get('/dashboard').then(res => {
+        axios.get('/dashboard/all').then(res => {
             this.setState({products: res.data})
         })
     }
@@ -75,7 +75,6 @@ class Shopping extends Component {
 
     
     render() {
-        console.log(this.state)
         const styleP = {
             display: this.state.peru,
         }
