@@ -18,22 +18,29 @@ class Profile extends Component {
         }
     }
     
-    componentDidMount() {
+componentDidMount() {
     axios.get('/getUser').then(res => {
         if(res.data !== 'Not Authorized') {
             this.setState({user: res.data})
+            this.getAddress();
         } else {
             this.props.history.push('/shopping')
         }
-    })
+    })   
+}
+
+  getAddress = () => {
+    this.state.user ? 
     setTimeout(() => {
         axios.get(`/getaddress/${this.state.user.id}`).then(res => {
             this.setState({
                 userAddress: res.data,
             })
         }) 
-    }, 500);
-   }
+    }, 500)
+    : null
+  }
+
    handleStreet = (input) => {
         this.setState({
             streetInput: input,
@@ -58,10 +65,11 @@ class Profile extends Component {
        this.setState({
            userAddress: data
        })
+       axios.post()
    }
-   addAddress = () => {
+//    addAddress = () => {
        
-   }
+//    }
     render(){
 console.log(this.state.userAddress[0])
         return (
