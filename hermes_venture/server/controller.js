@@ -151,5 +151,14 @@ module.exports = {
             res.json(products)
         }).catch(err => console.log('error on sort products', err))
         
+    },
+    getUser: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
+        req.app.get('db').get_user(req.session.user.auth0id).then(users => {
+            res.json(users[0])
+        }).catch(err => console.log('error with getUser'))
     }
 }

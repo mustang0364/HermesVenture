@@ -10,6 +10,8 @@ export default class ContextProvider extends Component {
             cart: [],
             quantity: 0,
             orderNumber: null,
+            userAddresses: [],
+            shipToState: null,
             methods: {
                 addToCart: (item) => {
                     let newObj = {
@@ -28,23 +30,6 @@ export default class ContextProvider extends Component {
                     }
                     this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
                 },
-                // updateQuantity: (id, value) => {
-                //     this.setState({quantity: Number(value)})
-                //     console.log(id, value)
-                //     if(this.state.cart.length > 0 ) {
-                //         let index;
-                //         this.state.cart.map((item, i) => {
-                //             if(item.id === id) {
-                //                 index = i
-                //             }
-                //             return null
-                //         })
-                //         let update = Object.assign({}, this.state.cart[index])
-                //         let copyCart = [...this.state.cart]
-                //         copyCart[index].quantity = Number(value)
-                //         this.setState({cart: copyCart})
-                //     }
-                // },
                 createOrderNumber: (id) => {
                     axios.post(`/orderNumber/${id}`).then(res => {
                         console.log('order number', res.data[0].id)
@@ -53,6 +38,29 @@ export default class ContextProvider extends Component {
                 },
                 handleQuantity: (value) => {
                     this.setState({quantity: value})
+                },
+                updateQuantity: (item) => {
+                    let updateObj = {
+                        id: item.id,
+                        title: item.title,
+                        category: item.category,
+                        price: item.price,
+                        image: item.image,
+                        description: item.description,
+                        quantity: +this.state.quantity
+                    }
+                    console.log('hit update', item.id)
+                    let tempCart = [...this.state.cart]
+                    for(let i = 0; i < tempCart.length; i++) {
+                        if(tempCart[i].id === item.id) {
+                            tempCart.splice(i,1)
+                            tempCart.push(updateObj)
+                            this.setState({cart: tempCart})
+                        }
+                    }
+                },
+                handleShipToAddress: (state) => {
+                    this.setState({shipToState: state})
                 }
             },
         }
@@ -72,6 +80,7 @@ export default class ContextProvider extends Component {
                 sessionStorage.setItem('cart', cart)
             }
         }
+        
     }
     render() {
         return  <AppContext.Provider value={this.state}>

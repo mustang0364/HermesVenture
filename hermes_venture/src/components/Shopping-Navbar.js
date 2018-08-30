@@ -17,7 +17,7 @@ const Navbar = (props) => {
                 </a>
                 <i className="fab fa-youtube"></i>
                 <i className="fab fa-pinterest"></i>
-                <Link to="/shopping"><i class="fas fa-home"></i></Link>
+                <Link to="/shopping"><i className="fas fa-home"></i></Link>
             </h3>
             <div className="navbar-account">
                 <a href={auth0}>Login</a>
