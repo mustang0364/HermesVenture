@@ -6,16 +6,35 @@ import StripeCheckout from 'react-stripe-checkout';
 import Navbar from './Shopping-Navbar';
 
 class Cart extends Component {
+    constructor() {
+        super();
+        this.state = {
+            user: null,
+            addresses: [],
+        }
+    }
+    componentDidMount() {
+        axios.get('/getUser').then(res => {
+            if(res.data !== 'Not Authorized') {
+                this.setState({user: res.data})
+            } else {
+                this.props.history.push('/shopping')
+            }
+        })
+    }
     render() {
         return (
-            <div>
+            this.state.user ? 
                 <AppContext.Consumer>
                     {(context) => {
+                        if(context.cart > 0) {
                         console.log(context)
                         let price = context.cart.map((item) => (item.price) * item.quantity).reduce((a,b) => a + b)
+                        
                         let taxes = 5
                         let grandTotal = price + taxes
                         console.log(price)
+                        
                         return (
                             <div className="cart-container">
                                 <Navbar cart={context.cart}/>
@@ -48,9 +67,17 @@ class Cart extends Component {
                                 </div>
                             </div>
                         )
+                    } else {
+                        return (
+                            <div >
+                                <Navbar cart={context.cart}/>
+                                <h1 className="cart-empty-h1">Oh no! Your Cart is Empty!</h1>
+                            </div>
+                        )
+                    }
                     }}
                 </AppContext.Consumer>
-            </div>
+            : null
         );
     }
 }

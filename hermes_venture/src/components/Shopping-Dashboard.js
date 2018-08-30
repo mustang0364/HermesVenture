@@ -56,12 +56,12 @@ class Shopping extends Component {
     }
 
     sort(country, gender) {
-        axios.get(`/${country}/${gender}`).then(res => {
+        axios.get(`sort/products/${country}/${gender}`).then(res => {
             this.setState({products: res.data})
         })
     }
     sortCountry(country) {
-        axios.get(`/${country}`).then(res => {
+        axios.get(`sort/products/${country}`).then(res => {
             this.setState({products: res.data})
         })
     }

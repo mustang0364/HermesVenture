@@ -10,6 +10,8 @@ export default class ContextProvider extends Component {
             cart: [],
             quantity: 0,
             orderNumber: null,
+            userAddresses: [],
+            shipToState: null,
             methods: {
                 addToCart: (item) => {
                     let newObj = {
@@ -56,6 +58,9 @@ export default class ContextProvider extends Component {
                             this.setState({cart: tempCart})
                         }
                     }
+                },
+                handleShipToAddress: (state) => {
+                    this.setState({shipToState: state})
                 }
             },
         }
@@ -75,6 +80,7 @@ export default class ContextProvider extends Component {
                 sessionStorage.setItem('cart', cart)
             }
         }
+        
     }
     render() {
         return  <AppContext.Provider value={this.state}>

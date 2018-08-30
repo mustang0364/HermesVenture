@@ -55,8 +55,9 @@ app.get('/featuredproducts/:category', controller.getFeaturedProducts);
 app.post('/orderNumber/:id', controller.createOrderNumber);
 app.post('/charge', controller.stripe);
 app.post('/createOrder', controller.createOrder);
-// app.get('/:country', controller.sortCountry);
-// app.get('/:country/:gender', controller.sortProducts);
+app.get('/sort/products/:country', controller.sortCountry);
+app.get('/sort/products/:country/:gender', controller.sortProducts);
+app.get('/getUser', controller.getUser);
 
 
 app.get('/auth/callback', (req, res) => {
