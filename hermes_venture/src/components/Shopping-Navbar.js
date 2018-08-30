@@ -26,7 +26,7 @@ class Navbar  extends Component {
         return (
             <AppContext.Consumer>
                 {(context) => {
-                    console.log(context.user)
+                    
                     return (
                         <header className="navbar-header">
                         <h3 className="navbar-social">
