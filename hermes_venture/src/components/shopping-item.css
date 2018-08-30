@@ -51,9 +51,8 @@
     border-radius: 25px;
     padding: 15px;
     margin: 20px 10px;
-    background: #373B44;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #4286f4, #E3FEB5);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #4286f4, #E3FEB5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #70A3C0;
+    color: white;
 
 }
 
