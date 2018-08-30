@@ -6,6 +6,12 @@ import Home from './components/Home.js';
 import axios from 'axios';
 import DashboardArrow from './Media/Images/dashboard-arrow.png';
 
+
+
+
+
+
+
 class App extends Component {
   constructor(){
     super();
@@ -29,16 +35,23 @@ class App extends Component {
 }
 
   render() {
+  
     return (
+      
       <div className='appmain'>
+      
+      
       {this.state.redirect 
+    
       ? <Routes /> 
-      : <div><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
+      
+      : <div ><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
       }
         <div className="footer">        
               <a href="#dashboard"><img src={DashboardArrow} alt=""/></a>
         </div>
       </div>
+     
     );
   }
 }
