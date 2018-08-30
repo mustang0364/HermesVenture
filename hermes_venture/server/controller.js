@@ -159,6 +159,12 @@ module.exports = {
         }
         req.app.get('db').get_user(req.session.user.auth0id).then(users => {
             res.json(users[0])
-        }).catch(err => console.log('error with getUser'))
+        }).catch(err => console.log('error with getUser', err))
+    },
+    getAddress: (req, res) => {
+        req.app.get('db').get_address()
+        .then(address => {
+            res.json(address)
+        })
     }
 }
