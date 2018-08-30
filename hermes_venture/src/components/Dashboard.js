@@ -22,7 +22,7 @@ export default function Dashboard(props){
             <div className="item-container">
                 {props.products.map((item) => {
                     return (
-                        <div key={item.id}>
+                        <div key={item.id} className="item">
                             <Link onClick={() => props.redirect()} to={`/shopping/${item.category}/${item.id}`}><Item img={item.image} title={item.title}></Item></Link>
                         </div>
                     )
