@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const controller = require('./controller');
 const session = require('express-session');
+const axios = require('axios');
 require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
@@ -22,70 +23,7 @@ app.use(session({
 
 app.use(express.static(`${__dirname}/../build`))
 
-app.get('/auth/callback',(req,res)=>{ 
-    
-    const payload={
-        client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
-        client_secret:process.env.AUTH0_CLIENT_SECRET,
-        code : req.query.code,
-        grant_type:'authorization_code',
-        redirect_uri:`http://${req.headers.host}/auth/callback`
-    
-    };
 
-    function tradeCodeForAccessToken(){
-      console.log(payload)
-        return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
-    }
-
-    
-      
-      
-      function tradeAccessTokenForUserInfo(response) {
-        console.log(response.data.access_token)
-        const accessToken = response.data.access_token
-        return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo?access_token=${accessToken}`) 
-      }
-      
-      
-     
-      function storeUserInfoInDataBase(response) {
-        console.log('-------- response.data',response.data)
-        const auth0id = response.data.sub;
-        return req.app.get('db').find_user_by_auth0_id(auth0id).then(users => {
-          console.log('users', users)
-          if (users.length) {
-            const user = users[0];
-            req.session.user = user;
-            console.log(user)
-            res.redirect('/');
-          } else {
-            const createUserData = {
-              auth0_id: auth0id,
-              email: response.data.email,
-              profile_name: response.data.name,
-              picture: response.data.picture
-            }
-            return req.app.get('db').create_user(createUserData).then(newUsers => {
-              console.log(newUsers)
-              const user = newUsers[0];
-              req.session.user = user; 
-              res.redirect('/');
-            })
-          }
-        })
-      }
-       
-      
-      
-      tradeCodeForAccessToken()
-      .then(accessToken => tradeAccessTokenForUserInfo(accessToken))
-      .then(userInfo => storeUserInfoInDataBase(userInfo))
-      .catch(error => {
-        console.log('------- error',error)
-        res.status(500).json({message: 'Server error. See server terminal'})
-      })
-    });
     
     app.post('/api/logout', (req, res) => {
       req.session.destroy();
@@ -117,24 +55,68 @@ app.get('/featuredproducts/:category', controller.getFeaturedProducts);
 app.post('/orderNumber/:id', controller.createOrderNumber);
 app.post('/charge', controller.stripe);
 app.post('/createOrder', controller.createOrder);
+// app.get('/:country', controller.sortCountry);
+// app.get('/:country/:gender', controller.sortProducts);
 
 
+app.get('/auth/callback', (req, res) => {
+  console.log('hit auth callback')
+  const payload = {
+      client_id: process.env.REACT_APP_AUTH0_CLIENT_ID,
+      client_secret: process.env.AUTH0_CLIENT_SECRET,
+      code: req.query.code,
+      grant_type: 'authorization_code',
+      redirect_uri: `http://${req.headers.host}/auth/callback`
+  }
 
+  function tradeCodeForAccessToken() {
+
+      return axios.post(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/oauth/token`, payload)
+  }
+
+  function tradeAccessTokenForUserInfo(response) {
+
+      return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${response.data.access_token}`)
+  }
+
+  function storeUserInfoInDatabase(response) {
+
+      return req.app.get('db').get_user(response.data.sub).then(users => {
+          if(users.length) {
+
+              req.session.user = users[0]
+              res.redirect('/')
+          } else {
+              const newUser = {
+                  auth0id: response.data.sub,
+                  name: response.data.name,
+                  email: response.data.email,
+              }
+                  console.log(newUser)
+              return req.app.get('db').create_user(newUser).then(newUsers => {
+                  req.session.user = newUsers[0]
+                  res.redirect('/')
+              })
+          }
+      })
+  }
+
+  tradeCodeForAccessToken()
+  .then(tradeAccessTokenForUserInfo)
+  .then(storeUserInfoInDatabase)
+  .catch(err => {
+      console.log('Error trade code for access token', err)
+      res.status(500)
+  })
+})
 
 
 
  
-//port
+
+
+    //port
 const PORT = 4000;
 app.listen(PORT, () => console.log(`Server Is Listening On port ${4000}`));
 
 
-
-
-
-//---------------////
-// app.use(session({
-//   secret: 'Hermes Venture',
-//   resave: false,
-//   saveUninitialized: false,
-// }))

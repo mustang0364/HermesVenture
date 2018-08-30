@@ -4,9 +4,11 @@ import Routes from './Routes';
 import Dashboard from './components/Dashboard.js';
 import Home from './components/Home.js';
 import axios from 'axios';
-import ReallySmoothScroll from 'really-smooth-scroll' 
 
-ReallySmoothScroll.shim()
+
+
+
+
 
 
 class App extends Component {
@@ -30,16 +32,22 @@ class App extends Component {
 }
 
   render() {
+  
     return (
-     
+      
       <div className='appmain'>
       
       
       {this.state.redirect 
+    
       ? <Routes /> 
-      : <div><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
+      
+      : <div ><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
       }
+
+   
       </div>
+     
     );
   }
 }

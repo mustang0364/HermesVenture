@@ -1,7 +1,7 @@
-.shopping-container {
-    background-color: yellow;
+.navbar-header {
+    position: fixed;
+    width: 100%;
 }
-
 .top-image {
     background-image: url('https://www.eaglesnestoutfittersinc.com/shop/media/catalog/category/Suspension_6_2.jpg');
     background-size: cover;
@@ -12,22 +12,41 @@
 
 .content-container {
     display: flex;
-    padding-top: 350px;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    padding-top: 350px;
     justify-content: center;
 }
 
 .left-nav-pane {
-    background-color: orange;
+    background-color: white;
     min-width: 200px;
     text-align: center;
 }
 
+.peru-header, .maldives-header, .tibet-header, .get-all {
+    font-size: 35px;
+    color: black;
+    text-shadow: 1px 2px 3px gray;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.peru-list, .maldives-list, .tibet-list {
+    font-size: 22px;
+    width: 70px;
+    margin: 0 auto;
+    text-align: left;
+    cursor: pointer;
+}
+.peru-list li, .maldives-list li, .tibet-list li {
+    padding: 5px;
+}
+
 .products-container {
     display: flex;
-    background-color: purple;
+    background-color: white;
     padding: 20px;
 }
 
@@ -43,8 +62,11 @@
     margin: 10px;
     padding: 50px;
     border: 1px solid black;
+    box-shadow: 1px 2px 4px black;
+    height: 200px;
 }
 
 .product-info img {
     max-height: 200px;
+    max-width: 200px;
 }
