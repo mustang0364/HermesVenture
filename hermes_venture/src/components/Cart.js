@@ -6,42 +6,78 @@ import StripeCheckout from 'react-stripe-checkout';
 import Navbar from './Shopping-Navbar';
 
 class Cart extends Component {
+    constructor() {
+        super();
+        this.state = {
+            user: null,
+            addresses: [],
+        }
+    }
+    componentDidMount() {
+        axios.get('/getUser').then(res => {
+            if(res.data !== 'Not Authorized') {
+                this.setState({user: res.data})
+            } else {
+                this.props.history.push('/shopping')
+            }
+        })
+    }
     render() {
         return (
-            <div>
+            this.state.user ? 
                 <AppContext.Consumer>
                     {(context) => {
-                        console.log(context.cart)
-                        console.log(context.orderNumber)
-                        let price = context.cart.map((item) => (item.price) * item.quantity)
+                        if(context.cart.length > 0) {
+                        console.log(context)
+                        let price = context.cart.map((item) => (item.price) * item.quantity).reduce((a,b) => a + b)
+                        
+                        let taxes = 5
+                        let grandTotal = price + taxes
                         console.log(price)
+                        
                         return (
-                            <div>
-                                <Navbar cart={context.cart}/>
                             <div className="cart-container">
-                                <h1>Your Cart</h1>
-                                {context.cart.map((item) => {
-                                    return (
-                                        <div key={item.id} className="cart-item-container">
-                                            <h1 id="item-title">{item.title}</h1>
-                                            <img src={item.image}/>
-                                            <p id="item-price">${item.price}</p>
-                                            <p id="item-quantity">{item.quantity}</p>
-                                        </div>
-                                    )
-                                })}
-                                <Checkout 
-                                    name="Hermes Venture"
-                                    amount={100}
-                                    cart={context.cart}
-                                    orderNumber={context.orderNumber}
-                                />
-                            </div>
+                                <Navbar cart={context.cart}/>
+                                <div className="cart">
+                                    <h1>Your Cart</h1>
+                                    {context.cart.map((item) => {
+                                        return (
+                                            <div key={item.id} className="cart-item-container">
+                                                <h1 id="item-title">{item.title}</h1>
+                                                <img src={item.image}/>
+                                                <p id="item-price">${item.price}</p>
+                                                <p id="item-quantity">{item.quantity}</p>
+                                                <p><i className="far fa-trash-alt"></i></p>
+                                                <input type="number" placeholder="Update Quantity?" onChange={(e) => context.methods.handleQuantity(e.target.value)}/>
+                                                <p><i className="fas fa-check" onClick={() => context.methods.updateQuantity(item)}></i></p>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className="checkout-container">
+                                    <h1>Subtotal {price}</h1>
+                                    <h1>Taxes {taxes}</h1>
+                                    <h1>Total {grandTotal}</h1>
+                                    <Checkout 
+                                            name="Hermes Venture"
+                                            amount={grandTotal}
+                                            cart={context.cart}
+                                            orderNumber={context.orderNumber}
+                                    />
+                                </div>
                             </div>
                         )
+                    } else {
+                        return (
+                            <div >
+                                <Navbar cart={context.cart}/>
+                                <h1 className="cart-empty-h1">Oh no! Your Cart is Empty!</h1>
+                            </div>
+                        )
+                    }
                     }}
                 </AppContext.Consumer>
-            </div>
+            : null
         );
     }
 }

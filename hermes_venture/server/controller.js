@@ -18,9 +18,56 @@ module.exports = {
             }).catch(err => console.log('error on getSingleProduct 1', err))
         }).catch(err => console.log('error on getSingleProduct 2', err))
     },
-    getFeaturedProducts: (req, res) => {
-        const { category } = req.params;
-        req.app.get('db').get_featuredproducts(category)
+    getFPTibet: (req, res) => {
+        req.app.get('db').get_fp_tibet()
+        .then(data => {
+            let indexOne = Math.floor(Math.random() * ((4 - 0) + 1) + 0);
+            let indexTwo = Math.floor(Math.random() * ((4 - 0) + 1) + 5);
+            let indexThree = Math.floor(Math.random() * ((3 - 0) + 1) + 10);
+            let indexFour = Math.floor(Math.random() * ((3 - 0) + 1) + 14)
+            res.send({
+                productOneimage: data[indexOne].image,
+                productOneCategory: data[indexOne].category,
+                productOneid: data[indexOne].id,
+                productTwoimage: data[indexTwo].image,
+                productTwoCategory: data[indexTwo].category,
+                productTwoid: data[indexTwo].id,
+                productThreeimage: data[indexThree].image,
+                productThreeCategory: data[indexThree].category,
+                productThreeid: data[indexThree].id,
+                productFourimage: data[indexFour].image,
+                productFourCategory: data[indexFour].category,
+                productFourid: data[indexFour].id,         
+            })
+            res.status(200)
+        }).catch(err => console.log('error with getfeaturedproducts', err))
+    },
+    getFPMaldives: (req, res) => {
+        req.app.get('db').get_fp_maldives()
+        .then(data => {
+            let indexOne = Math.floor(Math.random() * ((4 - 0) + 1) + 0);
+            let indexTwo = Math.floor(Math.random() * ((4 - 0) + 1) + 5);
+            let indexThree = Math.floor(Math.random() * ((3 - 0) + 1) + 10);
+            let indexFour = Math.floor(Math.random() * ((3 - 0) + 1) + 14)
+            res.send({
+                productOneimage: data[indexOne].image,
+                productOneCategory: data[indexOne].category,
+                productOneid: data[indexOne].id,
+                productTwoimage: data[indexTwo].image,
+                productTwoCategory: data[indexTwo].category,
+                productTwoid: data[indexTwo].id,
+                productThreeimage: data[indexThree].image,
+                productThreeCategory: data[indexThree].category,
+                productThreeid: data[indexThree].id,
+                productFourimage: data[indexFour].image,
+                productFourCategory: data[indexFour].category,
+                productFourid: data[indexFour].id,         
+            })
+            res.status(200)
+        }).catch(err => console.log('error with getfeaturedproducts', err))
+    },
+    getFPPeru: (req, res) => {
+        req.app.get('db').get_fp_peru()
         .then(data => {
             let indexOne = Math.floor(Math.random() * ((4 - 0) + 1) + 0);
             let indexTwo = Math.floor(Math.random() * ((4 - 0) + 1) + 5);
@@ -104,5 +151,14 @@ module.exports = {
             res.json(products)
         }).catch(err => console.log('error on sort products', err))
         
+    },
+    getUser: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
+        req.app.get('db').get_user(req.session.user.auth0id).then(users => {
+            res.json(users[0])
+        }).catch(err => console.log('error with getUser'))
     }
 }

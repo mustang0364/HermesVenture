@@ -1,5 +1,10 @@
-.single-item-nav {
-    display: flex;
+
+
+.single-item-container {
+    padding-top: 110px;
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
 }
 
 .single-item-info-container {
@@ -11,6 +16,8 @@
 
 .single-item-img img {
     max-height: 500px;
+    /* border: 1px solid #E3FEB5;
+    box-shadow: 1px 1px 4px black; */
     /* background-color:#E3FEB5 ; */
 }
 
@@ -20,12 +27,12 @@
 }
 .single-item-info h1, .single-item-info h2 {
     font-size: 48px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .single-item-info h3 {
     font-size: 36px;
-    padding: 20px;
+    padding: 40px 10px;
 }
 
 .single-item-info h4 {
@@ -34,13 +41,16 @@
 }
 
 .single-item-info input {
-    width: 30px;
-    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
 }
 .single-item-info button {
     font-size: 20px;
+    cursor: pointer;
+    border-radius: 25px;
     padding: 15px;
-    margin: 10px;
+    margin: 20px 10px;
     background: #373B44;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #4286f4, #E3FEB5);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #4286f4, #E3FEB5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -49,9 +59,8 @@ background: linear-gradient(to right, #4286f4, #E3FEB5); /* W3C, IE 10+/ Edge, F
 
 .single-item-description {
     text-align: left;
-    margin-top: 50px;
     max-width: 700px;
-    padding: 50px;
+    padding: 10px;
 }
 
 .single-item-description h1 {
@@ -67,14 +76,25 @@ background: linear-gradient(to right, #4286f4, #E3FEB5); /* W3C, IE 10+/ Edge, F
 .related-header {
     font-size: 36px;
     padding: 20px;
+    text-align: center;
 }
 .related-img-container {
     display: grid;
+    margin: 0 auto;
+    width: 900px;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px; 
+    text-align: center;
+    grid-gap: 20px; 
+}
+.img-container {
+    min-width: 200px;
+    
 }
 .related-img-container img {
     max-width: 200px;
+    padding: 10px;
+    max-height: 150px;
+    cursor: pointer;
 }
 
 

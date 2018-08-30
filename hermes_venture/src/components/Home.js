@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import Scenes from './Scenes.js';
-import BackgroundVideoOne from '../Media/Videos/FrenchAlps.m4v'
-import BackgroundVideoTwo from '../Media/Videos/Maldives.mp4'
-import BackgroundVideoThree from '../Media/Videos/Peru.mp4'
+import BackgroundVideoOne from '../Media/Videos/Snow.mp4'
+import BackgroundVideoTwo from '../Media/Videos/Beach.mp4'
+import BackgroundVideoThree from '../Media/Videos/Rainforest.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
 import TopArrow from '../Media/Images/arrowtop.png';
 import BottomArrow from '../Media/Images/arrowbottom.png';
 import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
-import DashboardArrow from '../Media/Images/dashboard-arrow.png';
 import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
 import WhiteLogo from '../Media/Images/Logo/circleWhiteR.png'
@@ -30,19 +29,40 @@ class Home extends Component {
         videoOneShown: true,
         videoTwoShown: false,
         videoThreeShown: false,
-        currentScene: 'Tibet',
-        featuredProducts: [],
+        fpTibet: [],
+        fpMaldives: [],
+        fpPeru: [],
       }
     }
     componentDidMount(){
-      this.updateFeaturedProductsToTibet();
+        this.updateTibetFP();
     }
-    updateFeaturedProductsToTibet = () => {
-      axios.get(`/featuredproducts/${this.state.currentScene}`).then(res => {
-        this.setState({
-          featuredProducts: res.data,
+    updateTibetFP = () => {
+      setTimeout(() => {
+        axios.get('/fptibet').then(res => {
+          this.setState({
+            fpTibet: res.data,
+          })
         })
-      })
+      }, 500);
+    }
+    updatePeruFP = () => {
+      setTimeout(() => {
+        axios.get('/fpperu').then(res => {
+          this.setState({
+            fpPeru: res.data,
+          })
+        })
+      }, 500);
+    }
+    updateMaldivesFP = () => {
+      setTimeout(() => {
+        axios.get('/fpmaldives').then(res => {
+          this.setState({
+            fpMaldives: res.data,
+          })
+        })
+      }, 500);
     }
     changeSceneOne = () => {
       this.setState({
@@ -81,7 +101,7 @@ class Home extends Component {
         </div>
         <img className='homelogo' src={
           this.state.videoOneShown 
-          ? WhiteLogo
+          ? BlackLogo
           : this.state.videoTwoShown
           ? BlueLogo
           : this.state.videoThreeShown 
@@ -109,32 +129,30 @@ class Home extends Component {
                 <div className='featuredsidebar'><h2>URED</h2><hr/></div>
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
+                
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productOneCategory}/${this.state.featuredProducts.productOneid}`}>
-                      <img className='productimagesb' src={this.state.featuredProducts.productOneimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productOneCategory}/${this.state.fpTibet.productOneid}`}>
+                      <img className='productimagesb' src={this.state.fpTibet.productOneimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productTwoCategory}/${this.state.featuredProducts.productTwoid}`}>
-                      <img className='productimagesb' src={this.state.featuredProducts.productTwoimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productTwoCategory}/${this.state.fpTibet.productTwoid}`}>
+                      <img className='productimagesb' src={this.state.fpTibet.productTwoimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productThreeCategory}/${this.state.featuredProducts.productThreeid}`}>
-                      <img className='productimagesb' src={this.state.featuredProducts.productThreeimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productThreeCategory}/${this.state.fpTibet.productThreeid}`}>
+                      <img className='productimagesb' src={this.state.fpTibet.productThreeimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.featuredProducts.productFourCategory}/${this.state.featuredProducts.productFourid}`}>
-                      <img className='productimagesb' src={this.state.featuredProducts.productFourimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productFourCategory}/${this.state.fpTibet.productFourid}`}>
+                      <img className='productimagesb' src={this.state.fpTibet.productFourimage} alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                 </div>
             </div>
             <img className='sidebarimg' src={SidebarImg} alt="sidebarsection"/>
-        </div>
-        <div className="footer">        
-              <a href="#dashboard"><img src={DashboardArrow} alt=""/></a>
         </div>
         
         <div className="buttonsection">
