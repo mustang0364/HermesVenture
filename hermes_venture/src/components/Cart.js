@@ -11,6 +11,7 @@ class Cart extends Component {
         this.state = {
             user: null,
             addresses: [],
+            shipToAddress: null,
         }
     }
     componentDidMount() {
@@ -31,7 +32,7 @@ class Cart extends Component {
                         console.log(context)
                         let price = context.cart.map((item) => (item.price) * item.quantity).reduce((a,b) => a + b)
                         
-                        let taxes = 5
+                        let taxes = price * .062
                         let grandTotal = price + taxes
                         console.log(price)
                         
@@ -43,7 +44,7 @@ class Cart extends Component {
                                     {context.cart.map((item) => {
                                         return (
                                             <div key={item.id} className="cart-item-container">
-                                                <h1 id="item-title">{item.title}</h1>
+                                                <h2 id="item-title">{item.title}</h2>
                                                 <img src={item.image}/>
                                                 <p id="item-price">${item.price}</p>
                                                 <p id="item-quantity">{item.quantity}</p>
@@ -55,9 +56,13 @@ class Cart extends Component {
                                     })}
                                 </div>
                                 <div className="checkout-container">
-                                    <h1>Subtotal {price}</h1>
-                                    <h1>Taxes {taxes}</h1>
-                                    <h1>Total {grandTotal}</h1>
+                                    <div className="address-container">
+                                        Addresses Go Here! <button>Select</button>
+                                        <p>Ship to Address: {this.state.shipToAddress}</p>
+                                    </div>
+                                    <h1>Subtotal ${price}</h1>
+                                    <h1>Taxes ${taxes}</h1>
+                                    <h1>Total ${grandTotal}</h1>
                                     <Checkout 
                                             name="Hermes Venture"
                                             amount={grandTotal}
