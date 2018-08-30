@@ -51,7 +51,9 @@ app.use(express.static(`${__dirname}/../build`))
 
 app.get('/dashboard', controller.dashboard);
 app.get('/shopping/:category/:id', controller.getSingleProduct);
-app.get('/featuredproducts/:category', controller.getFeaturedProducts);
+app.get('/fptibet', controller.getFPTibet);
+app.get('/fpperu', controller.getFPPeru);
+app.get('/fpmaldives', controller.getFPMaldives);
 app.post('/orderNumber/:id', controller.createOrderNumber);
 app.post('/charge', controller.stripe);
 app.post('/createOrder', controller.createOrder);
