@@ -44,7 +44,7 @@ class Navbar  extends Component {
                                 <div style={style} className="dropdown-content">
                                     <ul>
                                         {context.user ? null : <li><a href={auth0}>Login</a></li>}
-                                        <Link to="/profile"><li>Profile</li></Link>
+                                        <Link to='/profile'><li>Profile</li></Link>
                                         {context.user ? <li>Logout</li> : null}
                                         <Link to="/"><li>Dashboard</li></Link>
                                         <Link to="/shopping"><li>Products</li></Link>
