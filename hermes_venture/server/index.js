@@ -62,6 +62,7 @@ app.get('/sort/products/:country/:gender', controller.sortProducts);
 app.get('/getUser', controller.getUser);
 
 
+
 app.get('/auth/callback', (req, res) => {
   console.log('hit auth callback')
   const payload = {

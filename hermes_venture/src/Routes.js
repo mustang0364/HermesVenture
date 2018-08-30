@@ -4,6 +4,7 @@ import SingleItem from './components/Shopping-Item';
 import Cart from './components/Cart';
 import Shopping from './components/Shopping-Dashboard';
 
+
 class Routes extends Component {
     render() {
         return (
@@ -11,7 +12,6 @@ class Routes extends Component {
                 <Route path="/shopping" exact component={Shopping} />
                 <Route path="/shopping/:category/:id" component={SingleItem} />
                 <Route path="/shopping/cart" component={Cart}/>
-
             </Switch>
         );
     }

@@ -93,9 +93,6 @@ class Home extends Component {
     }
   
     render() {
-      console.log(this.state.fpMaldives)
-      console.log(this.state.fpTibet)
-      console.log(this.state.fpPeru)
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
