@@ -32,10 +32,13 @@ class Home extends Component {
         fpTibet: [],
         fpMaldives: [],
         fpPeru: [],
+        currentScene: 'Tibet'
       }
     }
     componentDidMount(){
         this.updateTibetFP();
+        this.updatePeruFP();
+        this.updateMaldivesFP();
     }
     updateTibetFP = () => {
       setTimeout(() => {
@@ -69,6 +72,7 @@ class Home extends Component {
         videoOneShown: true,
         videoTwoShown: false,
         videoThreeShown: false,
+        currentScene: 'Tibet',
       })
     }
     changeSceneTwo = () => {
@@ -76,6 +80,7 @@ class Home extends Component {
         videoOneShown: false,
         videoTwoShown: true,
         videoThreeShown: false,
+        currentScene: 'Maldives',
       })
     }
     changeSceneThree = () => {
@@ -83,11 +88,14 @@ class Home extends Component {
         videoOneShown: false,
         videoTwoShown: false,
         videoThreeShown: true,
+        currentScene: 'Peru',
       })
     }
   
     render() {
-      
+      console.log(this.state.fpMaldives)
+      console.log(this.state.fpTibet)
+      console.log(this.state.fpPeru)
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
@@ -129,27 +137,124 @@ class Home extends Component {
                 <div className='featuredsidebar'><h2>URED</h2><hr/></div>
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
-                
+                  
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productOneCategory}/${this.state.fpTibet.productOneid}`}>
-                      <img className='productimagesb' src={this.state.fpTibet.productOneimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productOneCategory
+                        : this.state.currentScene === 'Maldves'
+                        ? this.state.fpMaldives.productOneCategory
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productOneCategory
+                        : this.state.fpTibet.productOneCategory
+                        }/${
+                          this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productOneid
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productOneid
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productOneid
+                        : this.state.fpTibet.productOneid
+                        }`}>
+                      <img className='productimagesb' src={
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productOneimage
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productOneimage
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productOneimage
+                        : this.state.fpTibet.productOneimage                        
+                        } alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productTwoCategory}/${this.state.fpTibet.productTwoid}`}>
-                      <img className='productimagesb' src={this.state.fpTibet.productTwoimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productTwoCategory
+                        : this.state.currentScene === 'Maldves'
+                        ? this.state.fpMaldives.productTwoCategory
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productTwoCategory
+                        : this.state.fpTibet.productTwoCategory
+                        }/${
+                          this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productTwoid
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productTwoid
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productTwoid
+                        : this.state.fpTibet.productTwoid
+                        }`}>
+                      <img className='productimagesb' src={
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productTwoimage
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productTwoimage
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productTwoimage
+                        : this.state.fpTibet.productTwoimage                        
+                        } alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productThreeCategory}/${this.state.fpTibet.productThreeid}`}>
-                      <img className='productimagesb' src={this.state.fpTibet.productThreeimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productThreeCategory
+                        : this.state.currentScene === 'Maldves'
+                        ? this.state.fpMaldives.productThreeCategory
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productThreeCategory
+                        : this.state.fpTibet.productThreeCategory
+                        }/${
+                          this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productThreeid
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productThreeid
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productThreeid
+                        : this.state.fpTibet.productThreeid
+                        }`}>
+                      <img className='productimagesb' src={
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productThreeimage
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productThreeimage
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productThreeimage
+                        : this.state.fpTibet.productThreeimage                        
+                        } alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${this.state.fpTibet.productFourCategory}/${this.state.fpTibet.productFourid}`}>
-                      <img className='productimagesb' src={this.state.fpTibet.productFourimage} alt=''/></Link>
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productFourCategory
+                        : this.state.currentScene === 'Maldves'
+                        ? this.state.fpMaldives.productFourCategory
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productFourCategory
+                        : this.state.fpTibet.productFourCategory
+                        }/${
+                          this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productFourid
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productFourid
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productFourid
+                        : this.state.fpTibet.productFourid
+                        }`}>
+                      <img className='productimagesb' src={
+                        this.state.currentScene === 'Tibet' 
+                        ? this.state.fpTibet.productFourimage
+                        : this.state.currentScene === 'Maldives'
+                        ? this.state.fpMaldives.productFourimage
+                        : this.state.currentScene === 'Peru'
+                        ? this.state.fpPeru.productFourimage
+                        : this.state.fpTibet.productFourimage                        
+                        } alt=''/></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
+                  
                 </div>
             </div>
             <img className='sidebarimg' src={SidebarImg} alt="sidebarsection"/>
