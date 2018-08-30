@@ -17,6 +17,7 @@ import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png'
 import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
 import NameBlack from '../Media/Images/Logo/bootsName.png'
 import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
+import Profile from './Profile';
 
 import { Link } from 'react-router-dom';
 

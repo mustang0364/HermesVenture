@@ -33,7 +33,8 @@ create table orders  (
 )
 
 create table addresses (
-    userid int primary key,
+    addressid serial primary key,
+    userid int,
     street text,
     city text,
     state varchar(2),

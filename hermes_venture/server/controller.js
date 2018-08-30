@@ -164,7 +164,9 @@ module.exports = {
     getAddress: (req, res) => {
         req.app.get('db').get_address(+req.params.id)
         .then(address => {
-            res.json(address[0])
+            res.json(
+                address
+            )
         })
     }
 }

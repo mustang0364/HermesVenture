@@ -69,7 +69,6 @@ class Shopping extends Component {
 
     
     render() {
-        console.log(this.state)
         const styleP = {
             display: this.state.peru,
         }
