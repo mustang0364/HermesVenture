@@ -94,7 +94,6 @@ class Home extends Component {
     }
   
     render() {
-
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>

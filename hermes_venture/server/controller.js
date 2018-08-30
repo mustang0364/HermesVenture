@@ -3,7 +3,7 @@ const stripe = require("stripe")(process.env.SECRET_KEY);
 
 module.exports = {
     dashboard: (req, res) => {
-        req.app.get('db').get_products().then(products => {
+        req.app.get('db').get_dashboard_products().then(products => {
             res.json(products)
             res.status(200)
         }).catch(err => console.log('error on Dashboard', err))
@@ -168,5 +168,11 @@ module.exports = {
                 address
             )
         })
+    },
+    shoppingDash: (req, res) => {
+        req.app.get('db').get_products().then(products => {
+            res.json(products)
+            res.status(200)
+        }).catch(err => console.log('error on Dashboard', err))
     }
 }

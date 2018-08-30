@@ -118,11 +118,15 @@ button:focus {outline: 0;}
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: -20px;
 }
 .productimagesb {
 	position: absolute;
-	right: 66px;
+	right: 76px;
+	margin-top: 13px;
 	z-index: 5;
+	max-width: 150px;
+	max-height: 120px;
 }
 .homelogo {
 	-webkit-animation: rotation 8s infinite linear;

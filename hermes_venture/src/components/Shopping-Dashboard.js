@@ -22,7 +22,7 @@ class Shopping extends Component {
     }
 
     componentDidMount() {
-        axios.get('/dashboard').then(res => {
+        axios.get('/dashboard/all').then(res => {
             this.setState({products: res.data})
         })
     }
