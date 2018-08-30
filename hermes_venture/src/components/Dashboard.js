@@ -10,7 +10,7 @@ export default function Dashboard(props){
         <div id="dashboard"></div>
             <header>
                 <h3>Share your "#hermesVenture"</h3>
-                {/* <img  className="logo" src={logoImage} alt="logo"/> */}
+               
                 <h3>SHARE THIS STORY:
                     <i className="fab fa-facebook-square"></i>
                     <i className="fab fa-twitter"></i>

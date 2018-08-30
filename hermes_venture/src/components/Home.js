@@ -11,9 +11,13 @@ import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import circle from '../Media/Images/Logo/circle.png';
 import './home.css';
-import WhiteLogo from '../Media/Images/Logo/white_logo_transparent.png'
-import BlackLogo from '../Media/Images/Logo/dark_logo_transparent.png'
-import BlueLogo from '../Media/Images/Logo/color_logo_transparent.png'
+import WhiteLogo from '../Media/Images/Logo/circleWhiteR.png'
+import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
+import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png' 
+import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
+import NameBlack from '../Media/Images/Logo/bootsName.png'
+import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
+
 import { Link } from 'react-router-dom';
 
 
@@ -109,8 +113,24 @@ class Home extends Component {
           : this.state.videoTwoShown
           ? BlueLogo
           : this.state.videoThreeShown 
-          ? WhiteLogo 
+          ? WhiteLogo
           : null} alt=""/>
+
+          <img className='name' src={
+          this.state.videoOneShown 
+          ? NameWhite
+          : this.state.videoTwoShown
+          ? NameBlue
+          : this.state.videoThreeShown 
+          ? NameWhite
+          : null} alt=""/>
+
+
+
+
+
+
+
          <div className="sidebar">
             <div className="sidebarheader">
                 <h2>FEAT</h2>

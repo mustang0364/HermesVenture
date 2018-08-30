@@ -125,15 +125,39 @@ button:focus {outline: 0;}
 	z-index: 5;
 }
 .homelogo {
-	height: 200px;
+	-webkit-animation: rotation 8s infinite linear;
+	height: 280px;
 	width: auto;
 	position: absolute;
 	top: 15px;
 	left: 15px;
 }
+@-webkit-keyframes rotation {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(359deg);
+	}
+  }
+
+  .name{
+	height: 200px;
+	width: auto;
+	position: absolute;
+	top: 40px;
+	left: 60px;
+  }
+
+
+ 
+	
+  
+  
 .videoshown {
 	display: initial;
 }
 .videohidden {
 	display: none;
 }
+
