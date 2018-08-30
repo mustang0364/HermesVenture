@@ -12,6 +12,7 @@ export default class ContextProvider extends Component {
             orderNumber: null,
             userAddresses: [],
             shipToState: null,
+            user: null,
             methods: {
                 addToCart: (item) => {
                     let newObj = {
@@ -71,6 +72,7 @@ export default class ContextProvider extends Component {
         if(cart) {
             this.setState({cart})
         }
+
     }
 
     componentDidUpdate(prevState) {
@@ -80,7 +82,11 @@ export default class ContextProvider extends Component {
                 sessionStorage.setItem('cart', cart)
             }
         }
-        
+        axios.get('/getUser').then(res => {
+            if(res.data !== 'Not Authorized') {
+                this.setState({user: res.data})
+            }
+        })
     }
     render() {
         return  <AppContext.Provider value={this.state}>

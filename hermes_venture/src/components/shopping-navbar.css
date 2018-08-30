@@ -15,6 +15,37 @@
 }
 
 .navbar-account, .navbar-social {
-    padding: 20px;
+    padding: 10px 40px;
     font-size: 24px;
+}
+
+.dropdown-container {
+    position: absolute;
+    display: flex; 
+    padding-right: 120px;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+}
+
+.dropdown-content ul {
+    background-color: rgba(112,163,192,.7);
+    box-shadow: 1px 1px 4px black;
+    color: white;
+    text-shadow: 1px 2px 4px black;
+    position: relative;
+    z-index: 1;
+    top: 160px;
+    left: -20px;
+    min-width: 100px;
+    padding: 20px;
+}
+
+.dropdown-content li {
+    padding: 10px 0;
 }
