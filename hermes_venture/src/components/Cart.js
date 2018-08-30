@@ -27,7 +27,7 @@ class Cart extends Component {
             this.state.user ? 
                 <AppContext.Consumer>
                     {(context) => {
-                        if(context.cart > 0) {
+                        if(context.cart.length > 0) {
                         console.log(context)
                         let price = context.cart.map((item) => (item.price) * item.quantity).reduce((a,b) => a + b)
                         
