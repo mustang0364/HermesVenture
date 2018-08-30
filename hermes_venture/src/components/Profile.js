@@ -41,37 +41,19 @@ componentDidMount() {
     : null
   }
 
-   handleStreet = (input) => {
-        this.setState({
-            streetInput: input,
-        })
-   }
-   handleCity = (input) => {
-        this.setState({
-            cityInput: input,
-        })
-   }
-   handleState = (input) => {
-        this.setState({
-            stateInput: input,
-        })
-   }
-   handleZip = (input) => {
-        this.setState({
-            zipInput: input,
-        })
+   handleInput = (key, input) => {
+       this.setState({
+           [key]: input
+       })
    }
    updateAddress = (data) => {
        this.setState({
            userAddress: data
        })
-       axios.post()
-   }
-//    addAddress = () => {
-       
-//    }
+       axios.post('/createaddress', {...this.state}   )
+    }
     render(){
-console.log(this.state.userAddress[0])
+        console.log(this.state);
         return (
                 this.state.user ? 
             <AppContext.Consumer>
@@ -86,10 +68,10 @@ console.log(this.state.userAddress[0])
                                 {this.state.userAddress == '' 
                                 ? <div className="needsmoreinfo">
                                     <h1>Please add an address to your profile</h1>
-                                    <div><input onClick={(e) => this.handleStreet(e.target.value)} placeholder='Enter Street'/></div>
-                                    <div><input onClick={(e) => this.handleCity(e.target.value)} placeholder='Enter City'/></div>
-                                    <div><input onClick={(e) => this.handleState(e.target.value)} placeholder='Enter State'/></div>
-                                    <div><input onClick={(e) => this.handleZip(e.target.value)} placeholder='Enter Zip'/></div>
+                                    <div><input onClick={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
+                                    <div><input onClick={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
+                                    <div><input onClick={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
+                                    <div><input onClick={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
                                     <div><button onClick={() => this.updateAddress()}>Add This Address</button></div>
                                 </div>
                                 : <div className="addresses">
@@ -97,7 +79,7 @@ console.log(this.state.userAddress[0])
                                 {this.state.userAddress.map(e => {
                                     return <div key={e.street}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>             
                                 })}
-                                <button onClick={() => this.addAddress()}>Add A New Address</button>
+                                <button onClick={() => this.updateAddress()}>Add A New Address</button>
                                 </div>
                                 }
                                 </div>

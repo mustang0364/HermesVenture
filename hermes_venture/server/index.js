@@ -50,6 +50,7 @@ app.use(express.static(`${__dirname}/../build`))
 // Routes
 
 app.get('/dashboard', controller.dashboard);
+app.post('/createaddress', controller.createAddress);
 app.get('/shopping/:category/:id', controller.getSingleProduct);
 app.get('/getaddress/:id', controller.getAddress);
 app.get('/fptibet', controller.getFPTibet);
