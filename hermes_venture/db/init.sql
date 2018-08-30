@@ -33,14 +33,15 @@ create table orders  (
 )
 
 create table addresses (
-    id serial primary key,
+    userid int primary key,
     street text,
     city text,
     state varchar(2),
     zip varchar(5),
-    user_id int references users(id)
+    foreign key (userid) references users(id)
 )
-
+select * from addresses;
+update addresses set street = 'asdf' where userid = 3;
 
 insert into products 
 (title, category, price, image, description, gender)

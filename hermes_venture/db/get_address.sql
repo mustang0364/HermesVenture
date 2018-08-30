@@ -1,1 +1,1 @@
-select * from addresses where user_id = 3;
+select * from addresses where userid = $1;

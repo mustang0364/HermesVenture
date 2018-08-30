@@ -51,7 +51,7 @@ app.use(express.static(`${__dirname}/../build`))
 
 app.get('/dashboard', controller.dashboard);
 app.get('/shopping/:category/:id', controller.getSingleProduct);
-app.get('/getaddress', controller.getAddress);
+app.get('/getaddress/:id', controller.getAddress);
 app.get('/fptibet', controller.getFPTibet);
 app.get('/fpperu', controller.getFPPeru);
 app.get('/fpmaldives', controller.getFPMaldives);

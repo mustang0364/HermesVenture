@@ -162,9 +162,9 @@ module.exports = {
         }).catch(err => console.log('error with getUser', err))
     },
     getAddress: (req, res) => {
-        req.app.get('db').get_address()
+        req.app.get('db').get_address(+req.params.id)
         .then(address => {
-            res.json(address)
+            res.json(address[0])
         })
     }
 }
