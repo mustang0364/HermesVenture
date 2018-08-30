@@ -91,6 +91,7 @@ button:focus {outline: 0;}
 	height: 150px;
 	width: auto;
 	margin-left: 40px;
+	margin-bottom: 30px;
 }
 .bottomsection {
 	display: flex;
@@ -98,8 +99,8 @@ button:focus {outline: 0;}
 	justify-content: space-between;
 	align-items: center;
 	margin: 0 auto;
-	margin-top: 30px;
 	min-height: 700px;
+	margin-top: 10px;
 }
 .footer {
 	position: absolute;
@@ -118,7 +119,6 @@ button:focus {outline: 0;}
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-top: -20px;
 }
 .productimagesb {
 	position: absolute;
