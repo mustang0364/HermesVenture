@@ -64,6 +64,10 @@ componentDidMount() {
        })
        this.getAddress();
     }
+    removeAddress = (id, addressid) => {
+        axios.delete(`/removeaddress/${id}/${addressid}`);
+        this.getAddress();
+    }
    updateAddressShown = () => {
        this.setState({
            userAddress: '',
@@ -94,14 +98,19 @@ componentDidMount() {
                                 : this.state.userAddress == '' && this.state.showMessage 
                                 ? <div><h1>Your Address Has Been Stored Succesfully</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
-                                    console.log(e.addressid)
-                                    return <div key={e.addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>})
+                                    let addressid = e.addressid;
+                                    return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
+                                    <button onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    </div>})
                                 : null}
                                 </div>
                                 : <div className="addresses">
                                 <h1>Addresses:</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
-                                    return <div key={e.addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>             
+                                    let addressid = e.addressid;
+                                    return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
+                                    <button onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    </div>             
                                 }) : null}
                                 <button onClick={() => this.updateAddressShown()}>Add A New Address</button>
                                 </div>

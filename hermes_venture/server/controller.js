@@ -180,5 +180,17 @@ module.exports = {
             console.log('error', err)
             res.json({message: 'error'})
         })
+    },
+    removeAddress: (req, res) => {
+        req.params.id = parseInt(req.params.id);
+        req.params.addressid = parseInt(req.params.addressid);
+        console.log(req.params)
+        req.app.get('db').remove_address(req.params.id, req.params.addressid)
+        .then(data => {
+            res.send(data);
+        }).catch(err => {
+            console.log('error', err)
+            res.json({message: 'error here'})
+        })
     }
 }
