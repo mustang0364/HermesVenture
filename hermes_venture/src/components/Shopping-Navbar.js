@@ -46,7 +46,7 @@ class Navbar  extends Component {
                                         {context.user ? null : <li><a href={auth0}>Login</a></li>}
                                         <Link to='/profile'><li>Profile</li></Link>
                                         {context.user ? <li>Logout</li> : null}
-                                        <Link to="/"><li>Dashboard</li></Link>
+                                        <Link to="/#dashboard"><li>Dashboard</li></Link>
                                         <Link to="/shopping"><li>Products</li></Link>
                                         <Link to="/shopping/cart"><li>Cart</li></Link>
                                     </ul>

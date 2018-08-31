@@ -58,6 +58,7 @@ class Shopping extends Component {
                         break;
                 }
                 break;
+            default: return country 
         }
     }
 
