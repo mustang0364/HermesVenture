@@ -21,10 +21,10 @@ module.exports = {
     getFPTibet: (req, res) => {
         req.app.get('db').get_fp_tibet()
         .then(data => {
-            let indexOne = Math.floor(Math.random() * ((7 - 0) + 1) + 0);
-            let indexTwo = Math.floor(Math.random() * ((7 - 0) + 1) + 7);
-            let indexThree = Math.floor(Math.random() * ((7 - 0) + 1) + 14);
-            let indexFour = Math.floor(Math.random() * ((6 - 0) + 1) + 20)
+            let indexOne = Math.floor(Math.random() * ((6 - 0) + 1) + 0);
+            let indexTwo = Math.floor(Math.random() * ((12 - 7) + 1) + 7);
+            let indexThree = Math.floor(Math.random() * ((18 - 13) + 1) + 13);
+            let indexFour = Math.floor(Math.random() * ((25 - 19) + 1) + 19)
             res.send({
                 productOneimage: data[indexOne].image,
                 productOneCategory: data[indexOne].category,
@@ -46,9 +46,9 @@ module.exports = {
         req.app.get('db').get_fp_maldives()
         .then(data => {
             let indexOne = Math.floor(Math.random() * ((4 - 0) + 1) + 0);
-            let indexTwo = Math.floor(Math.random() * ((4 - 0) + 1) + 5);
-            let indexThree = Math.floor(Math.random() * ((3 - 0) + 1) + 10);
-            let indexFour = Math.floor(Math.random() * ((3 - 0) + 1) + 13)
+            let indexTwo = Math.floor(Math.random() * ((8 - 5) + 1) + 5);
+            let indexThree = Math.floor(Math.random() * ((12 - 9) + 1) + 9);
+            let indexFour = Math.floor(Math.random() * ((16 - 13) + 1) + 13)
             res.send({
                 productOneimage: data[indexOne].image,
                 productOneCategory: data[indexOne].category,
@@ -70,9 +70,9 @@ module.exports = {
         req.app.get('db').get_fp_peru()
         .then(data => {
             let indexOne = Math.floor(Math.random() * ((6 - 0) + 1) + 0);
-            let indexTwo = Math.floor(Math.random() * ((6 - 0) + 1) + 6);
-            let indexThree = Math.floor(Math.random() * ((6 - 0) + 1) + 12);
-            let indexFour = Math.floor(Math.random() * ((6 - 0) + 1) + 18)
+            let indexTwo = Math.floor(Math.random() * ((10 - 7) + 1) + 7);
+            let indexThree = Math.floor(Math.random() * ((16 - 11) + 1) + 11);
+            let indexFour = Math.floor(Math.random() * ((21 - 17) + 1) + 17)
             res.send({
                 productOneimage: data[indexOne].image,
                 productOneCategory: data[indexOne].category,

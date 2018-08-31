@@ -48,7 +48,7 @@ class Home extends Component {
             fpTibet: res.data,
           })
         })
-      }, 500);
+      }, 700);
     }
     updatePeruFP = () => {
       setTimeout(() => {
@@ -57,7 +57,7 @@ class Home extends Component {
             fpPeru: res.data,
           })
         })
-      }, 500);
+      }, 700);
     }
     updateMaldivesFP = () => {
       setTimeout(() => {
@@ -66,7 +66,7 @@ class Home extends Component {
             fpMaldives: res.data,
           })
         })
-      }, 500);
+      }, 700);
     }
     changeSceneOne = () => {
       this.setState({
