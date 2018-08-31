@@ -11,6 +11,7 @@ class Profile extends Component {
         this.state = {
             user: null,
             showMessage: false,
+            message: "Your Address has been saved Succesfully",
             userAddress: '',
             streetInput: '',
             cityInput: '',
@@ -54,7 +55,9 @@ componentDidMount() {
             })
        })
        this.setState({showMessage: true})
-       this.getAddress();
+       setTimeout(() => {
+           this.getAddress();
+       }, 500);
     }
    updateAddress = () => {
        axios.post('/createaddress', {...this.state}).then( res => {
@@ -62,8 +65,10 @@ componentDidMount() {
                 userAddress: res.data,
             })
        })
-       this.getAddress();
-    }
+       setTimeout(() => {
+        this.getAddress();
+    }, 500);
+}
     removeAddress = (id, addressid) => {
         axios.delete(`/removeaddress/${id}/${addressid}`);
         this.getAddress();
@@ -71,6 +76,7 @@ componentDidMount() {
    updateAddressShown = () => {
        this.setState({
            userAddress: '',
+           messageShown: false,
        })
     }
 
@@ -86,7 +92,7 @@ componentDidMount() {
                                 <h1>Welcome</h1>
                                 <h1>{this.state.user.name}</h1>
                                 <h1>{this.state.user.email}</h1>            
-                                {this.state.userAddress == '' && !this.state.showMessage
+                                {this.state.userAddress == ''
                                 ? <div className="needsmoreinfo">
                                     <h1>Please add an address to your profile</h1>
                                     <div><input onChange={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
@@ -96,7 +102,7 @@ componentDidMount() {
                                     <div><button onClick={() => this.addAddress()}>Add This Address</button></div>
                                 </div>
                                 : this.state.userAddress == '' && this.state.showMessage 
-                                ? <div><h1>Your Address Has Been Stored Succesfully</h1>
+                                ? <div><h1>{this.state.message}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
                                     return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
