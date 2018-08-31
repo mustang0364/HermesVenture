@@ -10,7 +10,7 @@ class Profile extends Component {
 
         this.state = {
             user: null,
-            userAddress: '',
+            addresses: [],
             streetInput: '',
             cityInput: '',
             zipInput: '',
@@ -24,7 +24,7 @@ componentDidMount() {
             this.setState({user: res.data})
             this.getAddress();
         } else {
-            this.props.history.push('/shopping')
+            this.props.history.push('/login')
         }
     })   
 }
@@ -46,10 +46,7 @@ componentDidMount() {
            [key]: input
        })
    }
-   updateAddress = (data) => {
-       this.setState({
-           userAddress: data
-       })
+   updateAddress = () => {
        axios.post('/createaddress', {...this.state}   )
     }
     render(){
@@ -65,20 +62,20 @@ componentDidMount() {
                                 <h1>Welcome</h1>
                                 <h1>{this.state.user.name}</h1>
                                 <h1>{this.state.user.email}</h1>            
-                                {this.state.userAddress == '' 
+                                {this.state.userAddress === '' 
                                 ? <div className="needsmoreinfo">
                                     <h1>Please add an address to your profile</h1>
-                                    <div><input onClick={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
-                                    <div><input onClick={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
-                                    <div><input onClick={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
-                                    <div><input onClick={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
+                                    <div><input onChange={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
+                                    <div><input onChange={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
+                                    <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
+                                    <div><input onChange={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
                                     <div><button onClick={() => this.updateAddress()}>Add This Address</button></div>
                                 </div>
                                 : <div className="addresses">
                                 <h1>Addresses:</h1>
-                                {this.state.userAddress.map(e => {
+                                {/* {this.state.userAddress.map(e => {
                                     return <div key={e.street}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>             
-                                })}
+                                })} */}
                                 <button onClick={() => this.updateAddress()}>Add A New Address</button>
                                 </div>
                                 }
