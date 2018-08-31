@@ -1,1 +1,1 @@
-select * from products order by random() limit 18;
+select * from products order by random() limit 4;
