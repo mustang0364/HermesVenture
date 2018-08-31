@@ -177,15 +177,14 @@ module.exports = {
     },
     createAddress: (req, res) => {
         const { user, streetInput, cityInput, stateInput, zipInput } = req.body;
-        console.log(req.body.streetInput)
-        console.log(req.body)
-        // req.app.get('db').create_address([
-        //    user.id, streetInput, cityInput, stateInput, zipInput
-        // ]).then(address => {
-        //     res.json(address)
-        // }).catch(err => {
-        //     console.log('error', err)
-        //     res.json({message: 'error'})
-        // })
+        req.app.get('db').create_address([
+           user.id, streetInput, cityInput, stateInput, zipInput
+        ]).then(address => {
+            res.json(address)
+            console.log(res.data)
+        }).catch(err => {
+            console.log('error', err)
+            res.json({message: 'error'})
+        })
     }
 }
