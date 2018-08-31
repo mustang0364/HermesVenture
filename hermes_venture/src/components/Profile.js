@@ -10,6 +10,7 @@ class Profile extends Component {
 
         this.state = {
             user: null,
+            showMessage: false,
             userAddress: '',
             streetInput: '',
             cityInput: '',
@@ -24,7 +25,7 @@ componentDidMount() {
             this.setState({user: res.data})
             this.getAddress();
         } else {
-            this.props.history.push('/shopping')
+            this.props.history.push('/login')
         }
     })   
 }
@@ -46,13 +47,29 @@ componentDidMount() {
            [key]: input
        })
    }
+   addAddress = () => {
+       axios.post('/createaddress', {...this.state}).then( res => {
+            this.setState({
+                userAddress: res.data,
+            })
+       })
+       this.setState({showMessage: true})
+       this.getAddress();
+    }
    updateAddress = () => {
        axios.post('/createaddress', {...this.state}).then( res => {
             this.setState({
                 userAddress: res.data,
             })
        })
+       this.getAddress();
     }
+   updateAddressShown = () => {
+       this.setState({
+           userAddress: '',
+       })
+    }
+
     render(){
         return (
                 this.state.user ? 
@@ -65,22 +82,28 @@ componentDidMount() {
                                 <h1>Welcome</h1>
                                 <h1>{this.state.user.name}</h1>
                                 <h1>{this.state.user.email}</h1>            
-                                {this.state.userAddress == '' 
+                                {this.state.userAddress == '' && !this.state.showMessage
                                 ? <div className="needsmoreinfo">
                                     <h1>Please add an address to your profile</h1>
                                     <div><input onChange={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
                                     <div><input onChange={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
                                     <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
                                     <div><input onChange={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
-                                    <div><button onClick={() => this.updateAddress()}>Add This Address</button></div>
+                                    <div><button onClick={() => this.addAddress()}>Add This Address</button></div>
+                                </div>
+                                : this.state.userAddress == '' && this.state.showMessage 
+                                ? <div><h1>Your Address Has Been Stored Succesfully</h1>
+                                {this.state.userAddress ? this.state.userAddress.map(e => {
+                                    console.log(e.addressid)
+                                    return <div key={e.addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>})
+                                : null}
                                 </div>
                                 : <div className="addresses">
                                 <h1>Addresses:</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
-                                    return <div key={e.street}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>             
-                                }) : null
-                            }
-                                <button onClick={() => this.updateAddress()}>Add A New Address</button>
+                                    return <div key={e.addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>             
+                                }) : null}
+                                <button onClick={() => this.updateAddressShown()}>Add A New Address</button>
                                 </div>
                                 }
                                 </div>

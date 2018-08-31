@@ -91,13 +91,11 @@ module.exports = {
         }).catch(err => console.log('error with getfeaturedproducts', err))
     },
     createOrderNumber: (req, res) => {
-        console.log('hit createOrderNumber')
         req.app.get('db').create_order_number(+req.params.id).then(id => {
             res.json(id)
         }).catch(err => console.log('error with createOrderNumber', err))
     },
     stripe: (req, res) => {
-        console.log('hit Stripe')
         const { amount, currency, source } = req.body
         stripe.charges.create({
             amount: amount,
@@ -113,7 +111,6 @@ module.exports = {
         });
     },
     createOrder: (req, res) => {
-        console.log('Creating Order')
         let orderNumber = req.body[0]
         let incomingCart = req.body[1]
         let productIds = [];
@@ -127,8 +124,7 @@ module.exports = {
             quantity.push(cart[i].quantity)
         }
         
-        console.log('product ids', productIds)
-        console.log('quantities', quantity)
+        
         for(let i = 0; i <productIds.length; i++) {
             req.app.get('db').create_order({
                 product_id: productIds[i],
@@ -145,7 +141,6 @@ module.exports = {
         }).catch(err => console.log('error with sortCountry', err))
     },
     sortProducts: (req, res) => {
-        console.log('hit sort products')
         const { country, gender } = req.params
         req.app.get('db').sort_products(country,gender).then(products => {
             res.json(products)
@@ -181,7 +176,6 @@ module.exports = {
            user.id, streetInput, cityInput, stateInput, zipInput
         ]).then(address => {
             res.json(address)
-            console.log(res.data)
         }).catch(err => {
             console.log('error', err)
             res.json({message: 'error'})
