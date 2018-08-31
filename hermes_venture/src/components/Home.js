@@ -10,14 +10,14 @@ import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import circle from '../Media/Images/Logo/circle.png';
-import './home.css';
 import WhiteLogo from '../Media/Images/Logo/circleWhiteR.png'
 import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
 import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png' 
 import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
-import NameBlack from '../Media/Images/Logo/bootsName.png'
 import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
-import Profile from './Profile';
+import './home.css';
+// import NameBlack from '../Media/Images/Logo/bootsName.png'
+// import Profile from './Profile';
 
 import { Link } from 'react-router-dom';
 

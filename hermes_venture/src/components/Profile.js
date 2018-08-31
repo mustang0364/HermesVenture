@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
@@ -32,7 +33,6 @@ componentDidMount() {
 }
 
   getAddress = () => {
-    this.state.user ? 
     setTimeout(() => {
         axios.get(`/getaddress/${this.state.user.id}`).then(res => {
             this.setState({
@@ -40,7 +40,6 @@ componentDidMount() {
             })
         }) 
     }, 500)
-    : null
   }
 
    handleInput = (key, input) => {
@@ -91,7 +90,7 @@ componentDidMount() {
                                 <div className="userinfo">
                                 <h1>Welcome</h1>
                                 <h1>{this.state.user.name}</h1>
-                                <h1>{this.state.user.email}</h1>            
+                                <h1>{this.state.user.email}</h1> 
                                 {this.state.userAddress == ''
                                 ? <div className="needsmoreinfo">
                                     <h1>Please add an address to your profile</h1>
@@ -101,7 +100,7 @@ componentDidMount() {
                                     <div><input onChange={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
                                     <div><button onClick={() => this.addAddress()}>Add This Address</button></div>
                                 </div>
-                                : this.state.userAddress == '' && this.state.showMessage 
+                                : this.state.userAddress === '' && this.state.showMessage 
                                 ? <div><h1>{this.state.message}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
@@ -111,7 +110,7 @@ componentDidMount() {
                                 : null}
                                 </div>
                                 : <div className="addresses">
-                                <h1>Addresses:</h1>
+                                <h1>{this.state.userAddress == '' ? 'Addresses:' : null}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
                                     return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
