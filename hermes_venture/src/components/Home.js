@@ -15,6 +15,7 @@ import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
 import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png' 
 import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
 import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
+import DashboardArrow from '../Media/Images/dashboard-arrow.png';
 import './home.css';
 // import NameBlack from '../Media/Images/Logo/bootsName.png'
 // import Profile from './Profile';
@@ -260,6 +261,9 @@ class Home extends Component {
             <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
             <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
         </div>
+            <div className="footer">        
+              <a href="#dashboard"><img src={DashboardArrow} alt=""/></a>
+            </div>
         </div>
       );
     }

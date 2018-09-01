@@ -1,5 +1,27 @@
 .userinfo {
     font-size: 30px;
-    padding-top: 100px;
     text-align: center;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 100px;
+}
+.userinfocontainer {
+    min-width: 550px;
+    padding-top: 30px;
+    color: white;
+    min-height: 320px;
+    background-color: rgb(66, 61, 61);
+    border: solid 2px black;
+    border-radius: 3px;
+}
+input {
+    border-radius: 1px;
+    border: transparent;
+}
+.h1alt {
+    color: orangered;
+    font-size: 40px;
+    font-family: 'Lobster', cursive;
 }

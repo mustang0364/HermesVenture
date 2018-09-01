@@ -88,12 +88,13 @@ componentDidMount() {
                         <div className="profilemain">
                             <ShoppingNavbar cart={context.cart}/>
                                 <div className="userinfo">
-                                <h1>Welcome</h1>
-                                <h1>{this.state.user.name}</h1>
-                                <h1>{this.state.user.email}</h1> 
+                                <div className="userinfocontainer">
+                                <h1 className='h1alt'>Welcome</h1>
+                                <h1 className='h1prof'>{this.state.user.name}</h1>
+                                <h1 className='h1prof'>{this.state.user.email}</h1> 
                                 {this.state.userAddress == ''
                                 ? <div className="needsmoreinfo">
-                                    <h1>Please add an address to your profile</h1>
+                                    <h1 className='h1alt'>Please add an address to your profile</h1>
                                     <div><input onChange={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
                                     <div><input onChange={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
                                     <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
@@ -101,7 +102,7 @@ componentDidMount() {
                                     <div><button onClick={() => this.addAddress()}>Add This Address</button></div>
                                 </div>
                                 : this.state.userAddress === '' && this.state.showMessage 
-                                ? <div><h1>{this.state.message}</h1>
+                                ? <div><h1 className='h1alt'>{this.state.message}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
                                     return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
@@ -120,6 +121,7 @@ componentDidMount() {
                                 <button onClick={() => this.updateAddressShown()}>Add A New Address</button>
                                 </div>
                                 }
+                                </div>
                                 </div>
                             </div>        
                         )        
