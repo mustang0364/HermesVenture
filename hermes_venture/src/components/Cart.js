@@ -12,30 +12,40 @@ class Cart extends Component {
         this.state = {
             user: null,
             addresses: [],
-            shipToAddress: null,
+            shipToAddress: [],
+            orderNumber: [],
         }
     }
     componentDidMount() {
         axios.get('/getUser').then(res => {
             if(res.data !== 'Not Authorized') {
-                this.setState({user: res.data})
+                axios.get(`/getaddress/${res.data.id}`).then(response => {
+                    this.setState({
+                        user: res.data,
+                        addresses: response.data
+                    })
+                })
             } else {
                 this.props.history.push('/shopping')
             }
         })
     }
+
+    shiptoAddress(id, street) {
+        this.setState({
+            shipToAddress: [id, street]
+        })
+    }
     render() {
+        console.log(this.state)
         return (
             this.state.user ? 
                 <AppContext.Consumer>
                     {(context) => {
                         if(context.cart.length > 0) {
-                        console.log(context)
                         let price = context.cart.map((item) => (item.price) * item.quantity).reduce((a,b) => a + b)
-                        
-                        let taxes = price * .062
-                        let grandTotal = price + taxes
-                        console.log(price)
+                        let taxes = Math.round(price * .062)
+                        let grandTotal = (price + taxes)
                         
                         return (
                             <div className="cart-container">
@@ -58,18 +68,31 @@ class Cart extends Component {
                                 </div>
                                 <div className="checkout-container">
                                     <div className="address-container">
-                                        Addresses Go Here! <button>Select</button>
-                                        <p>Ship to Address: {this.state.shipToAddress}</p>
+                                    {this.state.addresses.map((address) => {
+                                        return (
+                                            <div key={address.id}>
+                                               <p>{address.street}, {address.city} <button onClick={() => this.shiptoAddress(address.addressid, address.street)}>Select</button></p>
+                                            </div>
+                                        )
+                                    })}
+                                    {this.state.shipToAddress ?
+                                        <h4>Ship To Address: {this.state.shipToAddress[1]}</h4>
+                                    : null}
                                     </div>
                                     <h1>Subtotal ${price}</h1>
                                     <h1>Taxes ${taxes}</h1>
                                     <h1>Total ${grandTotal}</h1>
+                                    {this.state.shipToAddress.length > 0 ?
                                     <Checkout 
                                             name="Hermes Venture"
                                             amount={grandTotal}
                                             cart={context.cart}
                                             orderNumber={context.orderNumber}
+                                            address={this.state.shipToAddress[0]}
+                                            forward={this.props.history.push}
+                                            emptyCart={context.methods.successfulPurchaseEmptyCart}
                                     />
+                                    : null}
                                 </div>
                             </div>
                         )
@@ -91,12 +114,18 @@ class Cart extends Component {
 const Checkout = props => {
     const STRIPE_PUBLISHABLE = 'pk_test_Jh4PfCKnHVRs1AvfG0w5KEwL';
     const PAYMENT_SERVER_URL = '/charge';
-    let orderInfo = [props.orderNumber, props.cart];
+    let orderInfo = [props.orderNumber, props.cart, props.address];
     const CURRENCY = "USD";
     const fromUSDToCent = amount => amount * 100;
 
     const successPayment = data => {
-        axios.post('/createOrder', orderInfo)
+        axios.post('/createOrder', orderInfo).then( () => {
+            props.emptyCart();
+            sessionStorage.clear();
+            props.forward('/shopping')
+        }
+            
+        )
         console.log('Payment Successful')
     }
     const errorPayment = data => {

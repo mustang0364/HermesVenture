@@ -63,6 +63,10 @@ export default class ContextProvider extends Component {
                 },
                 handleShipToAddress: (state) => {
                     this.setState({shipToState: state})
+                },
+                successfulPurchaseEmptyCart: () => {
+                    console.log('empty cart function hit')
+                    this.setState({cart: []})
                 }
             },
         }
@@ -73,6 +77,11 @@ export default class ContextProvider extends Component {
         if(cart) {
             this.setState({cart})
         }
+        axios.get('/getUser').then(res => {
+            this.setState({
+                user: res.data
+            })
+        })
 
     }
 
@@ -83,13 +92,9 @@ export default class ContextProvider extends Component {
                 sessionStorage.setItem('cart', cart)
             }
         }
-        axios.get('/getUser').then(res => {
-            if(res.data !== 'Not Authorized') {
-                this.setState({user: res.data})
-            }
-        })
     }
     render() {
+        console.log(this.state.user)
         return  <AppContext.Provider value={this.state}>
                     {this.props.children}
                 </AppContext.Provider>
