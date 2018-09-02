@@ -48,7 +48,7 @@ class Navbar  extends Component {
                                         {context.user ? <li>Logout</li> : null}
                                         <Link to="/#dashboard"><li>Dashboard</li></Link>
                                         <Link to="/shopping"><li>Products</li></Link>
-                                        <Link to="/shopping/cart"><li>Cart</li></Link>
+                                        <Link to="/shopping/cart"><li onClick={() => context.methods.createOrderNumber(context.user.id)}>Cart</li></Link>
                                     </ul>
                                 </div>
                             </div>

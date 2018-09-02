@@ -12,6 +12,7 @@ class Cart extends Component {
             user: null,
             addresses: [],
             shipToAddress: [],
+            orderNumber: [],
         }
     }
     componentDidMount() {
@@ -42,8 +43,9 @@ class Cart extends Component {
                     {(context) => {
                         if(context.cart.length > 0) {
                         let price = context.cart.map((item) => (item.price) * item.quantity).reduce((a,b) => a + b)
-                        let taxes = price * .062
-                        let grandTotal = price + taxes
+                        let taxes = Math.round(price * .062)
+                        let grandTotal = (price + taxes)
+                        
                         return (
                             <div className="cart-container">
                                 <Navbar cart={context.cart}/>
@@ -67,7 +69,7 @@ class Cart extends Component {
                                     <div className="address-container">
                                     {this.state.addresses.map((address) => {
                                         return (
-                                            <div>
+                                            <div key={address.id}>
                                                <p>{address.street}, {address.city} <button onClick={() => this.shiptoAddress(address.addressid, address.street)}>Select</button></p>
                                             </div>
                                         )
@@ -86,6 +88,8 @@ class Cart extends Component {
                                             cart={context.cart}
                                             orderNumber={context.orderNumber}
                                             address={this.state.shipToAddress[0]}
+                                            forward={this.props.history.push}
+                                            emptyCart={context.methods.successfulPurchaseEmptyCart}
                                     />
                                     : null}
                                 </div>
@@ -114,7 +118,13 @@ const Checkout = props => {
     const fromUSDToCent = amount => amount * 100;
 
     const successPayment = data => {
-        axios.post('/createOrder', orderInfo)
+        axios.post('/createOrder', orderInfo).then( () => {
+            props.emptyCart();
+            sessionStorage.clear();
+            props.forward('/shopping')
+        }
+            
+        )
         console.log('Payment Successful')
     }
     const errorPayment = data => {
