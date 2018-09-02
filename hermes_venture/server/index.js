@@ -63,6 +63,7 @@ app.get('/sort/products/:country', controller.sortCountry);
 app.get('/sort/products/:country/:gender', controller.sortProducts);
 app.get('/getUser', controller.getUser);
 app.get('/dashboard/all', controller.shoppingDash);
+app.delete('/removeaddress/:id/:addressid', controller.removeAddress);
 
 
 app.get('/auth/callback', (req, res) => {

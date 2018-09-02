@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import {AppContext} from './ContextProvider';
 import {Link} from 'react-router-dom';

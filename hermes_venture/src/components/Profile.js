@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
@@ -10,7 +11,9 @@ class Profile extends Component {
 
         this.state = {
             user: null,
-            addresses: [],
+            showMessage: false,
+            message: "Your Address has been saved Succesfully",
+            userAddress: '',
             streetInput: '',
             cityInput: '',
             zipInput: '',
@@ -30,7 +33,6 @@ componentDidMount() {
 }
 
   getAddress = () => {
-    this.state.user ? 
     setTimeout(() => {
         axios.get(`/getaddress/${this.state.user.id}`).then(res => {
             this.setState({
@@ -38,7 +40,6 @@ componentDidMount() {
             })
         }) 
     }, 500)
-    : null
   }
 
    handleInput = (key, input) => {
@@ -46,11 +47,39 @@ componentDidMount() {
            [key]: input
        })
    }
-   updateAddress = () => {
-       axios.post('/createaddress', {...this.state}   )
+   addAddress = () => {
+       axios.post('/createaddress', {...this.state}).then( res => {
+            this.setState({
+                userAddress: res.data,
+            })
+       })
+       this.setState({showMessage: true})
+       setTimeout(() => {
+           this.getAddress();
+       }, 500);
     }
+   updateAddress = () => {
+       axios.post('/createaddress', {...this.state}).then( res => {
+            this.setState({
+                userAddress: res.data,
+            })
+       })
+       setTimeout(() => {
+        this.getAddress();
+    }, 500);
+}
+    removeAddress = (id, addressid) => {
+        axios.delete(`/removeaddress/${id}/${addressid}`);
+        this.getAddress();
+    }
+   updateAddressShown = () => {
+       this.setState({
+           userAddress: '',
+           messageShown: false,
+       })
+    }
+
     render(){
-        console.log(this.state);
         return (
                 this.state.user ? 
             <AppContext.Consumer>
@@ -61,22 +90,34 @@ componentDidMount() {
                                 <div className="userinfo">
                                 <h1>Welcome</h1>
                                 <h1>{this.state.user.name}</h1>
-                                <h1>{this.state.user.email}</h1>            
-                                {this.state.userAddress === '' 
+                                <h1>{this.state.user.email}</h1> 
+                                {this.state.userAddress == ''
                                 ? <div className="needsmoreinfo">
                                     <h1>Please add an address to your profile</h1>
                                     <div><input onChange={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
                                     <div><input onChange={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
                                     <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
                                     <div><input onChange={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
-                                    <div><button onClick={() => this.updateAddress()}>Add This Address</button></div>
+                                    <div><button onClick={() => this.addAddress()}>Add This Address</button></div>
+                                </div>
+                                : this.state.userAddress === '' && this.state.showMessage 
+                                ? <div><h1>{this.state.message}</h1>
+                                {this.state.userAddress ? this.state.userAddress.map(e => {
+                                    let addressid = e.addressid;
+                                    return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
+                                    <button onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    </div>})
+                                : null}
                                 </div>
                                 : <div className="addresses">
-                                <h1>Addresses:</h1>
-                                {/* {this.state.userAddress.map(e => {
-                                    return <div key={e.street}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}</div>             
-                                })} */}
-                                <button onClick={() => this.updateAddress()}>Add A New Address</button>
+                                <h1>{this.state.userAddress == '' ? 'Addresses:' : null}</h1>
+                                {this.state.userAddress ? this.state.userAddress.map(e => {
+                                    let addressid = e.addressid;
+                                    return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
+                                    <button onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    </div>             
+                                }) : null}
+                                <button onClick={() => this.updateAddressShown()}>Add A New Address</button>
                                 </div>
                                 }
                                 </div>
