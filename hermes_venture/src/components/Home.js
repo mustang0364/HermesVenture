@@ -113,7 +113,7 @@ class Home extends Component {
           ? BlueLogo
           : this.state.videoThreeShown 
           ? WhiteLogo
-          : null} alt=""/>
+          : null} alt="" />
 
           <img className='name' src={
           this.state.videoOneShown 
@@ -149,7 +149,7 @@ class Home extends Component {
                         ? this.state.fpPeru.productOneid
                         : this.state.fpTibet.productOneid
                         }`}>
-                      <img className='productimagesb' src={
+                      <img className='productimagesb' id="featuredProduct" src={
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneimage
                         : this.state.currentScene === 'Maldives'
@@ -157,7 +157,7 @@ class Home extends Component {
                         : this.state.currentScene === 'Peru'
                         ? this.state.fpPeru.productOneimage
                         : this.state.fpTibet.productOneimage                        
-                        } alt=''/></Link>
+                        } alt='' /></Link>
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
