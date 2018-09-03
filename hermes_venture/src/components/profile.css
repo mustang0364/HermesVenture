@@ -8,10 +8,13 @@
     top: 100px;
 }
 .userinfocontainer {
-    min-width: 550px;
-    padding-top: 30px;
+    min-width: 400px;
+    padding: 0 20px;
     color: white;
-    min-height: 320px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     background-color: rgb(66, 61, 61);
     border: solid 2px black;
     border-radius: 3px;
@@ -21,7 +24,28 @@ input {
     border: transparent;
 }
 .h1alt {
-    color: orangered;
+    color: rgb(255, 136, 0);
     font-size: 40px;
     font-family: 'Lobster', cursive;
+}
+.h1prof:not(:first-child) {
+    margin-bottom: 5px;
+}
+.profilebutton {
+    background-color: transparent;
+    color: white;
+    border: 2px white solid;
+    border-radius: 8px;
+}
+.profbut {
+    background-color: transparent;
+    color: white;
+    border: 2px white solid;
+    border-radius: 8px;
+    margin-left: 7px;
+}
+.addressline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

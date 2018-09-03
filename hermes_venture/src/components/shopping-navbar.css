@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: -webkit-linear-gradient(red, rgb(255, 136, 0));
+    background: -webkit-linear-gradient(rgb(241, 23, 23), rgb(255, 136, 0));
 }
 .navbar-account {
     display: flex;

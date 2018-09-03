@@ -99,14 +99,14 @@ componentDidMount() {
                                     <div><input onChange={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
                                     <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
                                     <div><input onChange={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
-                                    <div><button onClick={() => this.addAddress()}>Add This Address</button></div>
+                                    <div><button className='profilebutton' onClick={() => this.addAddress()}>Add This Address</button></div>
                                 </div>
                                 : this.state.userAddress === '' && this.state.showMessage 
                                 ? <div><h1 className='h1alt'>{this.state.message}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
-                                    return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
-                                    <button onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    return <div className='addressline' key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
+                                    <button  className='profbut' onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
                                     </div>})
                                 : null}
                                 </div>
@@ -114,11 +114,11 @@ componentDidMount() {
                                 <h1>{this.state.userAddress == '' ? 'Addresses:' : null}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
-                                    return <div key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
-                                    <button onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    return <div className='addressline' key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
+                                    <button className='profbut' onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
                                     </div>             
                                 }) : null}
-                                <button onClick={() => this.updateAddressShown()}>Add A New Address</button>
+                                <button className='profilebutton' onClick={() => this.updateAddressShown()}>Add A New Address</button>
                                 </div>
                                 }
                                 </div>
