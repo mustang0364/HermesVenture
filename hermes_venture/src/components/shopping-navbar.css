@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #E3FEB5;
+    background: -webkit-linear-gradient(rgb(241, 23, 23), rgb(255, 136, 0));
 }
 .navbar-account {
     display: flex;
@@ -40,7 +40,7 @@
     text-shadow: 1px 2px 4px black;
     position: relative;
     z-index: 1;
-    top: 160px;
+    top: 140px;
     left: -20px;
     min-width: 100px;
     padding: 20px;

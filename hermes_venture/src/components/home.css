@@ -112,7 +112,7 @@ button:focus {outline: 0;}
 }
 .footer img {
 	height: 30px;
-	width: auto;
+	width: auto;	
 }
 .fpbg {
 	display: flex;
@@ -152,6 +152,7 @@ button:focus {outline: 0;}
 	top: 40px;
 	left: 60px;
   }
+
 
 
  

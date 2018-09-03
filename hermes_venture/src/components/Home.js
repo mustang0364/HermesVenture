@@ -15,6 +15,7 @@ import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
 import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png' 
 import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
 import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
+import DashboardArrow from '../Media/Images/dashboard-arrow.png';
 import './home.css';
 // import NameBlack from '../Media/Images/Logo/bootsName.png'
 // import Profile from './Profile';
@@ -125,13 +126,13 @@ class Home extends Component {
 
          <div className="sidebar">
             <div className="sidebarheader">
-                <h2>FEAT</h2>
+                <h2 className='feat' >FEAT</h2>
                 <div className='featuredsidebar'><h2>URED</h2><hr/></div>
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
                   
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneCategory
                         : this.state.currentScene === 'Maldves'
@@ -148,7 +149,7 @@ class Home extends Component {
                         ? this.state.fpPeru.productOneid
                         : this.state.fpTibet.productOneid
                         }`}>
-                      <img className='productimagesb' src={
+                      <img className='productimagesb' id='fp1link' src={
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneimage
                         : this.state.currentScene === 'Maldives'
@@ -260,6 +261,9 @@ class Home extends Component {
             <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
             <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
         </div>
+            <div className="footer">        
+              <a className='dashboardlink'href="#dashboard"><img src={DashboardArrow} alt=""/></a>
+            </div>
         </div>
       );
     }
