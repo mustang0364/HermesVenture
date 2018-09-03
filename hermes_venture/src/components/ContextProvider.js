@@ -67,8 +67,16 @@ export default class ContextProvider extends Component {
                 successfulPurchaseEmptyCart: () => {
                     console.log('empty cart function hit')
                     this.setState({cart: []})
+                },
+                deleteFromCart: (id) => {
+                    console.log(id)
+                    let newCart = this.state.cart.filter((item) => {
+                        return item.id !== id
+                    })
+                    this.setState({cart: newCart})
                 }
-            },
+            }
+
         }
     }
 
