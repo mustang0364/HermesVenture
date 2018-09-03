@@ -9,7 +9,7 @@ export default class ContextProvider extends Component {
         super();
         this.state = {
             cart: [],
-            quantity: 0,
+            quantity: 1,
             orderNumber: null,
             userAddresses: [],
             shipToState: null,
@@ -39,7 +39,12 @@ export default class ContextProvider extends Component {
                     })
                 },
                 handleQuantity: (value) => {
-                    this.setState({quantity: value})
+                    if(value > 0) {
+                        this.setState({quantity: value})
+                    } else {
+                        alert('Quantity must be greater than zero')
+                        this.setState({quantity: 1})
+                    }
                 },
                 updateQuantity: (item) => {
                     let updateObj = {
@@ -86,11 +91,12 @@ export default class ContextProvider extends Component {
             this.setState({cart})
         }
         axios.get('/getUser').then(res => {
-            this.setState({
-                user: res.data
-            })
+            if(res.data !== 'Not Authorized') {
+                this.setState({
+                    user: res.data
+                })
+            }
         })
-
     }
 
     componentDidUpdate(prevState) {

@@ -17,6 +17,7 @@
     margin: 0 auto;
     padding-top: 350px;
     justify-content: center;
+
 }
 
 .left-nav-pane {
@@ -48,6 +49,8 @@
     display: flex;
     background-color: white;
     padding: 20px;
+    overflow: scroll;
+    height: 620px
 }
 
 .products {

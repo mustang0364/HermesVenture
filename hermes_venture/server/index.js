@@ -64,6 +64,11 @@ app.get('/sort/products/:country/:gender', controller.sortProducts);
 app.get('/getUser', controller.getUser);
 app.get('/dashboard/all', controller.shoppingDash);
 app.delete('/removeaddress/:id/:addressid', controller.removeAddress);
+app.post('/logout', (req, res) => {
+    console.log('hit logout')
+    req.session.destroy();
+    res.redirect('/')
+})
 
 
 app.get('/auth/callback', (req, res) => {
