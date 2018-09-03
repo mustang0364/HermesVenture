@@ -6,6 +6,7 @@ const session = require('express-session');
 const axios = require('axios');
 require('dotenv').config();
 const app = express();
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json());
 
 //massive
@@ -117,7 +118,10 @@ app.get('/auth/callback', (req, res) => {
   })
 })
 
-
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
  
 
