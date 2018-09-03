@@ -48,6 +48,10 @@
     min-height: 200px;
     background-color: yellow;
     margin-bottom: 10px;
+    padding: 20px;
+}
+.address-container p {
+    margin: 10px 0;
 }
 
 .checkout-container {
@@ -55,6 +59,7 @@
     width: 400px;
     background-color: orange;
     border: 1px solid black;
+    min-height: 421px;
 }
 
 .checkout-container h1 {

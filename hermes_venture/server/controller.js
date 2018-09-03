@@ -91,7 +91,9 @@ module.exports = {
         }).catch(err => console.log('error with getfeaturedproducts', err))
     },
     createOrderNumber: (req, res) => {
+        console.log('order number created')
         req.app.get('db').create_order_number(+req.params.id).then(id => {
+            console.log('order number created', id)
             res.json(id)
         }).catch(err => console.log('error with createOrderNumber', err))
     },
@@ -112,7 +114,9 @@ module.exports = {
     },
     createOrder: (req, res) => {
         let orderNumber = req.body[0]
+        console.log(orderNumber)
         let incomingCart = req.body[1]
+        let address = req.body[2]
         let productIds = [];
         let quantity = [];
         let cart = [];
@@ -129,7 +133,8 @@ module.exports = {
             req.app.get('db').create_order({
                 product_id: productIds[i],
                 cart_id: +orderNumber,
-                quantity: quantity[i]
+                quantity: quantity[i],
+                address: address
             }).then(newOrder => {
                 res.json(newOrder[0]);
             }).catch(err => console.log('error with create Order', err))
