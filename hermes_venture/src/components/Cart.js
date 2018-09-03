@@ -26,7 +26,7 @@ class Cart extends Component {
                     })
                 })
             } else {
-                this.props.history.push('/shopping')
+                this.props.history.push('/login')
             }
         })
     }
@@ -36,6 +36,8 @@ class Cart extends Component {
             shipToAddress: [id, street]
         })
     }
+
+
     render() {
         console.log(this.state)
         return (
@@ -51,7 +53,7 @@ class Cart extends Component {
                             <div className="cart-container">
                                 <Navbar cart={context.cart}/>
                                 <div className="cart">
-                                    <h1>Your Cart</h1>
+                                <h1>Your Cart</h1>
                                     {context.cart.map((item) => {
                                         return (
                                             <div key={item.id} className="cart-item-container">
@@ -59,7 +61,7 @@ class Cart extends Component {
                                                 <img src={item.image}/>
                                                 <p id="item-price">${item.price}</p>
                                                 <p id="item-quantity">{item.quantity}</p>
-                                                <p><i className="far fa-trash-alt"></i></p>
+                                                <p onClick={() => context.methods.deleteFromCart(item.id)}><i className="far fa-trash-alt"></i></p>
                                                 <input type="number" placeholder="Update Quantity?" onChange={(e) => context.methods.handleQuantity(e.target.value)}/>
                                                 <p><i className="fas fa-check" onClick={() => context.methods.updateQuantity(item)}></i></p>
                                             </div>
@@ -68,10 +70,11 @@ class Cart extends Component {
                                 </div>
                                 <div className="checkout-container">
                                     <div className="address-container">
-                                    {this.state.addresses.map((address) => {
+                                    <h2>Please Select an Address</h2>
+                                    {this.state.addresses.map((address, index) => {
                                         return (
-                                            <div key={address.id}>
-                                               <p>{address.street}, {address.city} <button onClick={() => this.shiptoAddress(address.addressid, address.street)}>Select</button></p>
+                                            <div key={index}>
+                                               <p>{address.street}, {address.city} <button className="select-button" onClick={() => this.shiptoAddress(address.addressid, address.street)}>Select</button></p>
                                             </div>
                                         )
                                     })}
