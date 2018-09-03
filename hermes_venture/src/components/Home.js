@@ -132,7 +132,7 @@ class Home extends Component {
                 <div className="bottomsection">
                   
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneCategory
                         : this.state.currentScene === 'Maldves'
@@ -149,7 +149,11 @@ class Home extends Component {
                         ? this.state.fpPeru.productOneid
                         : this.state.fpTibet.productOneid
                         }`}>
+<<<<<<< HEAD
                       <img className='productimagesb' id="featuredProduct" src={
+=======
+                      <img className='productimagesb' id='fp1link' src={
+>>>>>>> e901d9fae89b626bcc8da04aac2adfd39e48a86a
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneimage
                         : this.state.currentScene === 'Maldives'
@@ -262,7 +266,7 @@ class Home extends Component {
             <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
         </div>
             <div className="footer">        
-              <a href="#dashboard"><img src={DashboardArrow} alt=""/></a>
+              <a className='dashboardlink'href="#dashboard"><img src={DashboardArrow} alt=""/></a>
             </div>
         </div>
       );
