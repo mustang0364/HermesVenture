@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = express();
 app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json());
+const nodemailer = require('nodemailer');
 
 //massive
 massive(process.env.CONNECTION_STRING).then(db => {
@@ -129,6 +130,35 @@ app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
+//nodemailer
+app.post('/api/sendmail', (req) => {
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        secure: false,
+        port: 25,
+        auth: {
+            user: 'Hermesvent999@gmail.com',
+            pass: process.env.EMAIL_PASSWORD
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    })
+    let mailOptions = {
+        from: "'The team' <hermesvent999@gmail.com@gmail.com",
+        to: `${req.body.useremail}`,
+        subject: `${req.body.subject}`,
+        text: `${req.body.message}`,
+        replyTo: `${req.body.emailfrom}`
+    }
+    transporter.sendMail(mailOptions, (error, info) => {
+        if(error){
+            console.log(error)
+        } 
+        console.log('The Message Was Sent Successfully')
+        console.log(info)
+      })
+    })
  
 
 
