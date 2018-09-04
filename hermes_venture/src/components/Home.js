@@ -48,6 +48,7 @@ class Home extends Component {
           this.setState({
             fpTibet: res.data,
           })
+          return res.data.productOneCategory
         })
       }, 1000);
     }
@@ -95,6 +96,7 @@ class Home extends Component {
     }
   
     render() {
+      
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
@@ -149,7 +151,7 @@ class Home extends Component {
                         ? this.state.fpPeru.productOneid
                         : this.state.fpTibet.productOneid
                         }`}>
-                      <img className='productimagesb' id='fp1link' src={
+                      <img className='productimagesb' id="featuredProduct" src={
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneimage
                         : this.state.currentScene === 'Maldives'

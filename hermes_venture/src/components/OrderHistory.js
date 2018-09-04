@@ -8,36 +8,21 @@ export default class OrderHistory extends Component {
         super();
         this.state = {
             orders: [],
+            displayForm: false
         }
     }
 
     componentDidMount() {
         axios.get('/orderHistory').then(res => {
-            let tempArr = res.data
-            console.log(tempArr)
-            let newArr = []
-            for(let i = 0; i < tempArr.length; i++) {
-                console.log(tempArr[i].cart_id)
-                console.log(i + 1)
-                if(tempArr[i].cart_id === tempArr[i + 1].cart_id) {
-                    let arr = []
-                    arr.push(tempArr[i])
-                    newArr.push(arr)
-                } else {
-                    let arr = []
-                    arr.push(tempArr[i])
-                    newArr.push(arr)
-                }
-            }
-            console.log(newArr)
-            return newArr
-            // this.setState({
-            //     orders: res.data
-            // })
+            this.setState({orders: res.data})
+
         })
     }
     render() {
         console.log(this.state)
+        const style = {
+            display: this.state.displayForm
+        }
         return (
             <AppContext.Consumer>
                 {(context) => {
@@ -46,21 +31,29 @@ export default class OrderHistory extends Component {
                             <Navbar cart={context.cart}/>
                             {this.state.orders ?
                                 <div className="order-history-container">
+                                    <h1>{context.user.name}'s Order History</h1>
                                     {this.state.orders.map((order, index) => {
                                         return (
                                             <div key={index} className="order-container">
-                                                <h2>Order Number {order.cart_id}</h2>
-                                                <div className="order">
-                                                    <div className="order-info">
-                                                        <img src={order.image}/>
-                                                        <h5>{order.title}</h5>
-                                                        <p>{order.price}</p>
-                                                    </div>
-                                                    <div className="order-actions">
-                                                        <button>Refund</button>
-                                                        <button>Review</button>
-                                                        <button>Invoice</button>
-                                                    </div>
+                                                <h1>{this.state.orders[index].cart_id}</h1>
+                                                <div className="history-order">
+                                                {order.map((product, index) => {
+                                                    return (
+                                                        <div key={index} className="product-container">
+                                                            <img src={product.image}/>
+                                                            <div className="history-product-info">
+                                                                <h5>{product.title}</h5>
+                                                                <p>${product.price}</p>
+                                                                <button>Buy Again</button>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+                                                </div>
+                                                <div className="history-action-buttons">
+                                                    <button>Review Product</button>
+                                                    <button>Invoice</button>
+                                                    <button onClick={() => this.setState({displayForm: !this.state.displayForm})}>Request Refund</button>
                                                 </div>
                                             </div>
                                         )

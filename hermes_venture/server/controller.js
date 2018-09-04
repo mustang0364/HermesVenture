@@ -198,8 +198,16 @@ module.exports = {
         })
     },
     orderHistory: (req, res) => {
-        req.app.get('db').get_orderHistory(+req.session.user.id).then(orders => {
-            res.json(orders)
-        }).catch(err => console.log('error with orderHisotry', err))
+        let arr
+        req.app.get('db').get_orderHistory(+req.session.user.id).then(orderNumbers => {
+            arr = orderNumbers
+            let eachPromise = arr.map((e, i, a) => {
+                    return req.app.get('db').get_products_by_orderNumber(e.cart_id)
+
+                })
+                Promise.all(eachPromise).then((resultOfAllPromiseResults) => {
+                    res.json(resultOfAllPromiseResults)
+                })
+        })
     }
 }
