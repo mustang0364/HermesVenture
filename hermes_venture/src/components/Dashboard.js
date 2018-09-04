@@ -8,6 +8,10 @@ export default function Dashboard(props){
     return (
     <div className='dashboard-container'>
         <div id="dashboard"></div>
+
+
+            
+
             <header>
                 <h3>Share your "#hermesVenture"</h3>
                
@@ -22,7 +26,7 @@ export default function Dashboard(props){
             <div className="item-container">
                 {props.products.map((item) => {
                     return (
-                        <div key={item.id} className="item">
+                        <div key={item.id}>
                             <Link onClick={() => props.redirect()} to={`/shopping/${item.category}/${item.id}`}><Item img={item.image} title={item.title}></Item></Link>
                         </div>
                     )

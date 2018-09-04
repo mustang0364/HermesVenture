@@ -10,15 +10,13 @@ import axios from 'axios';
 import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
 import Buttonactive from '../Media/Images/Scenebuttons.png';
 import circle from '../Media/Images/Logo/circle.png';
+import './home.css';
 import WhiteLogo from '../Media/Images/Logo/circleWhiteR.png'
 import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
 import BlueLogo from '../Media/Images/Logo/circleLogoBlueR.png' 
 import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
-import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
-import DashboardArrow from '../Media/Images/dashboard-arrow.png';
-import './home.css';
 // import NameBlack from '../Media/Images/Logo/bootsName.png'
-// import Profile from './Profile';
+import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
 
 import { Link } from 'react-router-dom';
 
@@ -49,7 +47,7 @@ class Home extends Component {
             fpTibet: res.data,
           })
         })
-      }, 1000);
+      }, 500);
     }
     updatePeruFP = () => {
       setTimeout(() => {
@@ -58,7 +56,7 @@ class Home extends Component {
             fpPeru: res.data,
           })
         })
-      }, 1000);
+      }, 500);
     }
     updateMaldivesFP = () => {
       setTimeout(() => {
@@ -67,7 +65,7 @@ class Home extends Component {
             fpMaldives: res.data,
           })
         })
-      }, 1000);
+      }, 500);
     }
     changeSceneOne = () => {
       this.setState({
@@ -95,6 +93,9 @@ class Home extends Component {
     }
   
     render() {
+      console.log(this.state.fpMaldives)
+      console.log(this.state.fpTibet)
+      console.log(this.state.fpPeru)
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
@@ -124,15 +125,21 @@ class Home extends Component {
           ? NameWhite
           : null} alt=""/>
 
+
+
+
+
+
+
          <div className="sidebar">
             <div className="sidebarheader">
-                <h2 className='feat' >FEAT</h2>
+                <h2>FEAT</h2>
                 <div className='featuredsidebar'><h2>URED</h2><hr/></div>
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
                   
                   <div className="fpbg">
-                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneCategory
                         : this.state.currentScene === 'Maldves'
@@ -149,7 +156,7 @@ class Home extends Component {
                         ? this.state.fpPeru.productOneid
                         : this.state.fpTibet.productOneid
                         }`}>
-                      <img className='productimagesb' id='fp1link' src={
+                      <img className='productimagesb' src={
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneimage
                         : this.state.currentScene === 'Maldives'
@@ -261,9 +268,6 @@ class Home extends Component {
             <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
             <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
         </div>
-            <div className="footer">        
-              <a className='dashboardlink'href="#dashboard"><img src={DashboardArrow} alt=""/></a>
-            </div>
         </div>
       );
     }
