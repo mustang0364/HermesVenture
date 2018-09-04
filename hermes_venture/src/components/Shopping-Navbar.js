@@ -46,14 +46,17 @@ class Navbar  extends Component {
                         </h3>
                         <div className="navbar-account">
                             <div onMouseLeave={() => this.showMenu()} className="dropdown-container" >
-                                <h3 onMouseEnter={() => this.showMenu()}>Menu</h3>
+                                <h3 onMouseEnter={() => this.showMenu()} className="shopping-menu">Menu</h3>
                                 <h2><i className="fas fa-shopping-cart">{this.props.cart.length > 0 ? this.props.cart.length : null}</i></h2>
                                 <div style={style} className="dropdown-content">
                                     <ul>
-                                        {context.user ? <Link to="/shopping"><li onClick={() => this.logout()}>Logout</li></Link> : <li><a href={auth0}>Login</a></li>}
-                                        <Link to='/profile'><li>Profile</li></Link>
+                                        {context.user ? <Link to="/shopping"><li onClick={() => this.logout()}>Logout</li></Link> : <li id="login"><a href={auth0}>Login</a></li>}
+                                        <Link to='/profile'><li id="profile">Profile</li></Link>
                                         <Link to="/shopping"><li>Products</li></Link>
-                    <Link to="/shopping/cart">{context.user ? <li onClick={() => context.methods.createOrderNumber(context.user.id)}>Cart</li> : <li>Cart</li>}</Link>
+                                        <Link to="/shopping/cart">
+                                            {context.user ? <li onClick={() => context.methods.createOrderNumber(context.user.id)}>Cart</li> 
+                                            : <li>Cart</li>}
+                                        </Link>
                                     </ul>
                                 </div>
                             </div>
