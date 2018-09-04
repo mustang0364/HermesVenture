@@ -127,6 +127,10 @@ button:focus {outline: 0;}
 	z-index: 5;
 	max-width: 150px;
 	max-height: 120px;
+	transition: ease-in-out .2s;
+}
+.productimagesb:hover {
+	transform: scale(1.10);
 }
 .homelogo {
 	-webkit-animation: rotation 8s infinite linear;

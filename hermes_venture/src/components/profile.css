@@ -8,10 +8,10 @@
     top: 100px;
 }
 .userinfocontainer {
-    min-width: 400px;
+    min-width: 700px;
     padding: 0 20px;
     color: white;
-    min-height: 300px;
+    min-height: 325px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -36,6 +36,15 @@ input {
     color: white;
     border: 2px white solid;
     border-radius: 8px;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+.profilebutton:hover {
+    background-color: orange;
+    color: white;
+    font-size: 13px;
+    transform: scale(1.04);
+    font-weight: 500;
 }
 .profbut {
     background-color: transparent;
@@ -43,9 +52,23 @@ input {
     border: 2px white solid;
     border-radius: 8px;
     margin-left: 7px;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+}
+.profbut:hover {
+    background-color: orange;
+    font-weight: 500;
+    color: white;
+    font-size: 13px;
 }
 .addressline {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
+}
+.addressline:hover {
+    color: orange;
+    transform: skewX(1deg);
+    transform: scale(1.02);
 }

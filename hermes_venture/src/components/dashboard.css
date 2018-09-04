@@ -1,5 +1,5 @@
 .dashboard-container {
-    background-image: url('../Media/background1.jpg');
+    background-image: url('../Media/Images/trees.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 90.8vh;
@@ -14,6 +14,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.dashproducts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border: rgb(150, 250, 250) solid 2px;
 }
 .dash {
     border: 3px solid #717494;

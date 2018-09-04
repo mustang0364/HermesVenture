@@ -34,13 +34,13 @@ class App extends Component {
       
       <div className='appmain'>
       
-      
       {this.state.redirect 
     
       ? <Routes /> 
       
       : <div ><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
       }
+      
         
       </div>
      
