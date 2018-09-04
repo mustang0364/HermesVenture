@@ -108,7 +108,6 @@ export default class ContextProvider extends Component {
         }
     }
     render() {
-        console.log(this.state.user)
         return  <AppContext.Provider value={this.state}>
                     {this.props.children}
                 </AppContext.Provider>

@@ -48,6 +48,7 @@ class Home extends Component {
           this.setState({
             fpTibet: res.data,
           })
+          return res.data.productOneCategory
         })
       }, 1000);
     }
@@ -95,6 +96,7 @@ class Home extends Component {
     }
   
     render() {
+      
       return (
         <div className="Home">
         <div className={this.state.videoOneShown ? 'videoshown' : 'videohidden'}>
