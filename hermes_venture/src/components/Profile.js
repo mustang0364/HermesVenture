@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
 import {AppContext} from './ContextProvider';
+import {Link} from 'react-router-dom';
 import './profile.css';
 
 class Profile extends Component {
@@ -91,7 +92,9 @@ componentDidMount() {
                                 <div className="userinfocontainer">
                                 <h1 className='h1alt'>Welcome</h1>
                                 <h1 className='h1prof'>{this.state.user.name}</h1>
-                                <h1 className='h1prof'>{this.state.user.email}</h1> 
+                                <h1 className='h1prof'>{this.state.user.email}</h1>
+                                <Link to="/profile/orderHistory"><button className='profbut'>Order History</button></Link>
+                                
                                 {this.state.userAddress == ''
                                 ? <div className="needsmoreinfo">
                                     <h1 className='h1alt'>Please add an address to your profile</h1>

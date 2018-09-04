@@ -1,0 +1,55 @@
+
+.order-history-container {
+    background-color: red;
+    padding-top: 150px;
+}
+
+.order-container {
+    background-color: purple;
+}
+
+.order-container h2 {
+    margin-left: 190px;
+    font-size: 24px;
+    padding: 20px;
+}
+.order {
+    margin: 0 auto;
+    width: 900px;
+    background-color: yellow;
+    border-bottom: 5px solid black;
+    margin-bottom: 5px;
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-info {
+    display: flex;
+    align-items: center;
+}
+
+.order-info p {
+    display: block;
+}
+
+.order-info img {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.order-actions {
+    display: flex;
+    flex-direction: column;
+}
+.order-actions button {
+    margin: 5px 0px;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+
+
+
+

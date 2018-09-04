@@ -196,5 +196,10 @@ module.exports = {
             console.log('error', err)
             res.json({message: 'error here'})
         })
+    },
+    orderHistory: (req, res) => {
+        req.app.get('db').get_orderHistory(+req.session.user.id).then(orders => {
+            res.json(orders)
+        }).catch(err => console.log('error with orderHisotry', err))
     }
 }
