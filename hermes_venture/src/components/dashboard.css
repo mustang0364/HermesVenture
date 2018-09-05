@@ -2,12 +2,11 @@
     background-image: url('../Media/Images/trees.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 90.8vh;
+    min-height: calc(90.8vh - 19px);
     color: white;
     margin-top: -21px;
     padding: 50px;
     position: relative;
-    
 }
 .productheader {
     font-size: 50px;
@@ -38,7 +37,13 @@
     color: #717494;
     transition: all .2s ease-in-out;
 }
-
+.blurredbgcont {
+    background-color: rgba(145, 139, 139, 0.747);
+    height: 235px;
+    width: 258px;
+    position: absolute;
+    z-index: -5;
+}
 .dash:hover {
     transform: scale(1.02);
 }
@@ -49,25 +54,6 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 15px; 
     margin-top: 60px;
-}
-.blurcont {
-    position: absolute;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    left: 0;
-    top: 190px;
-}
-.emptyblur {
-    background-image: url('../Media/Images/trees.jpg');
-    background-position: 55% 28%;
-    background-size: 1800px 1080px;
-    background-repeat: no-repeat;
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    width: 94%;
-    height: 245px;
 }
 .item {
     display: flex;

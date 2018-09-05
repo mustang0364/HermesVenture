@@ -3,6 +3,7 @@ import './shopping-navbar.css'
 import {Link} from 'react-router-dom';
 import {AppContext} from './ContextProvider';
 import axios from 'axios';
+import Homeimg from '../Media/Images/Logo/hermeshome.png';
 
 class Navbar  extends Component {
     constructor(props) {
@@ -23,6 +24,11 @@ class Navbar  extends Component {
     logout() {
         axios.post('/logout')
     }
+    handleRedirect = () => {
+        setTimeout(() => {
+            window.location.reload();
+        }, 300);
+    }
 
     render() {
         const auth0 = `https://${process.env.REACT_APP_AUTH0_DOMAIN}/authorize?client_id=${process.env.REACT_APP_AUTH0_CLIENT_ID}&response_type=code&scope=openid%20profile%20email&redirect_uri=${encodeURIComponent(`${window.location.origin}/auth/callback`)}`
@@ -35,6 +41,9 @@ class Navbar  extends Component {
                     return (
                         <header className="navbar-header">
                         <h3 className="navbar-social">
+                            <Link to='/' onClick={() => this.handleRedirect()}>
+                                <img className='homebutton' src={Homeimg} alt="return-home"/>
+                            </Link>  
                             <i className="fab fa-facebook-square"></i>
                             <i className="fab fa-twitter"></i>
                             <a href="https://www.instagram.com/hermes_venture/">
