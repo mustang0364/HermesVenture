@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
