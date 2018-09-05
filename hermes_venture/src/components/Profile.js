@@ -1,8 +1,10 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
 import {AppContext} from './ContextProvider';
 import './profile.css';
+import deleteIcon from '../Media/Images/delete.png';
 
 class Profile extends Component {
     constructor(){
@@ -110,7 +112,9 @@ componentDidMount() {
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
                                     return <div className='addressline' key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
-                                    <button  className='profbut' onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    <button  className='profbut' onClick={() => this.removeAddress(this.state.user.id, addressid)}>
+                                    <img className='deleteicon' src={deleteIcon} alt="delete-button"/>
+                                    </button>
                                     </div>})
                                 : null}
                                 </div>
@@ -119,7 +123,9 @@ componentDidMount() {
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
                                     return <div className='addressline' key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
-                                    <button className='profbut' onClick={() => this.removeAddress(this.state.user.id, addressid)}>Remove Address</button>
+                                    <button className='profbut' onClick={() => this.removeAddress(this.state.user.id, addressid)}>
+                                    <img className='deleteicon' src={deleteIcon} alt="delete-button"/>
+                                    </button>
                                     </div>             
                                 }) : null}
                                 <button className='profilebutton' onClick={() => this.updateAddressShown()}>Add A New Address</button>

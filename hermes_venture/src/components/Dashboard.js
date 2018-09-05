@@ -2,11 +2,13 @@ import React from 'react';
 import Item from './Dashboard-item';
 import {Link} from 'react-router-dom';
 import './dashboard.css';
+import DashboardArrowTop from '../Media/Images/dashboard-arrow-top.png';
 
 
 export default function Dashboard(props){
     return (
     <div className='dashboard-container'>
+            <h1 className='productheader'>Products</h1>
         <div id="dashboard"></div>
 
 
@@ -14,7 +16,6 @@ export default function Dashboard(props){
 
             <header>
                 <h3>Share your "#hermesVenture"</h3>
-               
                 <h3>SHARE THIS STORY:
                     <i className="fab fa-facebook-square"></i>
                     <i className="fab fa-twitter"></i>
@@ -23,7 +24,9 @@ export default function Dashboard(props){
                     </a>
                 </h3>
             </header>
+            <div className="blurcont">
             <div className="emptyblur"></div>
+            </div>
             <div className="item-container">
                 {props.products.map((item) => {
                     return (

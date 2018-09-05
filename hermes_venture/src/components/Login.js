@@ -13,7 +13,7 @@ export default class Login extends Component {
                         <div className="login-container">
                             <Navbar cart={context.cart}/>
                             <div className="login-items">
-                                <h1>Please Login</h1>
+                                <h1>Please Login To View Profile</h1>
                                 <a href={auth0}>Login</a>
                             </div>
                         </div>

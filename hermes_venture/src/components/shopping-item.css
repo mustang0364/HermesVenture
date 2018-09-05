@@ -51,8 +51,9 @@ body {
 .single-item-info button {
     font-size: 20px;
     cursor: pointer;
-    border-radius: 25px;
-    padding: 15px;
+    border-radius: 5px;
+    border: solid grey 2px;
+    padding: 5px 15px;
     margin: 20px 10px;
     background: rgb(68, 72, 75);
     color: white;

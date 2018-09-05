@@ -9,7 +9,13 @@
     position: relative;
     
 }
-
+.productheader {
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Permanent Marker', cursive;
+}
 .dashboard-header {
     display: flex;
     justify-content: space-between;
@@ -20,7 +26,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    border: rgb(150, 250, 250) solid 2px;
+    border: rgb(160, 245, 245) solid 2px;
     z-index: 5;
 }
 .dash {
@@ -44,16 +50,24 @@
     grid-gap: 15px; 
     margin-top: 60px;
 }
-.emptyblur {
+.blurcont {
     position: absolute;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    left: 0;
+    top: 190px;
+}
+.emptyblur {
     background-image: url('../Media/Images/trees.jpg');
-    background-position: 9% 26%;
-    background-size: 1593px 1080px;
-    filter: blur(4px);
-    -webkit-filter: blur(4px);
-    top: 143px;
-    width: 91.5%;
-    height: 237px;
+    background-position: 55% 28%;
+    background-size: 1800px 1080px;
+    background-repeat: no-repeat;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    width: 94%;
+    height: 245px;
 }
 .item {
     display: flex;

@@ -1,6 +1,4 @@
-.login-container {
-    
-}
+
 
 .login-items {
     display: flex;
@@ -11,15 +9,20 @@
     padding-top: 200px;
     margin: 0 auto;
 }
-
+.login-items h1 {
+    font-family: 'Lobster', cursive;
+}
 .login-items h1, .login-items a {
     font-size: 48px;
+    font-weight: 100;
 }
 
 .login-items a {
+    color: white;
     border: 1px solid black;
-    padding: 25px 50px;
+    padding: 10px 30px;
     margin-top: 45px;
-    background: #70A3C0;
+    border-radius: 4px;
+    background: rgb(68, 72, 75);
 }
 
