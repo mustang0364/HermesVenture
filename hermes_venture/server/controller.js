@@ -1,5 +1,10 @@
 require('dotenv').config();
 const stripe = require("stripe")(process.env.SECRET_KEY);
+const nodemailer = require('nodemailer');
+
+function isLoggedin() {
+
+}
 
 module.exports = {
     dashboard: (req, res) => {
@@ -162,6 +167,10 @@ module.exports = {
         }).catch(err => console.log('error with getUser', err))
     },
     getAddress: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         req.app.get('db').get_address(+req.params.id)
         .then(address => {
             res.json(
@@ -176,6 +185,10 @@ module.exports = {
         }).catch(err => console.log('error on Dashboard', err))
     },
     createAddress: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         const { user, streetInput, cityInput, stateInput, zipInput } = req.body;
         req.app.get('db').create_address([
            user.id, streetInput, cityInput, stateInput, zipInput
@@ -187,6 +200,10 @@ module.exports = {
         })
     },
     removeAddress: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         req.params.id = parseInt(req.params.id);
         req.params.addressid = parseInt(req.params.addressid);
         req.app.get('db').remove_address(req.params.id, req.params.addressid)
@@ -196,5 +213,94 @@ module.exports = {
             console.log('error', err)
             res.json({message: 'error here'})
         })
+    },
+    orderHistory: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
+        console.log('hit order history')
+        let arr
+        req.app.get('db').get_orderHistory(+req.session.user.id).then(orderNumbers => {
+            arr = orderNumbers
+            let eachPromise = arr.map((e, i, a) => {
+                    return req.app.get('db').get_products_by_orderNumber(e.cart_id)
+
+                })
+                Promise.all(eachPromise).then((resultOfAllPromiseResults) => {
+                    res.json(resultOfAllPromiseResults)
+                })
+        })
+    },
+    getInvoice: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
+        console.log('hit get invoice')
+        console.log(+req.params.id)
+        req.app.get('db').get_order_invoice(+req.params.id).then(orders => {
+            res.json(orders)
+        }).catch(err => console.log('error on getInvoice', err))
+    },
+    requestRefund: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
+        console.log('Order Email Hit')
+        console.log('order confirmation stuff', req.body)
+        const { orderNumber, name, email, text} = req.body
+        const hermes = 'hermesvent999@gmail.com'
+        const htmlEmail = `
+            <div style="background:#E0E0E0; padding:25px;">
+                <h1 style="padding:25px;margin-bottom:-10px;">Refund Details</h1>
+                <ul style="font-size:24px;list-style:none;">
+                    <li>Order Number: ${orderNumber}</li>
+                    <li>Name: ${name}</li>
+                    <li>Email: ${email}</li>
+                </ul>
+                <h2 style="font-size:24px;">Message:</h2>
+                <p style="padding:25px;font-size:18px;">${text}</p>
+
+                <p>
+                    Your refund request has been received. You will see
+                    a response with instructions on how to send it
+                    within 2 business days.
+                </p>
+                <h2>Sincerely,</h2>
+                <h4>Hermes Venture</h4>
+            </div>
+        `
+        var smtpTransport = nodemailer.createTransport({
+            service: "gmail",
+            port: 25,
+            secure: false,
+            auth: { 
+                user: hermes, // Your gmail address.
+                pass: process.env.EMAIL_PASSWORD
+              
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+          });
+          
+          var mailOptions = {
+            from: hermes, // sender address
+            to:  [email,hermes],// list of receivers
+            subject: 'Refund Request', // Subject line
+            text: text, // plaintext body
+            html: htmlEmail, // html body
+          };
+          
+          smtpTransport.sendMail(mailOptions, function(error, info) {
+            if (error) {
+                console.log('Error sending mail', error)
+            } else {
+              console.log('Message sent successfully! %s sent: %s', info.messageId, info.response);
+            }
+            smtpTransport.close();
+          });
     }
 }

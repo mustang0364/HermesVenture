@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
 import {AppContext} from './ContextProvider';
+import {Link} from 'react-router-dom';
 import './profile.css';
 import deleteIcon from '../Media/Images/delete.png';
 
@@ -129,6 +130,7 @@ componentDidMount() {
                                     </div>             
                                 }) : null}
                                 <button className='profilebutton' onClick={() => this.updateAddressShown()}>Add A New Address</button>
+                                <Link to="/profile/orderhistory"><button className='profilebutton'>Order History</button></Link>
                                 </div>
                                 }
                                 </div>
