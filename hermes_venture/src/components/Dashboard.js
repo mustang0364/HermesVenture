@@ -23,6 +23,7 @@ export default function Dashboard(props){
                     </a>
                 </h3>
             </header>
+            <div className="emptyblur"></div>
             <div className="item-container">
                 {props.products.map((item) => {
                     return (
