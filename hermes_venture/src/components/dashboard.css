@@ -21,6 +21,7 @@
     align-items: center;
     border-radius: 3px;
     border: rgb(150, 250, 250) solid 2px;
+    z-index: 5;
 }
 .dash {
     border: 3px solid #717494;
@@ -38,11 +39,22 @@
 
 .item-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 10px; 
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px; 
     margin-top: 60px;
 }
-
+.emptyblur {
+    position: absolute;
+    background-image: url('../Media/Images/trees.jpg');
+    background-position: 9% 26%;
+    background-size: 1593px 1080px;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    top: 143px;
+    width: 91.5%;
+    height: 237px;
+}
 .item {
     display: flex;
     flex-direction: column;
