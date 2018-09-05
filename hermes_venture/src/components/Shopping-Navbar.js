@@ -22,7 +22,6 @@ class Navbar  extends Component {
 
     logout() {
         axios.post('/logout')
-        
     }
 
     render() {
