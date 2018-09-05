@@ -87,6 +87,9 @@ componentDidMount() {
                     return (
                         <div className="profilemain">
                             <ShoppingNavbar cart={context.cart}/>
+                        <div className="blurbgcont">
+                        <div className="blurbg"></div>
+                        </div>
                                 <div className="userinfo">
                                 <div className="userinfocontainer">
                                 <h1 className='h1alt'>Welcome</h1>
