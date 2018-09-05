@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: -webkit-linear-gradient(rgb(241, 23, 23), rgb(255, 136, 0));
+    background-image: linear-gradient(to right, rgb(7, 102, 7), rgb(25, 216, 25));
 }
 .navbar-account {
     display: flex;
@@ -34,7 +34,7 @@
 }
 
 .dropdown-content ul {
-    background-color: rgba(112,163,192,.7);
+    background-color: rgb(68, 72, 75);
     box-shadow: 1px 1px 4px black;
     color: white;
     text-shadow: 1px 2px 4px black;
