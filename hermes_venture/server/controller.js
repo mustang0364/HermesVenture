@@ -198,6 +198,7 @@ module.exports = {
         })
     },
     orderHistory: (req, res) => {
+        console.log('hit order history')
         let arr
         req.app.get('db').get_orderHistory(+req.session.user.id).then(orderNumbers => {
             arr = orderNumbers
@@ -209,5 +210,12 @@ module.exports = {
                     res.json(resultOfAllPromiseResults)
                 })
         })
+    },
+    getInvoice: (req, res) => {
+        console.log('hit get invoice')
+        console.log(+req.params.id)
+        req.app.get('db').get_order_invoice(+req.params.id).then(orders => {
+            res.json(orders)
+        }).catch(err => console.log('error on getInvoice', err))
     }
 }

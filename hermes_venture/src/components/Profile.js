@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 import ShoppingNavbar from './Shopping-Navbar';
 import axios from 'axios';
@@ -91,10 +90,10 @@ componentDidMount() {
                                 <div className="userinfo">
                                 <div className="userinfocontainer">
                                 <h1 className='h1alt'>Welcome</h1>
-                                <h1 className='h1prof'>{this.state.user.name}</h1>
-                                <h1 className='h1prof'>{this.state.user.email}</h1>
-                                <Link to="/profile/orderHistory"><button className='profbut'>Order History</button></Link>
-                                
+                                <div className="profileheader">
+                                    <h1 className='h1prof'>{this.state.user.name}</h1>
+                                    <h1 className='h1prof'>{this.state.user.email}</h1> 
+                                </div>
                                 {this.state.userAddress == ''
                                 ? <div className="needsmoreinfo">
                                     <h1 className='h1alt'>Please add an address to your profile</h1>
@@ -105,7 +104,7 @@ componentDidMount() {
                                     <div><button className='profilebutton' onClick={() => this.addAddress()}>Add This Address</button></div>
                                 </div>
                                 : this.state.userAddress === '' && this.state.showMessage 
-                                ? <div><h1 className='h1alt'>{this.state.message}</h1>
+                                ? <div className='addresses'><h1 className='h1alt'>{this.state.message}</h1>
                                 {this.state.userAddress ? this.state.userAddress.map(e => {
                                     let addressid = e.addressid;
                                     return <div className='addressline' key={addressid}>{e.street + ' ' + e.city + ', ' + e.state + ' ' + e.zip}
@@ -122,6 +121,7 @@ componentDidMount() {
                                     </div>             
                                 }) : null}
                                 <button className='profilebutton' onClick={() => this.updateAddressShown()}>Add A New Address</button>
+                                <Link to="/profile/orderhistory"><button className='profilebutton'>Order History</button></Link>
                                 </div>
                                 }
                                 </div>

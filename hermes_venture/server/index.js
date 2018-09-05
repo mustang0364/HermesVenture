@@ -67,6 +67,7 @@ app.get('/getUser', controller.getUser);
 app.get('/dashboard/all', controller.shoppingDash);
 app.delete('/removeaddress/:id/:addressid', controller.removeAddress);
 app.get('/orderHistory', controller.orderHistory)
+app.get('/invoice/:id', controller.getInvoice);
 app.post('/logout', (req, res) => {
     console.log('hit logout')
     req.session.destroy();

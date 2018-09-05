@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Navbar from './Shopping-Navbar';
 import {AppContext} from './ContextProvider';
+import {Link} from 'react-router-dom';
 import './orderHistory.css'
 export default class OrderHistory extends Component {
     constructor() {
@@ -33,6 +34,7 @@ export default class OrderHistory extends Component {
                                 <div className="order-history-container">
                                     <h1>{context.user.name}'s Order History</h1>
                                     {this.state.orders.map((order, index) => {
+                                        console.log(order)
                                         return (
                                             <div key={index} className="order-container">
                                                 <h1>{this.state.orders[index].cart_id}</h1>
@@ -44,7 +46,7 @@ export default class OrderHistory extends Component {
                                                             <div className="history-product-info">
                                                                 <h5>{product.title}</h5>
                                                                 <p>${product.price}</p>
-                                                                <button>Buy Again</button>
+                                                                <Link to={`/shopping/${product.category}/${product.id}`}><button>Buy Again</button></Link>
                                                             </div>
                                                         </div>
                                                     )
@@ -52,8 +54,8 @@ export default class OrderHistory extends Component {
                                                 </div>
                                                 <div className="history-action-buttons">
                                                     <button>Review Product</button>
-                                                    <button>Invoice</button>
-                                                    <button onClick={() => this.setState({displayForm: !this.state.displayForm})}>Request Refund</button>
+                                                    <Link to={`/profile/orderhistory/invoice/${order[0].cart_id}`}><button>Invoice</button></Link>
+                                                    <Link to={`/refund/${order[0].cart_id}`}><button>Request Refund</button></Link>
                                                 </div>
                                             </div>
                                         )
