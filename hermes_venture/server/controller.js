@@ -2,6 +2,10 @@ require('dotenv').config();
 const stripe = require("stripe")(process.env.SECRET_KEY);
 const nodemailer = require('nodemailer');
 
+function isLoggedin() {
+
+}
+
 module.exports = {
     dashboard: (req, res) => {
         req.app.get('db').get_dashboard_products().then(products => {
@@ -163,6 +167,10 @@ module.exports = {
         }).catch(err => console.log('error with getUser', err))
     },
     getAddress: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         req.app.get('db').get_address(+req.params.id)
         .then(address => {
             res.json(
@@ -177,6 +185,10 @@ module.exports = {
         }).catch(err => console.log('error on Dashboard', err))
     },
     createAddress: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         const { user, streetInput, cityInput, stateInput, zipInput } = req.body;
         req.app.get('db').create_address([
            user.id, streetInput, cityInput, stateInput, zipInput
@@ -188,6 +200,10 @@ module.exports = {
         })
     },
     removeAddress: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         req.params.id = parseInt(req.params.id);
         req.params.addressid = parseInt(req.params.addressid);
         req.app.get('db').remove_address(req.params.id, req.params.addressid)
@@ -199,6 +215,10 @@ module.exports = {
         })
     },
     orderHistory: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         console.log('hit order history')
         let arr
         req.app.get('db').get_orderHistory(+req.session.user.id).then(orderNumbers => {
@@ -213,6 +233,10 @@ module.exports = {
         })
     },
     getInvoice: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         console.log('hit get invoice')
         console.log(+req.params.id)
         req.app.get('db').get_order_invoice(+req.params.id).then(orders => {
@@ -220,6 +244,10 @@ module.exports = {
         }).catch(err => console.log('error on getInvoice', err))
     },
     requestRefund: (req, res) => {
+        if(!req.session.user) {
+            res.send("Not Authorized")
+            return;
+        }
         console.log('Order Email Hit')
         console.log('order confirmation stuff', req.body)
         const { orderNumber, name, email, text} = req.body

@@ -53,6 +53,7 @@
 }
 
 .history-action-buttons button {
+    cursor: pointer;
     width: 180px;
     background-color: lightgray;
     font-size: 18px;

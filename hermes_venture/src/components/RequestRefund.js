@@ -47,7 +47,8 @@ class RequestRefund extends Component {
                             <h1 className="refund-header">Refund Form</h1>
                             <div className="refund-body">
                                 {this.state.order.length > 0 ?
-                                    <div className="refund-container">                                
+                                    <div className="refund-container">   
+                                    <Link to="/profile/orderhistory"><button className="backbutton">Back</button></Link>                             
                                         {this.state.order.map((order, index) => {
                                             return (
                                                 <div className="refund-order-container" key={index}>
