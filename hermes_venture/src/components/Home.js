@@ -129,6 +129,7 @@ class Home extends Component {
             <div className="sidebarheader">
                 <h2 className='feat' >FEAT</h2>
                 <div className='featuredsidebar'><h2>URED</h2><hr/></div>
+               
                 <h4>In This Scene</h4>
                 <div className="bottomsection">
                   
