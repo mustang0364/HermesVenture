@@ -24,9 +24,7 @@ export default function Dashboard(props){
                     </a>
                 </h3>
             </header>
-            <div className="blurcont">
-            <div className="emptyblur"></div>
-            </div>
+        
             <div className="item-container">
                 {props.products.map((item) => {
                     return (

@@ -130,7 +130,9 @@ componentDidMount() {
                                     </div>             
                                 }) : null}
                                 <button className='profilebutton' onClick={() => this.updateAddressShown()}>Add A New Address</button>
+                                <div className="orderhistory">
                                 <Link to="/profile/orderhistory"><button className='profilebutton'>Order History</button></Link>
+                                </div>
                                 </div>
                                 }
                                 </div>

@@ -99,6 +99,7 @@ input {
     align-items: center;
     transition: 0.5s;
     justify-content: space-between;
+    margin: 0 25px;
 }
 .addressline:hover {
     color: rgb(25, 216, 25);

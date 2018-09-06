@@ -13,12 +13,21 @@
 .navbar-social i, .navbar-account i {
     padding: 10px;
 }
-
+.navbar-social {
+    height: 100%;
+    margin-left: 25px;
+}
 .navbar-account, .navbar-social {
     padding: 10px 40px;
     font-size: 24px;
 }
-
+.homebutton {
+    height: 55px;
+    width: auto;
+    left: 10px;
+    top: 5px;
+    position: absolute;
+}
 .dropdown-container {
     position: absolute;
     display: flex; 
