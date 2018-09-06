@@ -50,7 +50,7 @@
     background-color: white;
     padding: 20px;
     overflow: scroll;
-    height: 620px
+    height: 620px;
 }
 
 .products {
@@ -67,9 +67,46 @@
     border: 1px solid black;
     box-shadow: 1px 2px 4px black;
     height: 200px;
+    max-width: 80px;
 }
 
 .product-info img {
     max-height: 200px;
     max-width: 200px;
+}
+
+@media (max-width: 400px) {
+
+    .content-container {
+        max-width: 500px;
+        padding-top: 250px;
+    }
+    .left-nav-pane {
+        min-width: 120px;
+    }
+    .peru-header, .maldives-header, .tibet-header, .get-all {
+        font-size: 25px;
+    }
+    .peru-list, .maldives-list, .tibet-list {
+        font-size: 18px;
+    }
+    .products-container {
+        padding: 10px;
+        overflow: scroll;
+        height: 620px
+    }
+    .products {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-info {
+        margin: 5px;
+        padding: 10px;
+        height: 160px;
+        text-align: center;
+    }
+    .product-info img {
+        max-height: 100px;
+        max-width: 100px;
+    }
 }

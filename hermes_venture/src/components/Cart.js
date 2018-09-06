@@ -62,7 +62,7 @@ class Cart extends Component {
                                                 <p id="item-price">${item.price}</p>
                                                 <p id="item-quantity">{item.quantity}</p>
                                                 <p onClick={() => context.methods.deleteFromCart(item.id)}><i className="far fa-trash-alt"></i></p>
-                                                <input type="number" placeholder="Update Quantity?" onChange={(e) => context.methods.handleQuantity(e.target.value)}/>
+                                                <input type="number" type="tel" placeholder="Update Quantity?" onChange={(e) => context.methods.handleQuantity(e.target.value)}/>
                                                 <p><i className="fas fa-check" onClick={() => context.methods.updateQuantity(item)}></i></p>
                                             </div>
                                         )

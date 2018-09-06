@@ -49,7 +49,13 @@ class Item extends Component {
                                                 <h4>Free Shipping</h4>
                                                 <h3>Quantity <input type="number" type="tel" onChange={(e) => context.methods.handleQuantity(e.target.value)} value={context.quantity}/></h3>
                                                 <p><button onClick={() => context.methods.addToCart(product)}>Add To Cart</button></p>
-                                                <Link to="/shopping/cart"><p><button onClick={() => context.methods.createOrderNumber(context.user.id)}>Checkout</button></p></Link>
+                                                {context.user ? 
+                                                <Link to="/shopping/cart">
+                                                    <p><button onClick={() => context.methods.createOrderNumber(context.user.id)}>Checkout</button></p>
+                                                </Link>
+                                                :<Link to="/login">
+                                                <p><button>Checkout</button></p>
+                                            </Link>}
                                              </div>
                                         </div>
                                         <div className="single-item-description">

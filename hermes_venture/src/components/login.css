@@ -26,3 +26,15 @@
     background: rgb(68, 72, 75);
 }
 
+@media (max-width: 400px) {
+    .login-items {
+        width: 400px;
+        padding-top: 200px;
+    }
+    .login-items h1, .login-items a {
+        text-align: center;
+        font-size: 38px;
+        font-weight: 100;
+    }
+}
+

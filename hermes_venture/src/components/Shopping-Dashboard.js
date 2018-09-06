@@ -129,7 +129,7 @@ class Shopping extends Component {
                                                                 <Link to={`/shopping/${product.category}/${product.id}`} key={product.id}><div className="product-info" >
                                                                     <img src={product.image}/>
                                                                     <h4>{product.title}</h4>
-                                                                    <p>{product.price}</p>
+                                                                    <p>${product.price}</p>
                                                                 </div></Link>
                                                             )
                                                         })}
