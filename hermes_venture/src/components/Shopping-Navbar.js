@@ -44,8 +44,8 @@ class Navbar  extends Component {
                             <i className="fab fa-pinterest"></i>
                         </h3>
                         <div className="navbar-account">
-                            <div onMouseLeave={() => this.showMenu()} className="dropdown-container" >
-                                <h3 onMouseEnter={() => this.showMenu()} className="shopping-menu">Menu</h3>
+                            <div onMouseLeave={() => this.showMenu()} className="dropdown-container" touch>
+                                <h3 onMouseEnter={() => this.showMenu()} onClick={() => this.showMenu()} className="shopping-menu">Menu</h3>
                                 <h2><i className="fas fa-shopping-cart">{this.props.cart.length > 0 ? this.props.cart.length : null}</i></h2>
                                 <div style={style} className="dropdown-content">
                                     <ul>
