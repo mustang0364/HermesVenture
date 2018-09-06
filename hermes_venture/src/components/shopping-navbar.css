@@ -58,3 +58,13 @@
 .dropdown-content li {
     padding: 10px 0;
 }
+
+@media (max-width: 400px) {
+    .navbar-header {
+        max-width: 400px;
+    }
+    .navbar-account, .navbar-social {
+        padding: 10px 10px;
+        font-size: 20px;
+    }
+}

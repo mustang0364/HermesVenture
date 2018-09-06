@@ -47,7 +47,7 @@ class Item extends Component {
                                                 <h1>{product.title}</h1>
                                                 <h2>${product.price}</h2>
                                                 <h4>Free Shipping</h4>
-                                                <h3>Quantity <input type="number" onChange={(e) => context.methods.handleQuantity(e.target.value)} value={context.quantity}/></h3>
+                                                <h3>Quantity <input type="number" type="tel" onChange={(e) => context.methods.handleQuantity(e.target.value)} value={context.quantity}/></h3>
                                                 <p><button onClick={() => context.methods.addToCart(product)}>Add To Cart</button></p>
                                                 <Link to="/shopping/cart"><p><button onClick={() => context.methods.createOrderNumber(context.user.id)}>Checkout</button></p></Link>
                                              </div>
@@ -56,7 +56,7 @@ class Item extends Component {
                                             <h1>{product.title}</h1>
                                             <p>{product.description}</p>
                                         </div>
-                                        <div>
+                                        <div className="related-container">
                                         <h2 className="related-header">Related Products</h2>
                                             {related ?
                                                 <div  className="related-img-container">
