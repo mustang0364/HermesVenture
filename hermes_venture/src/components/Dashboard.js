@@ -29,7 +29,6 @@ export default function Dashboard(props){
                 {props.products.map((item) => {
                     return (
                         <div className='dashproducts' key={item.id}>
-                         <div className="blurredbgcont"></div>
                             <Link onClick={() => props.redirect()} to={`/shopping/${item.category}/${item.id}`}><Item img={item.image} title={item.title}></Item></Link>
                         </div>
                     )

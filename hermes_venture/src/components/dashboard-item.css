@@ -10,12 +10,16 @@
     text-shadow: 1px 2px 3px black;
     font-size: 24px;
     font-family: 'Kaushan Script', cursive;
-    margin: 20px;
     font-weight: 100;
     text-align: center;
 }
 .item {
-    padding: 20px 0;
+    position: relative;
+    height: 195px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 .item img:hover {
     transform: scale(1.03);
