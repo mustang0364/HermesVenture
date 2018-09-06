@@ -1,6 +1,4 @@
-body {
-    background-color: lightgray;
-}
+
 
 .single-item-container {
     padding-top: 110px;
@@ -51,10 +49,11 @@ body {
 .single-item-info button {
     font-size: 20px;
     cursor: pointer;
-    border-radius: 25px;
-    padding: 15px;
+    border-radius: 5px;
+    border: solid grey 2px;
+    padding: 5px 15px;
     margin: 20px 10px;
-    background: #70A3C0;
+    background: rgb(68, 72, 75);
     color: white;
 
 }
@@ -99,4 +98,55 @@ body {
     cursor: pointer;
 }
 
+@media (max-width: 400px) {
+    .single-item-container {
+        padding-top: 120px;
+        width: 350px;
+    }
+    .single-item-img img {
+        max-height: 200px;
+    }
 
+    .single-item-info-container {
+        padding: 0;
+    }
+    .single-item-info h1, .single-item-info h2 {
+        font-size: 24px;
+        padding: 10px;
+    }
+    .single-item-info h3 {
+        font-size: 20px;
+        padding: 0px;
+    }
+    .single-item-info button {
+        font-size: 20px;
+        padding: 0px;
+        margin: 10px;
+    
+    }
+    .single-item-description {
+        text-align: center;
+        width: 325px;
+        padding: 0px;
+        margin: 0 auto;
+    }
+    .single-item-description h1 {
+        font-size: 24px;
+        padding: 10px;
+    }
+    .related-container {
+        text-align: center;
+    }
+    .related-header {
+        font-size: 24px;
+        padding: 10px;
+    }
+    .related-img-container {
+        width: 325px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .img-container {
+        min-width: 100px;
+    }
+
+}
