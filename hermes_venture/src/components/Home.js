@@ -17,8 +17,7 @@ import NameWhite from '../Media/Images/Logo/bootsNameWhite.png'
 import NameBlue from '../Media/Images/Logo/bootsNameBlue.png'
 import DashboardArrow from '../Media/Images/dashboard-arrow.png';
 import './home.css';
-// import NameBlack from '../Media/Images/Logo/bootsName.png'
-// import Profile from './Profile';
+
 
 import { Link } from 'react-router-dom';
 
