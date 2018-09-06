@@ -39,31 +39,35 @@ export default class ContextProvider extends Component {
                     })
                 },
                 handleQuantity: (value) => {
-                    if(value > 0) {
+                    // if(value > 0) {
                         this.setState({quantity: value})
-                    } else {
-                        alert('Quantity must be greater than zero')
-                        this.setState({quantity: 1})
-                    }
+                    // } else {
+                    //     alert('Quantity must be greater than zero')
+                    //     this.setState({quantity: 1})
+                    // }
                 },
                 updateQuantity: (item) => {
-                    let updateObj = {
-                        id: item.id,
-                        title: item.title,
-                        category: item.category,
-                        price: item.price,
-                        image: item.image,
-                        description: item.description,
-                        quantity: +this.state.quantity
-                    }
-                    console.log('hit update', item.id)
-                    let tempCart = [...this.state.cart]
-                    for(let i = 0; i < tempCart.length; i++) {
-                        if(tempCart[i].id === item.id) {
-                            tempCart.splice(i,1)
-                            tempCart.push(updateObj)
-                            this.setState({cart: tempCart})
+                    if(this.state.value > 0) {
+                        let updateObj = {
+                            id: item.id,
+                            title: item.title,
+                            category: item.category,
+                            price: item.price,
+                            image: item.image,
+                            description: item.description,
+                            quantity: +this.state.quantity
                         }
+                        console.log('hit update', item.id)
+                        let tempCart = [...this.state.cart]
+                        for(let i = 0; i < tempCart.length; i++) {
+                            if(tempCart[i].id === item.id) {
+                                tempCart.splice(i,1)
+                                tempCart.push(updateObj)
+                                this.setState({cart: tempCart})
+                            }
+                        }
+                    } else {
+                        alert('Quantity must be greater than zero')
                     }
                 },
                 handleShipToAddress: (state) => {
