@@ -33,7 +33,7 @@ export default class ContextProvider extends Component {
                     this.setState((prevState) => ({cart: prevState.cart.concat(newObj)}))
                 },
                 createOrderNumber: (id) => {
-                    axios.post(`/orderNumber/${id}`).then(res => {
+                    axios.post(`/api/orderNumber/${id}`).then(res => {
                         console.log('order number', res.data[0].id)
                         this.setState({orderNumber: res.data[0].id})
                     })
@@ -97,7 +97,7 @@ export default class ContextProvider extends Component {
         if(cart) {
             this.setState({cart})
         }
-        axios.get('/getUser').then(res => {
+        axios.get('/api/getUser').then(res => {
             if(res.data !== 'Not Authorized') {
                 this.setState({
                     user: res.data

@@ -21,16 +21,16 @@ class Cart extends Component {
         }
     }
     componentDidMount() {
-        axios.get('/getUser').then(res => {
+        axios.get('/api/getUser').then(res => {
             if(res.data !== 'Not Authorized') {
-                axios.get(`/getaddress/${res.data.id}`).then(response => {
+                axios.get(`/api/getaddress/${res.data.id}`).then(response => {
                     this.setState({
                         user: res.data,
                         addresses: response.data
                     })
                 })
             } else {
-                this.props.history.push('/login')
+                this.props.history.push('/api/login')
             }
         })
     }
@@ -47,17 +47,17 @@ class Cart extends Component {
         })
     }
     addAddress = () => {
-        axios.post('/createaddress', {...this.state}).then( res => {
-            axios.get('/getUser').then(res => {
+        axios.post('/api/createaddress', {...this.state}).then( res => {
+            axios.get('/api/getUser').then(res => {
                 if(res.data !== 'Not Authorized') {
-                    axios.get(`/getaddress/${res.data.id}`).then(response => {
+                    axios.get(`/api/getaddress/${res.data.id}`).then(response => {
                         this.setState({
                             user: res.data,
                             addresses: response.data
                         })
                     })
                 } else {
-                    this.props.history.push('/login')
+                    this.props.history.push('/api/login')
                 }
             })
         })
@@ -159,10 +159,10 @@ const Checkout = props => {
     const fromUSDToCent = amount => amount * 100;
 
     const successPayment = data => {
-        axios.post('/createOrder', orderInfo).then( () => {
+        axios.post('/api/createOrder', orderInfo).then( () => {
             props.emptyCart();
             sessionStorage.clear();
-            props.forward('/shopping')
+            props.forward('/api/shopping')
         }
             
         )

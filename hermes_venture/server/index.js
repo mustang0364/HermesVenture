@@ -1,3 +1,4 @@
+const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
 const massive = require('massive');
@@ -6,7 +7,9 @@ const session = require('express-session');
 const axios = require('axios');
 require('dotenv').config();
 const app = express();
-app.use( express.static( `${__dirname}/../build` ) );
+if(process.env.NODE_ENV === 'production') {
+    app.use( express.static( `${__dirname}/../build` ) );
+}
 app.use(bodyParser.json());
 
 //massive
@@ -22,7 +25,7 @@ app.use(session({
   resave:false,
 }))
 
-app.use(express.static(`${__dirname}/../build`))
+
 
 
     
@@ -50,28 +53,28 @@ app.use(express.static(`${__dirname}/../build`))
 
 // Routes
 
-app.get('/dashboard', controller.dashboard);
-app.post('/createaddress', controller.createAddress);
-app.get('/shopping/:category/:id', controller.getSingleProduct);
-app.get('/getaddress/:id', controller.getAddress);
-app.get('/fptibet', controller.getFPTibet);
-app.get('/fpperu', controller.getFPPeru);
-app.get('/fpmaldives', controller.getFPMaldives);
-app.post('/orderNumber/:id', controller.createOrderNumber);
-app.post('/charge', controller.stripe);
-app.post('/createOrder', controller.createOrder);
-app.get('/sort/products/:country', controller.sortCountry);
-app.get('/sort/products/:country/:gender', controller.sortProducts);
-app.get('/getUser', controller.getUser);
-app.get('/dashboard/all', controller.shoppingDash);
-app.delete('/removeaddress/:id/:addressid', controller.removeAddress);
-app.get('/orderHistory', controller.orderHistory)
-app.get('/invoice/:id', controller.getInvoice);
-app.post('/refundRequest', controller.requestRefund);
-app.post('/logout', (req, res) => {
+app.get('/api/dashboard', controller.dashboard);
+app.post('/api/createaddress', controller.createAddress);
+app.get('/api/shopping/:category/:id', controller.getSingleProduct);
+app.get('/api/getaddress/:id', controller.getAddress);
+app.get('/api/fptibet', controller.getFPTibet);
+app.get('/api/fpperu', controller.getFPPeru);
+app.get('/api/fpmaldives', controller.getFPMaldives);
+app.post('/api/orderNumber/:id', controller.createOrderNumber);
+app.post('/api/charge', controller.stripe);
+app.post('/api/createOrder', controller.createOrder);
+app.get('/api/sort/products/:country', controller.sortCountry);
+app.get('/api/sort/products/:country/:gender', controller.sortProducts);
+app.get('/api/getUser', controller.getUser);
+app.get('/api/dashboard/all', controller.shoppingDash);
+app.delete('/api/removeaddress/:id/:addressid', controller.removeAddress);
+app.get('/api/orderHistory', controller.orderHistory)
+app.get('/api/invoice/:id', controller.getInvoice);
+app.post('/api/refundRequest', controller.requestRefund);
+app.post('/api/logout', (req, res) => {
     console.log('hit logout')
     req.session.destroy();
-    res.redirect('/')
+    res.redirect('/api')
 })
 
 
@@ -94,6 +97,7 @@ app.get('/auth/callback', (req, res) => {
   function tradeAccessTokenForUserInfo(response) {
 
       return axios.get(`https://${process.env.REACT_APP_AUTH0_DOMAIN}/userinfo/?access_token=${response.data.access_token}`)
+      
   }
 
   function storeUserInfoInDatabase(response) {
@@ -102,7 +106,7 @@ app.get('/auth/callback', (req, res) => {
           if(users.length) {
 
               req.session.user = users[0]
-              res.redirect('/')
+              res.redirect('/api')
           } else {
               const newUser = {
                   auth0id: response.data.sub,
@@ -112,27 +116,27 @@ app.get('/auth/callback', (req, res) => {
                   console.log(newUser)
               return req.app.get('db').create_user(newUser).then(newUsers => {
                   req.session.user = newUsers[0]
-                  res.redirect('/')
-              })
-          }
-      })
-  }
-
-  tradeCodeForAccessToken()
-  .then(tradeAccessTokenForUserInfo)
-  .then(storeUserInfoInDatabase)
-  .catch(err => {
-      console.log('Error trade code for access token', err)
-      res.status(500)
-  })
+                  res.redirect('/api')
+                })
+            }
+        })
+    }
+    
+    tradeCodeForAccessToken()
+    .then(tradeAccessTokenForUserInfo)
+    .then(storeUserInfoInDatabase)
+    .catch(err => {
+        console.log('Error trade code for access token', err)
+        res.status(500)
+    })
 })
 
-const path = require('path')
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-})
 
- 
+if(process.env.NODE_ENV === 'production') {
+    app.get('*', (req, res)=>{
+      res.sendFile(path.join(__dirname, '../build/index.html'));
+    })
+}
 
 
     //port

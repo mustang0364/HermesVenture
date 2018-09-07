@@ -2,7 +2,6 @@ import React from 'react';
 import Item from './Dashboard-item';
 import {Link} from 'react-router-dom';
 import './dashboard.css';
-import DashboardArrowTop from '../Media/Images/dashboard-arrow-top.png';
 
 
 export default function Dashboard(props){

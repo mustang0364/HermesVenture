@@ -23,12 +23,12 @@ class Shopping extends Component {
     }
 
     componentDidMount() {
-        axios.get('/dashboard/all').then(res => {
+        axios.get('/api/dashboard/all').then(res => {
             this.setState({products: res.data})
         })
     }
     getAllProducts() {
-        axios.get('/dashboard').then(res => {
+        axios.get('/api/dashboard').then(res => {
             this.setState({products: res.data})
         })
     }
@@ -64,12 +64,12 @@ class Shopping extends Component {
     }
 
     sort(country, gender) {
-        axios.get(`sort/products/${country}/${gender}`).then(res => {
+        axios.get(`/api/sort/products/${country}/${gender}`).then(res => {
             this.setState({products: res.data})
         })
     }
     sortCountry(country) {
-        axios.get(`sort/products/${country}`).then(res => {
+        axios.get(`/api/sort/products/${country}`).then(res => {
             this.setState({products: res.data})
         })
     }
@@ -126,7 +126,7 @@ class Shopping extends Component {
                                                     <div className="products">
                                                         {this.state.products.map((product) => {
                                                             return (
-                                                                <Link to={`/shopping/${product.category}/${product.id}`} key={product.id}><div className="product-info" >
+                                                                <Link to={`/api/shopping/${product.category}/${product.id}`} key={product.id}><div className="product-info" >
                                                                     <img src={product.image}/>
                                                                     <h4>{product.title}</h4>
                                                                     <p>${product.price}</p>

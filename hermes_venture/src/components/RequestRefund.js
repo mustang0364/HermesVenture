@@ -20,7 +20,7 @@ class RequestRefund extends Component {
 
     componentDidMount() {
         console.log('hit request refund')
-        axios.get(`/invoice/${this.props.match.params.id}`).then(res => {
+        axios.get(`/api/invoice/${this.props.match.params.id}`).then(res => {
             this.setState({
                 order: res.data,
                 orderNumber: this.props.match.params.id
@@ -35,7 +35,7 @@ class RequestRefund extends Component {
     }
 
     refundRequest() {
-        axios.post('/refundRequest', {...this.state})
+        axios.post('/api/refundRequest', {...this.state})
     }
     render() {
         console.log(this.state)
@@ -49,7 +49,7 @@ class RequestRefund extends Component {
                             <div className="refund-body">
                                 {this.state.order.length > 0 ?
                                     <div className="refund-container">   
-                                    <Link to="/profile/orderhistory"><button className="backbutton">Back</button></Link>                             
+                                    <Link to="/api/profile/orderhistory"><button className="backbutton">Back</button></Link>                             
                                         {this.state.order.map((order, index) => {
                                             return (
                                                 <div className="refund-order-container" key={index}>
