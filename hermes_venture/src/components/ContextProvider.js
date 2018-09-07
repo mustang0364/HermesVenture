@@ -47,7 +47,8 @@ export default class ContextProvider extends Component {
                     // }
                 },
                 updateQuantity: (item) => {
-                    if(this.state.value > 0) {
+                    console.log('item',item)
+                    if(+this.state.quantity > 0 && +this.state.quantity < 5) {
                         let updateObj = {
                             id: item.id,
                             title: item.title,
@@ -66,6 +67,8 @@ export default class ContextProvider extends Component {
                                 this.setState({cart: tempCart})
                             }
                         }
+                    } else if(+this.state.quantity >= 5) {
+                        alert('If you wish to purchase more than 4, please contact us via email')
                     } else {
                         alert('Quantity must be greater than zero')
                     }
@@ -112,6 +115,7 @@ export default class ContextProvider extends Component {
         }
     }
     render() {
+        console.log(this.state.quantity)
         return  <AppContext.Provider value={this.state}>
                     {this.props.children}
                 </AppContext.Provider>
