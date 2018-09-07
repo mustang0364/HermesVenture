@@ -113,7 +113,7 @@ class Cart extends Component {
                                             <input onChange={(e) => this.handleInputs('cityInput', e.target.value)} placeholder='Enter City'/>
                                             <input onChange={(e) => this.handleInputs('stateInput', e.target.value)} placeholder='Enter State EX: AZ' maxLength="2"/>
                                             <input onChange={(e) => this.handleInputs('zipInput', e.target.value)} placeholder='Enter Zip'/>
-                                            <button className='profilebutton' onClick={() => this.addAddress()}>Add This Address</button>
+                                            <button onClick={() => this.addAddress()}>Add This Address</button>
                                         </div>}
                                     {this.state.shipToAddress ?
                                         <h4>Ship To Address: {this.state.shipToAddress[1]}</h4>
