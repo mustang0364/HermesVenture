@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import {AppContext} from './ContextProvider';
 import axios from 'axios';
 import Homeimg from '../Media/Images/Logo/hermeshome.png';
+import Menu from '../Media/Images/menu.png';
 
 class Navbar  extends Component {
     constructor(props) {
@@ -54,7 +55,9 @@ class Navbar  extends Component {
                         </h3>
                         <div className="navbar-account">
                             <div onMouseLeave={() => this.showMenu()} className="dropdown-container" touch>
-                                <h3 onMouseEnter={() => this.showMenu()} onClick={() => this.showMenu()} className="shopping-menu">Menu</h3>
+                                <h3 onClick={() => this.showMenu()} className="shopping-menu">
+                                    <img className='hambur' src={Menu} alt="hamburger"/>
+                                </h3>
                                 <h2><i className="fas fa-shopping-cart">{this.props.cart.length > 0 ? this.props.cart.length : null}</i></h2>
                                 <div style={style} className="dropdown-content">
                                     <ul>

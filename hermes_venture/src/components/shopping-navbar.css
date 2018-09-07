@@ -28,6 +28,10 @@
     top: 5px;
     position: absolute;
 }
+.hambur {
+    cursor: pointer;
+    margin-top: 3px;
+}
 .dropdown-container {
     position: absolute;
     display: flex; 
