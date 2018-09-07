@@ -104,7 +104,7 @@ componentDidMount() {
                                     <h1 className='h1alt'>Please add an address to your profile</h1>
                                     <div><input onChange={(e) => this.handleInput('streetInput', e.target.value)} placeholder='Enter Street'/></div>
                                     <div><input onChange={(e) => this.handleInput('cityInput', e.target.value)} placeholder='Enter City'/></div>
-                                    <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State'/></div>
+                                    <div><input onChange={(e) => this.handleInput('stateInput', e.target.value)} placeholder='Enter State ex: AZ' maxLength="2"/></div>
                                     <div><input onChange={(e) => this.handleInput('zipInput', e.target.value)} placeholder='Enter Zip'/></div>
                                     <div><button className='profilebutton' onClick={() => this.addAddress()}>Add This Address</button></div>
                                 </div>
