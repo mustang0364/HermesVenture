@@ -4,11 +4,16 @@ import BackgroundVideoOne from '../Media/Videos/Snow.mp4'
 import BackgroundVideoTwo from '../Media/Videos/Beach.mp4'
 import BackgroundVideoThree from '../Media/Videos/Rainforest.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
-import TopArrow from '../Media/Images/arrowtop.png';
-import BottomArrow from '../Media/Images/arrowbottom.png';
+// import TopArrow from '../Media/Images/arrowtop.png';
+// import BottomArrow from '../Media/Images/arrowbottom.png';
 import axios from 'axios';
-import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
-import Buttonactive from '../Media/Images/Scenebuttons.png';
+// import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
+// import Buttonactive from '../Media/Images/Scenebuttons.png';
+// import beachC from '../Media/Images/beachC.jpg'
+import mountainsB from '../Media/Images/mountainsB.png'
+import mountainR from '../Media/Images/mountainR.png'
+import snowF from '../Media/Images/snowF.png'
+import beachS from '../Media/Images/beachS.png'
 import circle from '../Media/Images/Logo/circle.png';
 import WhiteLogo from '../Media/Images/Logo/circleWhiteR.png'
 import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
@@ -256,12 +261,12 @@ class Home extends Component {
         </div>
         
         <div className="buttonsection">
-            <img className='arrows' src={TopArrow} alt="arrowtop"/>
-            <button onClick={() => this.changeSceneOne()}><img alt='' className={this.state.videoOneShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoOneShown === true ? Buttonactive : ButtonImage} />
+            {/* <img className='arrows' src={TopArrow} alt="arrowtop"/> */}
+            <button onClick={() => this.changeSceneOne()}><img alt='' className={this.state.videoOneShown === true ? 'snowF' : 'snowF'} src={this.state.videoOneShown === true ? snowF : snowF} />
             </button>
-            <button onClick={() => this.changeSceneTwo()}><img alt='' className={this.state.videoTwoShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoTwoShown === true ? Buttonactive : ButtonImage} /></button>
-            <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
-            <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
+            <button onClick={() => this.changeSceneTwo()}><img alt='' className={this.state.videoTwoShown === true ? 'beachS' : 'beachS'} src={this.state.videoTwoShown === true ? beachS : beachS} /></button>
+            <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'mountainR' : 'mountainR'} src={this.state.videoThreeShown === true ? mountainR : mountainR} /></button>
+            {/* <img className='arrows' src={BottomArrow} alt="arrowbottom"/> */}
         </div>
             <div className="footer">        
               <a className='dashboardlink'href="#dashboard"><img src={DashboardArrow} alt=""/></a>
