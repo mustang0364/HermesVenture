@@ -12,16 +12,17 @@ import RequestRefund from './components/RequestRefund';
 
 class Routes extends Component {
     render() {
+        console.log('hello routes')
         return (
             <Switch>
-                <Route path="/shopping" exact component={Shopping} />
-                <Route path="/shopping/:category/:id" component={SingleItem} />
-                <Route path="/shopping/cart" component={Cart}/>
-                <Route path="/profile" exact component={Profile} />
-                <Route path="/profile/orderhistory" exact component={OrderHistory}/>
-                <Route path="/profile/orderhistory/invoice/:id" component={Invoice}/>
-                <Route path="/refund/:id" component={RequestRefund}/>
-                <Route path="/login" component={Login}/>
+                <Route path="/api/shopping" exact component={Shopping} />
+                <Route path="/api/shopping/:category/:id" component={SingleItem} />
+                <Route path="/api/shopping/cart" component={Cart}/>
+                <Route path="/api/profile" exact component={Profile} />
+                <Route path="/api/profile/orderhistory" exact component={OrderHistory}/>
+                <Route path="/api/profile/orderhistory/invoice/:id" component={Invoice}/>
+                <Route path="/api/refund/:id" component={RequestRefund}/>
+                <Route path="/api/login" component={Login}/>
             </Switch>
         );
     }

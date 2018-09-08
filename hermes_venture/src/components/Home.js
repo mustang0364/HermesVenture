@@ -48,7 +48,7 @@ class Home extends Component {
     }
     updateTibetFP = () => {
       setTimeout(() => {
-        axios.get('/fptibet').then(res => {
+        axios.get('/api/fptibet').then(res => {
           this.setState({
             fpTibet: res.data,
           })
@@ -58,7 +58,7 @@ class Home extends Component {
     }
     updatePeruFP = () => {
       setTimeout(() => {
-        axios.get('/fpperu').then(res => {
+        axios.get('/api/fpperu').then(res => {
           this.setState({
             fpPeru: res.data,
           })
@@ -67,7 +67,7 @@ class Home extends Component {
     }
     updateMaldivesFP = () => {
       setTimeout(() => {
-        axios.get('/fpmaldives').then(res => {
+        axios.get('/api/fpmaldives').then(res => {
           this.setState({
             fpMaldives: res.data,
           })
@@ -139,7 +139,7 @@ class Home extends Component {
                 <div className="bottomsection">
                   
                   <div className="fpbg">
-                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneCategory
                         : this.state.currentScene === 'Maldves'
@@ -168,7 +168,7 @@ class Home extends Component {
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productTwoCategory
                         : this.state.currentScene === 'Maldves'
@@ -197,7 +197,7 @@ class Home extends Component {
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productThreeCategory
                         : this.state.currentScene === 'Maldves'
@@ -226,7 +226,7 @@ class Home extends Component {
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productFourCategory
                         : this.state.currentScene === 'Maldves'

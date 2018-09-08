@@ -22,7 +22,7 @@ class Navbar  extends Component {
     }
 
     logout() {
-        axios.post('/logout')
+        axios.post('/api/logout')
     }
     handleRedirect = () => {
         setTimeout(() => {
@@ -58,10 +58,10 @@ class Navbar  extends Component {
                                 <h2><i className="fas fa-shopping-cart">{this.props.cart.length > 0 ? this.props.cart.length : null}</i></h2>
                                 <div style={style} className="dropdown-content">
                                     <ul>
-                                        {context.user ? <Link to="/shopping"><li onClick={() => this.logout()}>Logout</li></Link> : <li id="login"><a href={auth0}>Login</a></li>}
-                                        <Link to='/profile'><li id="profile">Profile</li></Link>
-                                        <Link to="/shopping"><li>Products</li></Link>
-                                        <Link to="/shopping/cart">
+                                        {context.user ? <Link to="/api/shopping"><li onClick={() => this.logout()}>Logout</li></Link> : <li id="login"><a href={auth0}>Login</a></li>}
+                                        <Link to='/api/profile'><li id="profile">Profile</li></Link>
+                                        <Link to="/api/shopping"><li>Products</li></Link>
+                                        <Link to="/api/shopping/cart">
                                             {context.user ? <li onClick={() => context.methods.createOrderNumber(context.user.id)}>Cart</li> 
                                             : <li>Cart</li>}
                                         </Link>

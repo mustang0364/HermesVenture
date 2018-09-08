@@ -24,19 +24,19 @@ class Profile extends Component {
     }
     
 componentDidMount() {
-    axios.get('/getUser').then(res => {
+    axios.get('/api/getUser').then(res => {
         if(res.data !== 'Not Authorized') {
             this.setState({user: res.data})
             this.getAddress();
         } else {
-            this.props.history.push('/login')
+            this.props.history.push('/api/login')
         }
     })   
 }
 
   getAddress = () => {
     setTimeout(() => {
-        axios.get(`/getaddress/${this.state.user.id}`).then(res => {
+        axios.get(`/api/getaddress/${this.state.user.id}`).then(res => {
             this.setState({
                 userAddress: res.data,
             })
@@ -50,7 +50,7 @@ componentDidMount() {
        })
    }
    addAddress = () => {
-       axios.post('/createaddress', {...this.state}).then( res => {
+       axios.post('/api/createaddress', {...this.state}).then( res => {
             this.setState({
                 userAddress: res.data,
             })
@@ -61,7 +61,7 @@ componentDidMount() {
        }, 500);
     }
    updateAddress = () => {
-       axios.post('/createaddress', {...this.state}).then( res => {
+       axios.post('/api/createaddress', {...this.state}).then( res => {
             this.setState({
                 userAddress: res.data,
             })
@@ -71,7 +71,7 @@ componentDidMount() {
     }, 500);
 }
     removeAddress = (id, addressid) => {
-        axios.delete(`/removeaddress/${id}/${addressid}`);
+        axios.delete(`/api/removeaddress/${id}/${addressid}`);
         this.getAddress();
     }
    updateAddressShown = () => {
@@ -131,7 +131,7 @@ componentDidMount() {
                                 }) : null}
                                 <button className='profilebutton' onClick={() => this.updateAddressShown()}>Add A New Address</button>
                                 <div className="orderhistory">
-                                <Link to="/profile/orderhistory"><button className='profilebutton'>Order History</button></Link>
+                                <Link to="/api/profile/orderhistory"><button className='profilebutton'>Order History</button></Link>
                                 </div>
                                 </div>
                                 }

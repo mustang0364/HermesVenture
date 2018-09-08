@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 import {BrowserRouter} from 'react-router-dom';
 import ContextProvider from './components/ContextProvider';
 import { AppContainer } from 'react-hot-loader';
@@ -19,7 +18,6 @@ const render = () => {
         document.getElementById('root'));
 }
 
-registerServiceWorker();
 render();
 
 if (module.hot) {
