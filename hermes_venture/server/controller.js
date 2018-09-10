@@ -2,9 +2,6 @@ require('dotenv').config();
 const stripe = require("stripe")(process.env.SECRET_KEY);
 const nodemailer = require('nodemailer');
 
-function isLoggedin() {
-
-}
 
 module.exports = {
     dashboard: (req, res) => {
@@ -186,6 +183,7 @@ module.exports = {
     },
     createAddress: (req, res) => {
         if(!req.session.user) {
+            console.log('Not Authorized')
             res.send("Not Authorized")
             return;
         }

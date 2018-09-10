@@ -14,19 +14,23 @@ class Cart extends Component {
             addresses: [],
             shipToAddress: [],
             orderNumber: [],
+            streetInput: '',
+            cityInput: '',
+            zipInput: '',
+            stateInput: '',
         }
     }
     componentDidMount() {
-        axios.get('/getUser').then(res => {
+        axios.get('/api/getUser').then(res => {
             if(res.data !== 'Not Authorized') {
-                axios.get(`/getaddress/${res.data.id}`).then(response => {
+                axios.get(`/api/getaddress/${res.data.id}`).then(response => {
                     this.setState({
                         user: res.data,
                         addresses: response.data
                     })
                 })
             } else {
-                this.props.history.push('/login')
+                this.props.history.push('/api/login')
             }
         })
     }
@@ -36,6 +40,28 @@ class Cart extends Component {
             shipToAddress: [id, street]
         })
     }
+
+    handleInputs(key, userInput) {
+        this.setState({
+            [key]: userInput
+        })
+    }
+    addAddress = () => {
+        axios.post('/api/createaddress', {...this.state}).then( res => {
+            axios.get('/api/getUser').then(res => {
+                if(res.data !== 'Not Authorized') {
+                    axios.get(`/api/getaddress/${res.data.id}`).then(response => {
+                        this.setState({
+                            user: res.data,
+                            addresses: response.data
+                        })
+                    })
+                } else {
+                    this.props.history.push('/api/login')
+                }
+            })
+        })
+     }
 
 
     render() {
@@ -70,14 +96,25 @@ class Cart extends Component {
                                 </div>
                                 <div className="checkout-container">
                                     <div className="address-container">
-                                    <h2>Please Select an Address</h2>
-                                    {this.state.addresses.map((address, index) => {
-                                        return (
-                                            <div key={index}>
-                                               <p>{address.street}, {address.city} <button className="select-button" onClick={() => this.shiptoAddress(address.addressid, address.street)}>Select</button></p>
-                                            </div>
-                                        )
-                                    })}
+                                    {this.state.addresses.length > 0 ?
+                                        <div>
+                                            <h2>Please Select an Address</h2>
+                                            {this.state.addresses.map((address, index) => {
+                                                return (
+                                                    <div key={index}>
+                                                    <p>{address.street}, {address.city} <button className="select-button" onClick={() => this.shiptoAddress(address.addressid, address.street)}>Select</button></p>
+                                                    </div>
+                                                )
+                                            })}
+                                        </div>
+                                        : <div>
+                                            <h2>Please Add an Address</h2>
+                                            <input onChange={(e) => this.handleInputs('streetInput', e.target.value)} placeholder='Enter Street'/>
+                                            <input onChange={(e) => this.handleInputs('cityInput', e.target.value)} placeholder='Enter City'/>
+                                            <input onChange={(e) => this.handleInputs('stateInput', e.target.value)} placeholder='Enter State EX: AZ' maxLength="2"/>
+                                            <input onChange={(e) => this.handleInputs('zipInput', e.target.value)} placeholder='Enter Zip'/>
+                                            <button onClick={() => this.addAddress()}>Add This Address</button>
+                                        </div>}
                                     {this.state.shipToAddress ?
                                         <h4>Ship To Address: {this.state.shipToAddress[1]}</h4>
                                     : null}
@@ -122,10 +159,10 @@ const Checkout = props => {
     const fromUSDToCent = amount => amount * 100;
 
     const successPayment = data => {
-        axios.post('/createOrder', orderInfo).then( () => {
+        axios.post('/api/createOrder', orderInfo).then( () => {
             props.emptyCart();
             sessionStorage.clear();
-            props.forward('/shopping')
+            props.forward('/api/shopping')
         }
             
         )

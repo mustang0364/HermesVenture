@@ -4,11 +4,16 @@ import BackgroundVideoOne from '../Media/Videos/Snow.mp4'
 import BackgroundVideoTwo from '../Media/Videos/Beach.mp4'
 import BackgroundVideoThree from '../Media/Videos/Rainforest.mp4'
 import SidebarImg from '../Media/Images/sidebar.png';
-import TopArrow from '../Media/Images/arrowtop.png';
-import BottomArrow from '../Media/Images/arrowbottom.png';
+// import TopArrow from '../Media/Images/arrowtop.png';
+// import BottomArrow from '../Media/Images/arrowbottom.png';
 import axios from 'axios';
-import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
-import Buttonactive from '../Media/Images/Scenebuttons.png';
+// import ButtonImage from '../Media/Images/Scenebuttons-inactive.png';
+// import Buttonactive from '../Media/Images/Scenebuttons.png';
+// import beachC from '../Media/Images/beachC.jpg'
+import mountainsB from '../Media/Images/mountainsB.png'
+import mountainR from '../Media/Images/mountainR.png'
+import snowF from '../Media/Images/snowF.png'
+import beachS from '../Media/Images/beachS.png'
 import circle from '../Media/Images/Logo/circle.png';
 import WhiteLogo from '../Media/Images/Logo/circleWhiteR.png'
 import BlackLogo from '../Media/Images/Logo/circleLogoRBlack.png'
@@ -43,7 +48,7 @@ class Home extends Component {
     }
     updateTibetFP = () => {
       setTimeout(() => {
-        axios.get('/fptibet').then(res => {
+        axios.get('/api/fptibet').then(res => {
           this.setState({
             fpTibet: res.data,
           })
@@ -53,7 +58,7 @@ class Home extends Component {
     }
     updatePeruFP = () => {
       setTimeout(() => {
-        axios.get('/fpperu').then(res => {
+        axios.get('/api/fpperu').then(res => {
           this.setState({
             fpPeru: res.data,
           })
@@ -62,7 +67,7 @@ class Home extends Component {
     }
     updateMaldivesFP = () => {
       setTimeout(() => {
-        axios.get('/fpmaldives').then(res => {
+        axios.get('/api/fpmaldives').then(res => {
           this.setState({
             fpMaldives: res.data,
           })
@@ -134,7 +139,7 @@ class Home extends Component {
                 <div className="bottomsection">
                   
                   <div className="fpbg">
-                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link className='fp1' onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productOneCategory
                         : this.state.currentScene === 'Maldves'
@@ -163,7 +168,7 @@ class Home extends Component {
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productTwoCategory
                         : this.state.currentScene === 'Maldves'
@@ -192,7 +197,7 @@ class Home extends Component {
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productThreeCategory
                         : this.state.currentScene === 'Maldves'
@@ -221,7 +226,7 @@ class Home extends Component {
                       <img src={circle} alt="circleLogo"/>
                   </div>
                   <div className="fpbg">
-                      <Link onClick={() => this.props.redirect()} to={`/shopping/${
+                      <Link onClick={() => this.props.redirect()} to={`/api/shopping/${
                         this.state.currentScene === 'Tibet' 
                         ? this.state.fpTibet.productFourCategory
                         : this.state.currentScene === 'Maldves'
@@ -256,12 +261,12 @@ class Home extends Component {
         </div>
         
         <div className="buttonsection">
-            <img className='arrows' src={TopArrow} alt="arrowtop"/>
-            <button onClick={() => this.changeSceneOne()}><img alt='' className={this.state.videoOneShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoOneShown === true ? Buttonactive : ButtonImage} />
+            {/* <img className='arrows' src={TopArrow} alt="arrowtop"/> */}
+            <button onClick={() => this.changeSceneOne()}><img alt='' className={this.state.videoOneShown === true ? 'snowF' : 'snowF'} src={this.state.videoOneShown === true ? snowF : snowF} />
             </button>
-            <button onClick={() => this.changeSceneTwo()}><img alt='' className={this.state.videoTwoShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoTwoShown === true ? Buttonactive : ButtonImage} /></button>
-            <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'buttonactive' : 'buttoninactive'} src={this.state.videoThreeShown === true ? Buttonactive : ButtonImage} /></button>
-            <img className='arrows' src={BottomArrow} alt="arrowbottom"/>
+            <button onClick={() => this.changeSceneTwo()}><img alt='' className={this.state.videoTwoShown === true ? 'beachS' : 'beachS'} src={this.state.videoTwoShown === true ? beachS : beachS} /></button>
+            <button onClick={() => this.changeSceneThree()}><img alt='' className={this.state.videoThreeShown === true ? 'mountainR' : 'mountainR'} src={this.state.videoThreeShown === true ? mountainR : mountainR} /></button>
+            {/* <img className='arrows' src={BottomArrow} alt="arrowbottom"/> */}
         </div>
             <div className="footer">        
               <a className='dashboardlink'href="#dashboard"><img src={DashboardArrow} alt=""/></a>

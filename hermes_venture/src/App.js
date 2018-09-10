@@ -3,6 +3,7 @@ import './App.css';
 import Routes from './Routes';
 import Dashboard from './components/Dashboard.js';
 import Home from './components/Home.js';
+import ErrorBoundary from './components/ErrorBoundary'
 import axios from 'axios';
 
 
@@ -17,7 +18,7 @@ class App extends Component {
   }
   componentDidMount() {
     setTimeout(() => {
-      axios.get('/dashboard').then(res => {
+      axios.get('/api/dashboard').then(res => {
           this.setState({products: res.data})
       })   
     }, 500);
@@ -36,7 +37,7 @@ class App extends Component {
       
       {this.state.redirect 
     
-      ? <Routes /> 
+      ? <ErrorBoundary><Routes /></ErrorBoundary>
       
       : <div ><Home products={this.state.products} redirect={this.redirect} /> <Dashboard needsRedirect={this.state.redirect} products={this.state.products} redirect={this.redirect} /> <Routes /></div>
       }

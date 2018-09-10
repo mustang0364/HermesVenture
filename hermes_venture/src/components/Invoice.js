@@ -15,7 +15,7 @@ export default class Invoice extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/invoice/${this.props.match.params.id}`).then(res => {
+        axios.get(`/api/invoice/${this.props.match.params.id}`).then(res => {
             this.setState({order: res.data})
         })
     }
@@ -37,7 +37,7 @@ export default class Invoice extends Component {
                                         <p>{order[0].street}</p>
                                         <p>{order[0].city}</p>
                                         <p>{order[0].state}</p>
-                                        <Link to="/profile/orderhistory"><button className="backbutton">Back</button></Link>
+                                        <Link to="/api/profile/orderhistory"><button className="backbutton">Back</button></Link>
                                     </div>
                                     {this.state.order.map((order, index) => {
                                         return (

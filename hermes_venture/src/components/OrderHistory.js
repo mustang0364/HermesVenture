@@ -15,7 +15,7 @@ export default class OrderHistory extends Component {
     }
 
     componentDidMount() {
-        axios.get('/orderHistory').then(res => {
+        axios.get('/api/orderHistory').then(res => {
             this.setState({orders: res.data})
 
         })
@@ -47,7 +47,7 @@ export default class OrderHistory extends Component {
                                                             <div className="history-product-info">
                                                                 <h5>{product.title}</h5>
                                                                 <p>${product.price}</p>
-                                                                <Link to={`/shopping/${product.category}/${product.id}`}><button>Buy Again</button></Link>
+                                                                <Link to={`/api/shopping/${product.category}/${product.id}`}><button>Buy Again</button></Link>
                                                             </div>
                                                         </div>
                                                     )
@@ -55,8 +55,8 @@ export default class OrderHistory extends Component {
                                                 </div>
                                                 <div className="history-action-buttons">
                                                     <button>Review Product</button>
-                                                    <Link to={`/profile/orderhistory/invoice/${order[0].cart_id}`}><button>Invoice</button></Link>
-                                                    <Link to={`/refund/${order[0].cart_id}`}><button>Request Refund</button></Link>
+                                                    <Link to={`/api/profile/orderhistory/invoice/${order[0].cart_id}`}><button>Invoice</button></Link>
+                                                    <Link to={`/api/refund/${order[0].cart_id}`}><button>Request Refund</button></Link>
                                                 </div>
                                             </div>
                                         )
