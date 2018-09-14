@@ -7,9 +7,9 @@ const session = require('express-session');
 const axios = require('axios');
 require('dotenv').config();
 const app = express();
-if(process.env.NODE_ENV === 'production') {
-    app.use( express.static( `${__dirname}/../build` ) );
-}
+
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(bodyParser.json());
 
 //massive
@@ -86,7 +86,7 @@ app.get('/auth/callback', (req, res) => {
       client_secret: process.env.AUTH0_CLIENT_SECRET,
       code: req.query.code,
       grant_type: 'authorization_code',
-      redirect_uri: `http://${req.headers.host}/auth/callback`
+      redirect_uri: `https://${req.headers.host}/auth/callback`
   }
 
   function tradeCodeForAccessToken() {
@@ -132,11 +132,11 @@ app.get('/auth/callback', (req, res) => {
 })
 
 
-if(process.env.NODE_ENV === 'production') {
+
     app.get('*', (req, res)=>{
       res.sendFile(path.join(__dirname, '../build/index.html'));
     })
-}
+
 
 
     //port
