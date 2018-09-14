@@ -1,0 +1,21 @@
+const tests = require('./endPoint.js');
+
+it('should get expected data', () => {
+    tests.getOne('/fpperu').then(response => {
+        expect(response).toEqual({
+            productOneId: 1,
+            productOneCategory: 'Peru',
+            productOneImage: 'randomurl'
+        })
+    })
+})
+it('should get expected data', () => {
+    tests.getTwo('/fpmaldives').then(response => {
+        expect(response).toEqual({
+            productOneId: 3,
+            productOneCategory: 'Maldives',
+            productOneImage: 'randomurl'
+        })
+    })
+})
+
